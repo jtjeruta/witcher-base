@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Shared abstract base for all witcher trial operations. -->
+  <RecipeDef Abstract="True" Name="Witcher_TrialBase" ParentName="SurgeryFlesh">
+    <jobString>Conducting witcher trial.</jobString>
+    <hideBodyPartNames>true</hideBodyPartNames>
+    <targetsBodyPart>false</targetsBodyPart>
+    <anesthetize>false</anesthetize>
+    <surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+    <workSkillLearnFactor>4</workSkillLearnFactor>
+    <recipeUsers>
+      <li>Human</li>
+    </recipeUsers>
+  </RecipeDef>
+
+  <!--
+    Trial of Grasses operation.
+    - Conducted on a humanoid child (age 8-12). Recipe worker enforces age and existing-witcher exclusion.
+    - Female pawns are eligible to start the trial, but the fever's TrialOutcome comp guarantees death.
+    - Ingredients: 30 psychoid leaves, 10 herbal medicine (healroot), 5 hops.
+    - Applies the GrassesFever hediff on completion; survival outcome is decided by the disease.
+  -->
+  <RecipeDef ParentName="Witcher_TrialBase">
+    <defName>Witcher_ConductTrialOfGrasses</defName>
+    <label>conduct trial of grasses</label>
+    <description>Administer the trial of grasses. The mutagens will induce a painful fever lasting one or two days. Most subjects do not survive, but those who endure are reborn with witcher gifts.</description>
+    <workerClass>WitcherBase.Recipe_TrialOfGrasses</workerClass>
+    <jobString>Conducting trial of grasses.</jobString>
+    <workAmount>2000</workAmount>
+    <researchPrerequisite>Witcher_TrialOfGrasses</researchPrerequisite>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MedicineHerbal</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>PsychoidLeaves</li>
+          </thingDefs>
+        </filter>
+        <count>30</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawHops</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>MedicineHerbal</li>
+        <li>PsychoidLeaves</li>
+        <li>RawHops</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+  <!--
+    Trial of Dreams operation.
+    - Requires the patient to already carry the Witcher_Initiate marker (i.e. survived grasses).
+    - Ingredients: 10 psychite tea, 5 smokeleaf leaves.
+  -->
+  <RecipeDef ParentName="Witcher_TrialBase">
+    <defName>Witcher_ConductTrialOfDreams</defName>
+    <label>conduct trial of dreams</label>
+    <description>Administer the trial of dreams to a witcher initiate. About seven in ten survive. Survivors gain pain resistance, emotional dullness, and the witcher's long life.</description>
+    <workerClass>WitcherBase.Recipe_TrialOfDreams</workerClass>
+    <jobString>Conducting trial of dreams.</jobString>
+    <workAmount>2000</workAmount>
+    <researchPrerequisite>Witcher_TrialOfDreams</researchPrerequisite>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>PsychiteTea</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>SmokeleafLeaves</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>PsychiteTea</li>
+        <li>SmokeleafLeaves</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+  <!--
+    Additional Mutagens operation.
+    - Requires a fully trained witcher (carries the upgraded gene set from dreams).
+    - Ingredients: 4 herbal medicine, 5 psychoid leaves (modest brew; the patient already tolerates mutagens).
+  -->
+  <RecipeDef ParentName="Witcher_TrialBase">
+    <defName>Witcher_ConductAdditionalMutagens</defName>
+    <label>administer additional mutagens</label>
+    <description>Administer an additional dose of mutagens to a fully trained witcher. The recipient's existing gifts will be pushed to their extreme tier. Painful but rarely fatal.</description>
+    <workerClass>WitcherBase.Recipe_AdditionalMutagens</workerClass>
+    <jobString>Administering additional mutagens.</jobString>
+    <workAmount>1500</workAmount>
+    <researchPrerequisite>Witcher_AdditionalMutagens</researchPrerequisite>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MedicineHerbal</li>
+          </thingDefs>
+        </filter>
+        <count>4</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>PsychoidLeaves</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>MedicineHerbal</li>
+        <li>PsychoidLeaves</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+</Defs>

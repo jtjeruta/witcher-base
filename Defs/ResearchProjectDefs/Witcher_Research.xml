@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ResearchProjectDef>
+    <defName>Witcher_TrialOfGrasses</defName>
+    <label>trial of grasses</label>
+    <description>The first and most brutal of the witcher trials. Subjects, traditionally boys aged eight to twelve, are dosed with an alchemical brew of healroot, psychoid, and hops. The mutagens that survive the immune response remake the body: dense connective tissue, accelerated healing, sharper night vision. Only about three in ten endure the fever.
+
+Once researched, this trial becomes available as an operation in the Health tab.</description>
+    <techLevel>Medieval</techLevel>
+    <baseCost>500</baseCost>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>0.00</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>Witcher_TrialOfDreams</defName>
+    <label>trial of dreams</label>
+    <description>A second trial reserved for those who survived the grasses. Subjects drink psychite tea laced with smokeleaf and are guided through nightmare visions while their nervous system is rewired. About seven in ten survive. Survivors gain pain resistance, emotional flatness, and the long lifespan that witchers are infamous for.</description>
+    <techLevel>Medieval</techLevel>
+    <baseCost>1000</baseCost>
+    <prerequisites>
+      <li>Witcher_TrialOfGrasses</li>
+    </prerequisites>
+    <researchViewX>1.20</researchViewX>
+    <researchViewY>0.00</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>Witcher_AdditionalMutagens</defName>
+    <label>additional mutagens</label>
+    <description>An experimental second dose of mutagens, administered to a fully trained witcher. The brew pushes existing gifts to their extreme tier: a sprinter becomes a blur, fast healing becomes near-instantaneous regeneration, strong immunity becomes near-perfect resistance. The body grows uglier still.</description>
+    <techLevel>Medieval</techLevel>
+    <baseCost>500</baseCost>
+    <prerequisites>
+      <li>Witcher_TrialOfDreams</li>
+    </prerequisites>
+    <researchViewX>2.40</researchViewX>
+    <researchViewY>-0.40</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>Witcher_TrialOfMountains</defName>
+    <label>trial of mountains</label>
+    <description>The final trial. A witcher who has survived the grasses and the dreams must travel alone into hostile country and slay a beast worthy of their new gifts. (Quest content for this trial is planned for a future update.)</description>
+    <techLevel>Medieval</techLevel>
+    <baseCost>1500</baseCost>
+    <prerequisites>
+      <li>Witcher_TrialOfDreams</li>
+    </prerequisites>
+    <researchViewX>2.40</researchViewX>
+    <researchViewY>0.40</researchViewY>
+  </ResearchProjectDef>
+
+</Defs>

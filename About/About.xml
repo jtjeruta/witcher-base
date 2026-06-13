@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Witcher Base</name>
+  <packageId>witcher.base</packageId>
+  <author>Tristan</author>
+  <url></url>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>The foundation mod for a modular Witcher content suite. Adds the Witcher trials to RimWorld Biotech.
+
+Research three trials to transform colonists into witchers:
+- Trial of Grasses: a brutal initiation. Anyone can attempt it, but boys aged 8-12 have the best odds (about 30% survive; others rarely do). Survivors gain disease resistance, robustness, fast healing, dark vision, sterility, faster movement, and ugly features.
+- Trial of Dreams: a follow-up trial for witcher initiates. About 70% survive. Survivors gain reduced sleep, pain resistance, dead calm, fast learning, dulled senses, low social impact, and slow aging.
+- Additional Mutagens: a perilous upgrade (about 10% survive) that pushes a witcher's existing gifts to their extreme tier.
+
+All trials are performed from the Health tab and consume herbal ingredients. Each trial induces a painful fever lasting one to two days; the outcome is sealed once the trial begins, and those who fail do not survive.
+
+The Trial of Mountains research is included as a placeholder for a future quest-based final trial.
+
+Requires Biotech.</description>
+  <modDependencies>
+    <li>
+      <packageId>Ludeon.RimWorld.Biotech</packageId>
+      <displayName>Biotech</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/Biotech</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>Ludeon.RimWorld</li>
+    <li>Ludeon.RimWorld.Biotech</li>
+  </loadAfter>
+</ModMetaData>

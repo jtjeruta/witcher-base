@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Abstract base: a painful cosmetic fever with a predetermined outcome. -->
+  <HediffDef Name="Witcher_TrialFeverBase" Abstract="True">
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.85, 0.55, 0.10)</defaultLabelColor>
+    <lethalSeverity>1</lethalSeverity>
+    <makesSickThought>true</makesSickThought>
+    <isInfection>false</isInfection>
+    <tendable>false</tendable>
+    <alwaysShowSeverity>true</alwaysShowSeverity>
+    <initialSeverity>0.001</initialSeverity>
+    <scenarioCanAdd>false</scenarioCanAdd>
+  </HediffDef>
+
+  <!--
+    Trial of Grasses fever.
+    Outcome is rolled on application: ~30% for ideal subjects (boys 8-12), ~5% for everyone else.
+    The visible fever climbs toward 100% regardless; only at the end do survivors break or the doomed die.
+  -->
+  <HediffDef ParentName="Witcher_TrialFeverBase">
+    <defName>Witcher_GrassesFever</defName>
+    <label>trial fever (grasses)</label>
+    <labelNoun>the trial fever</labelNoun>
+    <description>A violent immune response to the witcher mutagens. The body burns. Most subjects die within a day or two; those who survive emerge changed.</description>
+    <comps>
+      <li Class="WitcherBase.HediffCompProperties_TrialOutcome">
+        <surviveChance>0.05</surviveChance>
+        <idealSurviveChance>0.30</idealSurviveChance>
+        <markerHediff>Witcher_Initiate</markerHediff>
+        <grantGenes>
+          <li>Immunity_Strong</li>
+          <li>Robust</li>
+          <li>WoundHealing_Fast</li>
+          <li>DarkVision</li>
+          <li>Sterile</li>
+          <li>MoveSpeed_Quick</li>
+          <li>Beauty_Ugly</li>
+        </grantGenes>
+        <survivalLetterLabel>Witcher initiate: {PAWN_nameDef}</survivalLetterLabel>
+        <survivalLetterText>{PAWN_nameDef} has survived the Trial of Grasses. The mutagens have taken hold: {PAWN_possessive} body is now harder, faster to heal, and seen by night.</survivalLetterText>
+        <deathLetterLabel>Trial failed: {PAWN_nameDef}</deathLetterLabel>
+        <deathLetterText>{PAWN_nameDef} did not survive the Trial of Grasses.</deathLetterText>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>burning</label>
+        <painOffset>0.45</painOffset>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.40</setMax>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.30</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.50</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.50</minSeverity>
+        <label>convulsing</label>
+        <painOffset>0.70</painOffset>
+        <vomitMtbDays>0.75</vomitMtbDays>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.25</setMax>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.45</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.60</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.80</minSeverity>
+        <label>dying</label>
+        <lifeThreatening>true</lifeThreatening>
+        <painOffset>0.90</painOffset>
+        <vomitMtbDays>0.5</vomitMtbDays>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.1</setMax>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.60</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.60</offset>
+          </li>
+          <li>
+            <capacity>Breathing</capacity>
+            <offset>-0.20</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!--
+    Trial of Dreams fever.
+    ~70% survival for all subjects.
+  -->
+  <HediffDef ParentName="Witcher_TrialFeverBase">
+    <defName>Witcher_DreamsFever</defName>
+    <label>trial fever (dreams)</label>
+    <labelNoun>the trial fever</labelNoun>
+    <description>A violent neural rewiring brought on by the dream brew. Nightmares grip the subject for a day or two. Most survive, but the pain is exquisite.</description>
+    <comps>
+      <li Class="WitcherBase.HediffCompProperties_TrialOutcome">
+        <surviveChance>0.70</surviveChance>
+        <grantGenes>
+          <li>LowSleep</li>
+          <li>Pain_Reduced</li>
+          <li>Aggression_DeadCalm</li>
+          <li>Learning_Fast</li>
+          <li>PsychicAbility_Dull</li>
+          <li>Witcher_LowSocial</li>
+          <li>Ageless</li>
+        </grantGenes>
+        <survivalLetterLabel>Witcher complete: {PAWN_nameDef}</survivalLetterLabel>
+        <survivalLetterText>{PAWN_nameDef} has survived the Trial of Dreams. The mutagens are now fully integrated.</survivalLetterText>
+        <deathLetterLabel>Trial failed: {PAWN_nameDef}</deathLetterLabel>
+        <deathLetterText>{PAWN_nameDef} did not survive the Trial of Dreams.</deathLetterText>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>nightmares</label>
+        <painOffset>0.40</painOffset>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.40</setMax>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.25</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.50</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.50</minSeverity>
+        <label>convulsing</label>
+        <painOffset>0.65</painOffset>
+        <vomitMtbDays>1.0</vomitMtbDays>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.25</setMax>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.40</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.60</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.80</minSeverity>
+        <label>dying</label>
+        <lifeThreatening>true</lifeThreatening>
+        <painOffset>0.85</painOffset>
+        <vomitMtbDays>0.5</vomitMtbDays>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.1</setMax>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.55</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.55</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!--
+    Mutagens fever.
+    ~95% survival; on cure, upgrades existing tier genes via the comp.
+  -->
+  <HediffDef ParentName="Witcher_TrialFeverBase">
+    <defName>Witcher_MutagensFever</defName>
+    <label>mutagen reaction</label>
+    <labelNoun>a mutagen reaction</labelNoun>
+    <description>An additional dose of mutagens, pushing the witcher's existing gifts to their extreme. A short fever, painful but rarely fatal.</description>
+    <comps>
+      <li Class="WitcherBase.HediffCompProperties_TrialOutcome">
+        <surviveChance>0.10</surviveChance>
+        <upgradeGenes>true</upgradeGenes>
+        <geneUpgrades>
+          <li>
+            <from>MoveSpeed_Quick</from>
+            <to>MoveSpeed_VeryQuick</to>
+          </li>
+          <li>
+            <from>WoundHealing_Fast</from>
+            <to>WoundHealing_SuperFast</to>
+          </li>
+          <li>
+            <from>Immunity_Strong</from>
+            <to>Immunity_SuperStrong</to>
+          </li>
+          <li>
+            <from>Beauty_Ugly</from>
+            <to>Beauty_VeryUgly</to>
+          </li>
+        </geneUpgrades>
+        <survivalLetterLabel>Mutagens complete: {PAWN_nameDef}</survivalLetterLabel>
+        <survivalLetterText>{PAWN_nameDef} has tolerated the additional mutagens. {PAWN_possessive} gifts have been pushed to their extreme.</survivalLetterText>
+        <deathLetterLabel>Mutagens failed: {PAWN_nameDef}</deathLetterLabel>
+        <deathLetterText>{PAWN_nameDef}'s body could not endure the additional mutagens.</deathLetterText>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>reaction</label>
+        <painOffset>0.30</painOffset>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.15</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.20</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.20</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.60</minSeverity>
+        <label>severe reaction</label>
+        <painOffset>0.55</painOffset>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.25</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.30</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.30</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.85</minSeverity>
+        <label>critical reaction</label>
+        <lifeThreatening>true</lifeThreatening>
+        <painOffset>0.75</painOffset>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.2</setMax>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.40</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.40</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!--
+    Marker hediff: applied to pawns who have survived the Trial of Grasses.
+    Invisible, permanent, used by gating logic to determine eligibility for further trials.
+  -->
+  <HediffDef>
+    <defName>Witcher_Initiate</defName>
+    <label>witcher initiate</label>
+    <description>This person has survived the Trial of Grasses and carries the first generation of witcher mutagens.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.6, 0.4, 0.1)</defaultLabelColor>
+    <isBad>false</isBad>
+    <maxSeverity>1.0</maxSeverity>
+    <initialSeverity>1.0</initialSeverity>
+    <stages>
+      <li>
+        <becomeVisible>true</becomeVisible>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>
