@@ -1,52 +1,54 @@
 # Witcher Base
 
-The foundation mod for a modular Witcher content suite for **RimWorld 1.6 (Biotech)**. It adds the Witcher trials as research-gated, Health-tab operations that transform colonists into witchers by granting Biotech genes — at great risk.
+Turn your colonists into witchers. This is the foundation mod of a modular Witcher content suite for **RimWorld**, letting you put pawns through the legendary trials that grant inhuman abilities — if they survive.
 
-> Requires the **Biotech** DLC.
+> **Requires the Biotech DLC.**
 
-## Features
+## What it does
 
-Research three trials, each unlocking a Health-tab operation that consumes herbal ingredients and induces a painful fever lasting one to two days. The outcome is sealed the moment the trial begins — no tending changes the result, and those who fail do not survive.
+Research the witcher trials, then perform them on colonists as operations from the **Health** tab. Each trial costs herbal ingredients and throws the pawn into a brutal fever that lasts a day or two. Survivors come out changed, carrying new genes. Those who don't survive... don't.
 
-| Trial | Survival | Eligibility | Reward |
-|-------|----------|-------------|--------|
-| **Trial of Grasses** | ~30% for boys aged 8–12, far lower for everyone else | Any humanlike pawn | Disease resistance, robustness, fast healing, dark vision, sterility, faster movement, ugly features |
-| **Trial of Dreams** | ~70% | Witcher initiates (Grasses survivors) only | Reduced sleep, pain resistance, dead calm, fast learning, dulled senses, low social impact, slow aging |
-| **Additional Mutagens** | ~10% | Witcher initiates only | Pushes existing witcher genes to their extreme tier |
+## The trials
 
-The **Trial of Mountains** research is included as a placeholder for a future quest-based final trial.
+### Trial of Grasses
+The first and most infamous initiation — a brutal ordeal that most who attempt it do not survive. Those who endure it become witcher initiates, eligible for the trials that follow.
 
-## Repository layout
+Survivors gain:
+- Strong immunity
+- Robust
+- Fast wound healing
+- Dark vision
+- Quick (faster movement)
+- Sterile
+- Ugly
 
-```
-About/                 Mod metadata (About.xml)
-Assemblies/            Compiled Witcher.dll
-Defs/                  XML definitions
-  GeneDefs/            Custom genes
-  HediffDefs/          Trial fevers + initiate marker
-  RecipeDefs/          Trial operations
-  ResearchProjectDefs/ Trial research
-Source/                C# source (namespace WitcherBase)
-  Witcher/             Recipe workers, hediff comp, gene rewards
-  Witcher.csproj       Project file
-  build.sh             Offline build script (invokes Roslyn csc directly)
-LoadFolders.xml        Version loading rules
-```
+### Trial of Dreams
+A second trial, open only to those who already survived the Grasses. Far more forgiving than the first, it rewires the mind.
 
-## Building
+Survivors gain:
+- Reduced sleep need
+- Pain resistance
+- Dead calm
+- Fast learner
+- Dulled psychic sensitivity
+- Low social impact
+- Ageless
 
-The C# assembly builds offline without NuGet by invoking the game's own Mono DLLs via Roslyn:
+### Additional Mutagens
+An experimental and exceptionally deadly procedure for existing witchers. Very few survive — but those who do have their existing gifts pushed to the extreme:
+- Quick → Very quick movement
+- Fast healing → Superfast wound healing
+- Strong immunity → Super-strong immunity
+- Ugly → Very ugly
 
-```bash
-./Source/build.sh
-```
+> A fourth trial, the **Trial of Mountains**, is planned for a future update.
 
-This outputs `Assemblies/Witcher.dll`. The script auto-detects the RimWorld install; override paths with the `RIMWORLD_MANAGED`, `DOTNET`, and `CSC_DLL` environment variables if needed.
+## Compatibility
 
-## Development
+- Built for **RimWorld 1.6**.
+- Requires **Biotech** (the trials grant Biotech genes).
+- Safe to add to an existing save. Removing it mid-save is not recommended once colonists have undergone trials.
 
-The mod is symlinked into the RimWorld `Mods/` folder during development, so XML and DLL changes are picked up on the next game restart without copying files.
+## Credits
 
-## License
-
-Personal project. The Witcher universe and its lore are the property of CD Projekt Red and Andrzej Sapkowski.
+A fan-made tribute. The Witcher universe and its lore belong to CD Projekt Red and Andrzej Sapkowski.
