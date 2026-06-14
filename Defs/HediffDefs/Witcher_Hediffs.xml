@@ -37,6 +37,9 @@
           <li>Sterile</li>
           <li>MoveSpeed_Quick</li>
           <li>Beauty_Ugly</li>
+          <li>PsychicAbility_Dull</li>
+          <li>AptitudeStrong_Melee</li>
+          <li>AptitudeStrong_Shooting</li>
         </grantGenes>
         <survivalLetterLabel>Witcher initiate: {PAWN_nameDef}</survivalLetterLabel>
         <survivalLetterText>{PAWN_nameDef} has survived the Trial of Grasses. The mutagens have taken hold: {PAWN_possessive} body is now harder, faster to heal, and seen by night.</survivalLetterText>
@@ -123,15 +126,38 @@
     <comps>
       <li Class="WitcherBase.HediffCompProperties_TrialOutcome">
         <surviveChance>0.70</surviveChance>
+        <markerHediff>Witcher_FullyTrained</markerHediff>
+        <removeMarkerHediff>Witcher_Initiate</removeMarkerHediff>
         <grantGenes>
           <li>LowSleep</li>
           <li>Pain_Reduced</li>
           <li>Aggression_DeadCalm</li>
           <li>Learning_Fast</li>
-          <li>PsychicAbility_Dull</li>
-          <li>Witcher_LowSocial</li>
+          <li>AptitudePoor_Social</li>
           <li>Ageless</li>
+          <li>DiseaseFree</li>
+          <li>ArchiteMetabolism</li>
+          <li>MeleeDamage_Strong</li>
         </grantGenes>
+        <upgradeGenes>true</upgradeGenes>
+        <geneUpgrades>
+          <li>
+            <from>PsychicAbility_Dull</from>
+            <to>PsychicAbility_Deaf</to>
+          </li>
+          <li>
+            <from>Beauty_Ugly</from>
+            <to>Beauty_VeryUgly</to>
+          </li>
+          <li>
+            <from>AptitudeStrong_Melee</from>
+            <to>AptitudeRemarkable_Melee</to>
+          </li>
+          <li>
+            <from>AptitudeStrong_Shooting</from>
+            <to>AptitudeRemarkable_Shooting</to>
+          </li>
+        </geneUpgrades>
         <survivalLetterLabel>Witcher complete: {PAWN_nameDef}</survivalLetterLabel>
         <survivalLetterText>{PAWN_nameDef} has survived the Trial of Dreams. The mutagens are now fully integrated.</survivalLetterText>
         <deathLetterLabel>Trial failed: {PAWN_nameDef}</deathLetterLabel>
@@ -227,10 +253,6 @@
             <from>Immunity_Strong</from>
             <to>Immunity_SuperStrong</to>
           </li>
-          <li>
-            <from>Beauty_Ugly</from>
-            <to>Beauty_VeryUgly</to>
-          </li>
         </geneUpgrades>
         <survivalLetterLabel>Mutagens complete: {PAWN_nameDef}</survivalLetterLabel>
         <survivalLetterText>{PAWN_nameDef} has tolerated the additional mutagens. {PAWN_possessive} gifts have been pushed to their extreme.</survivalLetterText>
@@ -307,6 +329,26 @@
     <defName>Witcher_Initiate</defName>
     <label>witcher initiate</label>
     <description>This person has survived the Trial of Grasses and carries the first generation of witcher mutagens.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.6, 0.4, 0.1)</defaultLabelColor>
+    <isBad>false</isBad>
+    <maxSeverity>1.0</maxSeverity>
+    <initialSeverity>1.0</initialSeverity>
+    <stages>
+      <li>
+        <becomeVisible>true</becomeVisible>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!--
+    Marker hediff: applied to pawns who have completed the Trial of Dreams.
+    Replaces the initiate marker. Invisible/permanent, used by gating logic.
+  -->
+  <HediffDef>
+    <defName>Witcher_FullyTrained</defName>
+    <label>witcher</label>
+    <description>This person has survived the Trial of Grasses and the Trial of Dreams. They are a fully trained witcher.</description>
     <hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.6, 0.4, 0.1)</defaultLabelColor>
     <isBad>false</isBad>

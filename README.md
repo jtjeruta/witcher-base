@@ -18,28 +18,38 @@ Survivors gain:
 - Robust
 - Fast wound healing
 - Dark vision
-- Quick (faster movement)
+- Fast runner
+- Strong melee
+- Strong shooting
+- Psychically dull
 - Sterile
-- Ugly
+- Unattractive
 
 ### Trial of Dreams
-A second trial, open only to those who already survived the Grasses. Far more forgiving than the first, it rewires the mind.
+A second trial, open only to those who already survived the Grasses. Far more forgiving than the first, it rewires the mind and deepens the gifts already taking root.
 
 Survivors gain:
 - Reduced sleep need
 - Pain resistance
 - Dead calm
 - Fast learner
-- Dulled psychic sensitivity
-- Low social impact
+- Strong melee damage
+- Poor social
 - Ageless
+- Non-senescent
+- Archite metabolism
+
+And their existing gifts evolve:
+- Psychically dull → Psychically deaf
+- Unattractive → Very unattractive
+- Strong melee → Great melee
+- Strong shooting → Great shooting
 
 ### Additional Mutagens
 An experimental and exceptionally deadly procedure for existing witchers. Very few survive — but those who do have their existing gifts pushed to the extreme:
-- Quick → Very quick movement
-- Fast healing → Superfast wound healing
+- Fast runner → Very fast runner
+- Fast wound healing → Superfast wound healing
 - Strong immunity → Super-strong immunity
-- Ugly → Very ugly
 
 > A fourth trial, the **Trial of Mountains**, is planned for a future update.
 

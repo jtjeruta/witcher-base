@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
@@ -43,16 +44,7 @@ namespace WitcherBase
 
             if (progress >= 1f && !outcomeApplied)
             {
-                outcomeApplied = true;
-                if (willSurvive)
-                {
-                    pawn.health.RemoveHediff(parent);
-                }
-                else
-                {
-                    parent.Severity = 1f;
-                    pawn.health.CheckForStateChange(null, parent);
-                }
+                ResolveOutcome(pawn);
             }
         }
 
@@ -122,6 +114,27 @@ namespace WitcherBase
             }
         }
 
+        public override IEnumerable<Gizmo> CompGetGizmos()
+        {
+            var baseGizmos = base.CompGetGizmos();
+            if (baseGizmos != null)
+            {
+                foreach (var gizmo in baseGizmos)
+                {
+                    yield return gizmo;
+                }
+            }
+
+            if (!Prefs.DevMode) yield break;
+
+            yield return new Command_Action
+            {
+                defaultLabel = "DEV: Finish witcher trial now",
+                defaultDesc = "Immediately resolves this trial using the already-rolled outcome.",
+                action = FinishTrialNow
+            };
+        }
+
         private void RollOutcome()
         {
             if (rolled) return;
@@ -140,6 +153,32 @@ namespace WitcherBase
             rolledValue = Rand.Value;
             willSurvive = rolledValue < chance;
             durationTicks = Props.feverDurationTicks.RandomInRange;
+        }
+
+        private void FinishTrialNow()
+        {
+            var pawn = Pawn;
+            if (pawn == null || pawn.Dead) return;
+            if (!rolled) RollOutcome();
+
+            parent.ageTicks = System.Math.Max(parent.ageTicks, durationTicks);
+            ResolveOutcome(pawn);
+        }
+
+        private void ResolveOutcome(Pawn pawn)
+        {
+            if (outcomeApplied) return;
+
+            outcomeApplied = true;
+            if (willSurvive)
+            {
+                pawn.health.RemoveHediff(parent);
+            }
+            else
+            {
+                parent.Severity = 1f;
+                pawn.health.CheckForStateChange(null, parent);
+            }
         }
 
         private static bool IsIdealSubject(Pawn pawn)

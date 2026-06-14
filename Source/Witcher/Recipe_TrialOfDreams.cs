@@ -22,8 +22,8 @@ namespace WitcherBase
                 return new AcceptanceReport("Already undergoing the trial.");
             }
 
-            // Already a full witcher (carries a Dreams-tier gene)? No reason to repeat.
-            if (pawn.genes != null && pawn.genes.HasActiveGene(WitcherDefOf.Aggression_DeadCalm))
+            // Already a full witcher? No reason to repeat.
+            if (pawn.health.hediffSet.HasHediff(WitcherDefOf.Witcher_FullyTrained))
             {
                 return new AcceptanceReport("Already a full witcher.");
             }

@@ -26,6 +26,9 @@ namespace WitcherBase
 
         public HediffDef markerHediff;
 
+        // Optional: marker hediff to remove on survival (e.g. Dreams clears the initiate marker).
+        public HediffDef removeMarkerHediff;
+
         public List<GeneDef> grantGenes;
 
         public bool upgradeGenes;

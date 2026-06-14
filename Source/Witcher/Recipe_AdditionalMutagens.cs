@@ -13,12 +13,8 @@ namespace WitcherBase
             if (!pawn.RaceProps.Humanlike) return new AcceptanceReport("Only humanlike pawns can receive additional mutagens.");
             if (pawn.genes == null) return new AcceptanceReport("Pawn cannot carry genes.");
 
-            // Must have completed both prior trials (Initiate marker + a Dreams-tier gene).
-            if (!pawn.health.hediffSet.HasHediff(WitcherDefOf.Witcher_Initiate))
-            {
-                return new AcceptanceReport("Must be a full witcher (trial of dreams not completed).");
-            }
-            if (!pawn.genes.HasActiveGene(WitcherDefOf.Aggression_DeadCalm))
+            // Must be a fully trained witcher (survived the trial of dreams).
+            if (!pawn.health.hediffSet.HasHediff(WitcherDefOf.Witcher_FullyTrained))
             {
                 return new AcceptanceReport("Must be a full witcher (trial of dreams not completed).");
             }

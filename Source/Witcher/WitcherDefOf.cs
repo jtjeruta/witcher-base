@@ -14,14 +14,12 @@ namespace WitcherBase
         public static HediffDef Witcher_DreamsFever;
         public static HediffDef Witcher_MutagensFever;
 
-        // Marker hediff applied to surviving initiates.
+        // Marker hediff applied to surviving initiates (Grasses), and to fully trained witchers (Dreams).
         public static HediffDef Witcher_Initiate;
+        public static HediffDef Witcher_FullyTrained;
 
         // Biotech genes used in eligibility checks. These exist in the Biotech DLC; if the DLC ever
         // becomes optional we'd guard these with [MayRequire("Ludeon.RimWorld.Biotech")].
-        [MayRequire("Ludeon.RimWorld.Biotech")]
-        public static GeneDef Aggression_DeadCalm;
-
         [MayRequire("Ludeon.RimWorld.Biotech")]
         public static GeneDef MoveSpeed_VeryQuick;
 

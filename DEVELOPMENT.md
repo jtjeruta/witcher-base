@@ -25,24 +25,33 @@ Rolled in `HediffComp_TrialOutcome.RollOutcome()`:
 ## Eligibility gating
 
 - **Trial of Grasses** (`Recipe_TrialOfGrasses`): any humanlike pawn that is not already an initiate and not currently undergoing a trial.
-- **Trial of Dreams** / **Additional Mutagens**: witcher initiates only (carry the `Witcher_Initiate` marker hediff).
-- Surviving Grasses applies the invisible `Witcher_Initiate` hediff used by the downstream gating.
+- **Trial of Dreams** (`Recipe_TrialOfDreams`): carries `Witcher_Initiate`, not yet `Witcher_FullyTrained`, not currently undergoing.
+- **Additional Mutagens** (`Recipe_AdditionalMutagens`): carries `Witcher_FullyTrained` (i.e. survived Dreams), not at peak, not currently undergoing.
+
+Two invisible marker hediffs drive the gating:
+- `Witcher_Initiate` (label "witcher initiate") — applied on surviving Grasses.
+- `Witcher_FullyTrained` (label "witcher") — applied on surviving Dreams; Dreams also removes `Witcher_Initiate` via the comp's `removeMarkerHediff`, so a pawn shows only one marker at a time.
 
 ## Rewards
 
 Applied in `TrialRewards.Apply` on `CompPostPostRemoved` (only when `willSurvive`).
 
-**Grasses — grants genes:** `Immunity_Strong`, `Robust`, `WoundHealing_Fast`, `DarkVision`, `Sterile`, `MoveSpeed_Quick`, `Beauty_Ugly`.
+**Grasses — grants genes:** `Immunity_Strong`, `Robust`, `WoundHealing_Fast`, `DarkVision`, `Sterile`, `MoveSpeed_Quick`, `Beauty_Ugly`, `PsychicAbility_Dull`, `AptitudeStrong_Melee`, `AptitudeStrong_Shooting`.
 
-**Dreams — grants genes:** `LowSleep`, `Pain_Reduced`, `Aggression_DeadCalm`, `Learning_Fast`, `PsychicAbility_Dull`, `Witcher_LowSocial` (custom), `Ageless`.
+**Dreams — grants genes:** `LowSleep`, `Pain_Reduced`, `Aggression_DeadCalm`, `Learning_Fast`, `AptitudePoor_Social`, `Ageless`, `DiseaseFree`, `ArchiteMetabolism`, `MeleeDamage_Strong`.
+
+**Dreams — upgrades existing genes** (`upgradeGenes` true):
+- `PsychicAbility_Dull` → `PsychicAbility_Deaf`
+- `Beauty_Ugly` → `Beauty_VeryUgly`
+- `AptitudeStrong_Melee` → `AptitudeRemarkable_Melee`
+- `AptitudeStrong_Shooting` → `AptitudeRemarkable_Shooting`
 
 **Additional Mutagens — upgrades existing genes:**
 - `MoveSpeed_Quick` → `MoveSpeed_VeryQuick`
 - `WoundHealing_Fast` → `WoundHealing_SuperFast`
 - `Immunity_Strong` → `Immunity_SuperStrong`
-- `Beauty_Ugly` → `Beauty_VeryUgly`
 
-All granted genes are added as xenogenes. Letters are sent via `LetterStack` using `{PAWN_...}` templates resolved with `template.Formatted(pawn.Named("PAWN"))`.
+All trial genes are vanilla Biotech defs (no custom genes ship with the mod). The "strong/great melee/shooting" and "poor social" genes are template-generated aptitude genes (`AptitudeStrong_*`, `AptitudeRemarkable_*`, `AptitudePoor_*`). All granted genes are added as xenogenes; upgrades remove the lower-tier gene before adding the higher tier. Letters are sent via `LetterStack` using `{PAWN_...}` templates resolved with `template.Formatted(pawn.Named("PAWN"))`.
 
 ## Repository layout
 
@@ -50,8 +59,8 @@ All granted genes are added as xenogenes. Letters are sent via `LetterStack` usi
 About/                 Mod metadata (About.xml)
 Assemblies/            Compiled Witcher.dll (assembly name stays "Witcher")
 Defs/
-  GeneDefs/            Custom genes (Witcher_LowSocial)
-  HediffDefs/          Trial fevers + Witcher_Initiate marker
+  GeneDefs/            (empty — all genes are vanilla Biotech defs)
+  HediffDefs/          Trial fevers + Witcher_Initiate / Witcher_FullyTrained markers
   RecipeDefs/          Trial operations
   ResearchProjectDefs/ Trial research
 Source/
@@ -81,7 +90,7 @@ The repo is symlinked into RimWorld's `Mods/` folder (`Mods/WitcherBase`), so XM
 
 - C# namespace is `WitcherBase`; XML `Class=`/`workerClass=` references must use the `WitcherBase.` prefix.
 - Use `System.Math` rather than `UnityEngine.Mathf` to avoid the `netstandard` reference error under the game's Mono build.
-- `displayCategory` on custom genes must be a valid vanilla `GeneCategoryDef` (e.g. `Mood`), not an arbitrary string.
+- All granted/upgraded genes must reference real def names. Aptitude/skill genes are template-generated as `Aptitude<Tier>_<Skill>` (e.g. `AptitudeStrong_Shooting`); if you add a custom gene later, its `displayCategory` must be a valid vanilla `GeneCategoryDef` (e.g. `Mood`), not an arbitrary string.
 - Changing `packageId` (now `witcher.base`) or the mod folder name breaks existing saves that referenced the old identity.
 
 ## Roadmap

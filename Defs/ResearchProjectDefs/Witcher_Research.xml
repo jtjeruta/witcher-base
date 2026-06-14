@@ -36,7 +36,7 @@ Once researched, this trial becomes available as an operation in the Health tab.
       <li>Witcher_TrialOfDreams</li>
     </prerequisites>
     <researchViewX>2.40</researchViewX>
-    <researchViewY>-0.40</researchViewY>
+    <researchViewY>1.00</researchViewY>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -49,7 +49,7 @@ Once researched, this trial becomes available as an operation in the Health tab.
       <li>Witcher_TrialOfDreams</li>
     </prerequisites>
     <researchViewX>2.40</researchViewX>
-    <researchViewY>0.40</researchViewY>
+    <researchViewY>3.00</researchViewY>
   </ResearchProjectDef>
 
 </Defs>

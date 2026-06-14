@@ -35,6 +35,15 @@ namespace WitcherBase
                 }
             }
 
+            if (props.removeMarkerHediff != null)
+            {
+                var oldMarker = pawn.health.hediffSet.GetFirstHediffOfDef(props.removeMarkerHediff);
+                if (oldMarker != null)
+                {
+                    pawn.health.RemoveHediff(oldMarker);
+                }
+            }
+
             if (props.markerHediff != null && !pawn.health.hediffSet.HasHediff(props.markerHediff))
             {
                 pawn.health.AddHediff(props.markerHediff, null, null, null);
