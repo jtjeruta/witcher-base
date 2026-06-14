@@ -11,8 +11,9 @@ namespace WitcherBase
         {
             if (pawn == null) return false;
             if (!pawn.RaceProps.Humanlike) return new AcceptanceReport("Only humanlike pawns can undergo the trial of dreams.");
+            if (pawn.genes == null) return new AcceptanceReport("Pawn cannot carry genes.");
 
-            if (!pawn.health.hediffSet.HasHediff(WitcherDefOf.Witcher_Initiate))
+            if (pawn.genes.Xenotype != WitcherDefOf.WitcherInitiate)
             {
                 return new AcceptanceReport("Must have survived the trial of grasses.");
             }
@@ -20,12 +21,6 @@ namespace WitcherBase
             if (pawn.health.hediffSet.HasHediff(WitcherDefOf.Witcher_DreamsFever))
             {
                 return new AcceptanceReport("Already undergoing the trial.");
-            }
-
-            // Already a full witcher? No reason to repeat.
-            if (pawn.health.hediffSet.HasHediff(WitcherDefOf.Witcher_FullyTrained))
-            {
-                return new AcceptanceReport("Already a full witcher.");
             }
 
             return AcceptanceReport.WasAccepted;

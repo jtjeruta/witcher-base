@@ -11,18 +11,15 @@ namespace WitcherBase
         public static HediffDef Witcher_DreamsFever;
         public static HediffDef Witcher_MutagensFever;
 
-        // Rank and enhancement marker hediffs.
-        public static HediffDef Witcher_Initiate;
-        public static HediffDef Witcher_FullyTrained;
-        public static HediffDef Witcher_Master;
-        public static HediffDef Witcher_Mutated;
+        // Witcher xenotypes (linear progression ladder).
+        public static XenotypeDef WitcherInitiate;
+        public static XenotypeDef Witcher;
+        public static XenotypeDef WitcherMaster;
+        public static XenotypeDef WitcherMutated;
 
         // Research and quest defs.
         public static ResearchProjectDef Witcher_TrialOfMountains;
         public static QuestScriptDef Witcher_TrialOfMountainsQuest;
-
-        [MayRequire("Ludeon.RimWorld.Biotech")]
-        public static GeneDef MoveSpeed_VeryQuick;
 
         static WitcherDefOf()
         {

@@ -61,7 +61,7 @@ namespace WitcherBase
                 return;
             }
 
-            MountainsTrialRewards.Apply(pawn);
+            WitcherXenotypes.SetStage(pawn, WitcherDefOf.WitcherMaster);
             Find.LetterStack.ReceiveLetter(
                 $"Master witcher: {pawn.LabelShort}",
                 $"{pawn.LabelShort} has fulfilled the contract and slain the beast. The Trial of Mountains is complete.",

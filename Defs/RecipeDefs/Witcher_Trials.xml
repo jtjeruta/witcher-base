@@ -66,7 +66,7 @@
 
   <!--
     Trial of Dreams operation.
-    - Requires the patient to already carry the Witcher_Initiate marker (i.e. survived grasses).
+    - Requires the patient to carry the WitcherInitiate xenotype.
     - Ingredients: 10 psychite tea, 5 smokeleaf leaves.
   -->
   <RecipeDef ParentName="Witcher_TrialBase">
@@ -105,13 +105,13 @@
 
   <!--
     Additional Mutagens operation.
-    - Requires a fully trained witcher (carries the upgraded gene set from dreams).
-    - Ingredients: 4 herbal medicine, 5 psychoid leaves (modest brew; the patient already tolerates mutagens).
+    - Requires a master witcher (WitcherMaster xenotype).
+    - Ingredients: 4 herbal medicine, 5 psychoid leaves.
   -->
   <RecipeDef ParentName="Witcher_TrialBase">
     <defName>Witcher_ConductAdditionalMutagens</defName>
     <label>administer additional mutagens</label>
-    <description>Administer an additional dose of mutagens to a fully trained witcher. About one in ten survive. Those who endure have their existing gifts pushed to their extreme tier.</description>
+    <description>Administer an additional dose of mutagens to a master witcher. About one in ten survive. Those who endure have their existing gifts pushed to their extreme tier.</description>
     <workerClass>WitcherBase.Recipe_AdditionalMutagens</workerClass>
     <jobString>Administering additional mutagens.</jobString>
     <workAmount>1500</workAmount>

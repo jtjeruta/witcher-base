@@ -11,10 +11,11 @@ namespace WitcherBase
         {
             if (pawn == null) return false;
             if (!pawn.RaceProps.Humanlike) return new AcceptanceReport("Only humanlike pawns can undergo the trial of grasses.");
+            if (pawn.genes == null) return new AcceptanceReport("Pawn cannot carry genes.");
 
-            if (pawn.health.hediffSet.HasHediff(WitcherDefOf.Witcher_Initiate))
+            if (WitcherXenotypes.IsAnyWitcher(pawn))
             {
-                return new AcceptanceReport("Already a witcher initiate.");
+                return new AcceptanceReport("Already a witcher.");
             }
 
             if (pawn.health.hediffSet.HasHediff(WitcherDefOf.Witcher_GrassesFever))

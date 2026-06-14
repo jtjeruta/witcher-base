@@ -60,11 +60,14 @@ namespace WitcherBase
 
             try
             {
-                TrialRewards.Apply(pawn, Props);
+                if (Props.resultXenotype != null)
+                {
+                    WitcherXenotypes.SetStage(pawn, Props.resultXenotype);
+                }
             }
             catch (Exception ex)
             {
-                Log.Error($"[Witcher] Error applying trial rewards to {pawn?.LabelShort}: {ex}");
+                Log.Error($"[Witcher] Error applying trial xenotype to {pawn?.LabelShort}: {ex}");
             }
 
             SendSurvivalLetter(pawn);

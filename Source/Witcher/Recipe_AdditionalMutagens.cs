@@ -13,27 +13,14 @@ namespace WitcherBase
             if (!pawn.RaceProps.Humanlike) return new AcceptanceReport("Only humanlike pawns can receive additional mutagens.");
             if (pawn.genes == null) return new AcceptanceReport("Pawn cannot carry genes.");
 
-            // Must be a fully trained witcher (survived the trial of dreams).
-            if (!pawn.health.hediffSet.HasHediff(WitcherDefOf.Witcher_FullyTrained)
-                && !pawn.health.hediffSet.HasHediff(WitcherDefOf.Witcher_Master))
+            if (pawn.genes.Xenotype != WitcherDefOf.WitcherMaster)
             {
-                return new AcceptanceReport("Must be a full witcher (trial of dreams not completed).");
-            }
-
-            if (pawn.health.hediffSet.HasHediff(WitcherDefOf.Witcher_Mutated))
-            {
-                return new AcceptanceReport("Already mutated.");
+                return new AcceptanceReport("Must be a master witcher.");
             }
 
             if (pawn.health.hediffSet.HasHediff(WitcherDefOf.Witcher_MutagensFever))
             {
                 return new AcceptanceReport("Already undergoing additional mutagens.");
-            }
-
-            // If they already carry the top-tier movement gene, the upgrade is complete.
-            if (pawn.genes.HasActiveGene(WitcherDefOf.MoveSpeed_VeryQuick))
-            {
-                return new AcceptanceReport("Already at peak mutation.");
             }
 
             return AcceptanceReport.WasAccepted;

@@ -6,21 +6,21 @@ using Verse;
 
 namespace WitcherBase
 {
-    public class HediffComp_MountainsTrigger : HediffComp
+    public class Gene_WitcherContract : Gene
     {
-        public override IEnumerable<Gizmo> CompGetGizmos()
+        public override IEnumerable<Gizmo> GetGizmos()
         {
-            var baseGizmos = base.CompGetGizmos();
+            IEnumerable<Gizmo> baseGizmos = base.GetGizmos();
             if (baseGizmos != null)
             {
-                foreach (var gizmo in baseGizmos)
+                foreach (Gizmo gizmo in baseGizmos)
                 {
                     yield return gizmo;
                 }
             }
 
-            Pawn pawn = Pawn;
-            if (pawn == null || !pawn.IsColonistPlayerControlled)
+            Pawn holder = pawn;
+            if (holder == null || !holder.IsColonistPlayerControlled)
             {
                 yield break;
             }
@@ -30,12 +30,7 @@ namespace WitcherBase
                 yield break;
             }
 
-            if (pawn.health.hediffSet.HasHediff(WitcherDefOf.Witcher_Master))
-            {
-                yield break;
-            }
-
-            if (HasActiveMountainsTrial(pawn))
+            if (WitcherXenotypes.HasActiveMountainsTrial(holder))
             {
                 yield break;
             }
@@ -45,14 +40,14 @@ namespace WitcherBase
                 defaultLabel = "Take witcher contract",
                 defaultDesc = "Accept a contract to hunt a beast sighted on a nearby tile. Travel there and slay it to complete the Trial of Mountains.",
                 icon = ContentFinder<Texture2D>.Get("UI/Icons/Genes/Gene_StrongMeleeDamage", true),
-                action = BeginTrial
+                action = BeginContract
             };
         }
 
-        private void BeginTrial()
+        private void BeginContract()
         {
-            Pawn pawn = Pawn;
-            if (pawn == null || pawn.Map == null)
+            Pawn holder = pawn;
+            if (holder == null || holder.Map == null)
             {
                 return;
             }
@@ -64,8 +59,8 @@ namespace WitcherBase
             }
 
             Slate slate = new Slate();
-            slate.Set("trialPawn", pawn);
-            slate.Set("map", pawn.Map);
+            slate.Set("trialPawn", holder);
+            slate.Set("map", holder.Map);
             slate.Set("points", 400f);
 
             Quest quest = QuestUtility.GenerateQuestAndMakeAvailable(WitcherDefOf.Witcher_TrialOfMountainsQuest, slate);
@@ -76,37 +71,11 @@ namespace WitcherBase
 
             Find.LetterStack.ReceiveLetter(
                 "Witcher contract accepted",
-                $"{pawn.LabelShort} has taken a witcher contract. A beast lair has appeared on a nearby tile. Send {pawn.LabelShort} there to hunt it down.",
+                $"{holder.LabelShort} has taken a witcher contract. A beast lair has appeared on a nearby tile. Send {holder.LabelShort} there to hunt it down.",
                 LetterDefOf.PositiveEvent,
                 LookTargets.Invalid,
                 null,
                 quest);
-        }
-
-        private static bool HasActiveMountainsTrial(Pawn pawn)
-        {
-            foreach (Quest quest in Find.QuestManager.QuestsListForReading)
-            {
-                if (quest.State != QuestState.Ongoing)
-                {
-                    continue;
-                }
-
-                foreach (QuestPart part in quest.PartsListForReading)
-                {
-                    if (part is QuestPart_WitcherMountainsWatcher watcher && watcher.trialPawn == pawn)
-                    {
-                        return true;
-                    }
-
-                    if (part is QuestPart_WitcherMountainsReward reward && reward.trialPawn == pawn)
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
         }
     }
 }

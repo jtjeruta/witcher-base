@@ -46,4 +46,16 @@
     </renderNodeProperties>
   </GeneDef>
 
+  <GeneDef>
+    <defName>Witcher_ContractGene</defName>
+    <label>witcher training</label>
+    <labelShortAdj>trained</labelShortAdj>
+    <description>Carriers of this gene may take witcher contracts to hunt beasts and complete the Trial of Mountains.</description>
+    <iconPath>UI/Icons/Genes/Gene_StrongMeleeDamage</iconPath>
+    <geneClass>WitcherBase.Gene_WitcherContract</geneClass>
+    <displayCategory>Miscellaneous</displayCategory>
+    <displayOrderInCategory>0</displayOrderInCategory>
+    <biostatCpx>0</biostatCpx>
+  </GeneDef>
+
 </Defs>

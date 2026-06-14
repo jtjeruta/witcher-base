@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <XenotypeDef>
+    <defName>WitcherInitiate</defName>
+    <label>witcher initiate</label>
+    <description>A survivor of the Trial of Grasses. The first generation of witcher mutagens has taken hold: a hardened body, amber eyes, and pale skin.</description>
+    <descriptionShort>Survived the Trial of Grasses. Carries the first generation of witcher mutagens.</descriptionShort>
+    <iconPath>UI/Icons/Genes/Witcher_CatEyes</iconPath>
+    <inheritable>false</inheritable>
+    <genes>
+      <li>Immunity_Strong</li>
+      <li>Robust</li>
+      <li>WoundHealing_Fast</li>
+      <li>DarkVision</li>
+      <li>Sterile</li>
+      <li>MoveSpeed_Quick</li>
+      <li>Beauty_Ugly</li>
+      <li>PsychicAbility_Dull</li>
+      <li>AptitudeStrong_Melee</li>
+      <li>AptitudeStrong_Shooting</li>
+      <li>Witcher_CatEyes</li>
+      <li>Skin_SheerWhite</li>
+    </genes>
+  </XenotypeDef>
+
+  <XenotypeDef>
+    <defName>Witcher</defName>
+    <label>witcher</label>
+    <description>A fully trained witcher who has survived the Trial of Grasses and the Trial of Dreams. Body and mind have been remade by the mutagens.</description>
+    <descriptionShort>Fully trained witcher. Survived the Trial of Grasses and the Trial of Dreams.</descriptionShort>
+    <iconPath>UI/Icons/Genes/Witcher_CatEyes</iconPath>
+    <inheritable>false</inheritable>
+    <genes>
+      <li>Immunity_Strong</li>
+      <li>Robust</li>
+      <li>WoundHealing_Fast</li>
+      <li>DarkVision</li>
+      <li>Sterile</li>
+      <li>MoveSpeed_Quick</li>
+      <li>Beauty_VeryUgly</li>
+      <li>PsychicAbility_Deaf</li>
+      <li>AptitudeStrong_Melee</li>
+      <li>AptitudeStrong_Shooting</li>
+      <li>Witcher_CatEyes</li>
+      <li>Skin_SheerWhite</li>
+      <li>LowSleep</li>
+      <li>Pain_Reduced</li>
+      <li>Aggression_DeadCalm</li>
+      <li>Learning_Fast</li>
+      <li>AptitudePoor_Social</li>
+      <li>ArchiteMetabolism</li>
+      <li>Witcher_ContractGene</li>
+    </genes>
+  </XenotypeDef>
+
+  <XenotypeDef>
+    <defName>WitcherMaster</defName>
+    <label>master witcher</label>
+    <description>A master witcher who has fulfilled the Trial of Mountains by slaying a great beast. Their gifts have reached the height of conventional witcher training.</description>
+    <descriptionShort>Master witcher. Has completed the Trial of Mountains.</descriptionShort>
+    <iconPath>UI/Icons/Genes/Witcher_CatEyes</iconPath>
+    <inheritable>false</inheritable>
+    <genes>
+      <li>Immunity_Strong</li>
+      <li>Robust</li>
+      <li>WoundHealing_Fast</li>
+      <li>DarkVision</li>
+      <li>Sterile</li>
+      <li>MoveSpeed_Quick</li>
+      <li>Beauty_VeryUgly</li>
+      <li>PsychicAbility_Deaf</li>
+      <li>AptitudeRemarkable_Melee</li>
+      <li>AptitudeRemarkable_Shooting</li>
+      <li>Witcher_CatEyes</li>
+      <li>Skin_SheerWhite</li>
+      <li>LowSleep</li>
+      <li>Pain_Reduced</li>
+      <li>Aggression_DeadCalm</li>
+      <li>Learning_Fast</li>
+      <li>AptitudePoor_Social</li>
+      <li>ArchiteMetabolism</li>
+      <li>ToxResist_Total</li>
+      <li>StrongStomach</li>
+      <li>MeleeDamage_Strong</li>
+    </genes>
+  </XenotypeDef>
+
+  <XenotypeDef>
+    <defName>WitcherMutated</defName>
+    <label>mutated witcher</label>
+    <description>A witcher whose mutagens have been pushed beyond their normal limits. White-haired, ageless, and nearly superhuman — at a terrible cost.</description>
+    <descriptionShort>Mutated witcher. Additional mutagens have pushed their gifts to the extreme.</descriptionShort>
+    <iconPath>UI/Icons/Genes/Witcher_CatEyes</iconPath>
+    <inheritable>false</inheritable>
+    <genes>
+      <li>Immunity_SuperStrong</li>
+      <li>Robust</li>
+      <li>WoundHealing_SuperFast</li>
+      <li>DarkVision</li>
+      <li>Sterile</li>
+      <li>MoveSpeed_VeryQuick</li>
+      <li>Beauty_VeryUgly</li>
+      <li>PsychicAbility_Deaf</li>
+      <li>AptitudeRemarkable_Melee</li>
+      <li>AptitudeRemarkable_Shooting</li>
+      <li>Witcher_CatEyes</li>
+      <li>Skin_SheerWhite</li>
+      <li>LowSleep</li>
+      <li>Pain_Reduced</li>
+      <li>Aggression_DeadCalm</li>
+      <li>Learning_Fast</li>
+      <li>AptitudePoor_Social</li>
+      <li>ArchiteMetabolism</li>
+      <li>ToxResist_Total</li>
+      <li>StrongStomach</li>
+      <li>MeleeDamage_Strong</li>
+      <li>Hair_SnowWhite</li>
+      <li>Ageless</li>
+      <li>DiseaseFree</li>
+    </genes>
+  </XenotypeDef>
+
+</Defs>

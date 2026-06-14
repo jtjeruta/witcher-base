@@ -29,14 +29,14 @@ Once researched, this trial becomes available as an operation in the Health tab.
   <ResearchProjectDef>
     <defName>Witcher_AdditionalMutagens</defName>
     <label>additional mutagens</label>
-    <description>An experimental second dose of mutagens, administered to a fully trained witcher. The brew pushes existing gifts to their extreme tier and may grant agelessness — but only about one in ten survive. Those who endure become faster, tougher, and harder to kill than any witcher before them.</description>
+    <description>An experimental second dose of mutagens, administered to a master witcher. The brew pushes existing gifts to their extreme tier and may grant agelessness — but only about one in ten survive. Those who endure become faster, tougher, and harder to kill than any witcher before them.</description>
     <techLevel>Medieval</techLevel>
     <baseCost>500</baseCost>
     <prerequisites>
-      <li>Witcher_TrialOfDreams</li>
+      <li>Witcher_TrialOfMountains</li>
     </prerequisites>
-    <researchViewX>2.40</researchViewX>
-    <researchViewY>1.00</researchViewY>
+    <researchViewX>3.60</researchViewX>
+    <researchViewY>0.00</researchViewY>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -49,7 +49,7 @@ Once researched, this trial becomes available as an operation in the Health tab.
       <li>Witcher_TrialOfDreams</li>
     </prerequisites>
     <researchViewX>2.40</researchViewX>
-    <researchViewY>3.00</researchViewY>
+    <researchViewY>0.00</researchViewY>
   </ResearchProjectDef>
 
 </Defs>

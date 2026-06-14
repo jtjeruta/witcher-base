@@ -1,15 +1,8 @@
-using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
 namespace WitcherBase
 {
-    public class GeneUpgradeEntry
-    {
-        public GeneDef from;
-        public GeneDef to;
-    }
-
     public class HediffCompProperties_TrialOutcome : HediffCompProperties
     {
         // Survival chance rolled when the fever is applied. surviveChance applies to everyone.
@@ -24,16 +17,7 @@ namespace WitcherBase
         // Survivors climb to this severity before the fever breaks; doomed climb to 1.0.
         public float survivorPeakSeverity = 0.97f;
 
-        public HediffDef markerHediff;
-
-        // Optional: marker hediff to remove on survival (e.g. Dreams clears the initiate marker).
-        public HediffDef removeMarkerHediff;
-
-        public List<GeneDef> grantGenes;
-
-        public bool upgradeGenes;
-
-        public List<GeneUpgradeEntry> geneUpgrades;
+        public XenotypeDef resultXenotype;
 
         public string survivalLetterLabel;
         public string survivalLetterText;
