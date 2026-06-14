@@ -14,6 +14,9 @@ namespace WitcherBase
         private int durationTicks;
         private bool outcomeApplied;
         private bool resolved;
+        private float rolledValue = -1f;
+        private float chanceUsed = -1f;
+        private bool wasIdealSubject;
 
         public HediffCompProperties_TrialOutcome Props =>
             (HediffCompProperties_TrialOutcome)props;
@@ -95,6 +98,28 @@ namespace WitcherBase
             Scribe_Values.Look(ref durationTicks, "witcher_trialDurationTicks", 0);
             Scribe_Values.Look(ref outcomeApplied, "witcher_trialOutcomeApplied", false);
             Scribe_Values.Look(ref resolved, "witcher_trialResolved", false);
+            Scribe_Values.Look(ref rolledValue, "witcher_trialRolledValue", -1f);
+            Scribe_Values.Look(ref chanceUsed, "witcher_trialChanceUsed", -1f);
+            Scribe_Values.Look(ref wasIdealSubject, "witcher_trialWasIdealSubject", false);
+        }
+
+        // Appended to the Health-tab hediff tooltip. Guarded so it only shows when dev mode is on.
+        public override string CompTipStringExtra
+        {
+            get
+            {
+                if (!Prefs.DevMode) return null;
+                if (!rolled) return "[DEV] Witcher trial: outcome not yet rolled";
+
+                var sb = new System.Text.StringBuilder();
+                sb.AppendLine("[DEV] Witcher trial (predetermined outcome):");
+                sb.AppendLine($"  Result: {(willSurvive ? "SURVIVE" : "DIE")}");
+                sb.AppendLine($"  Survival chance: {chanceUsed.ToStringPercent()}");
+                sb.AppendLine($"  Rolled: {rolledValue:F3} (survives if < {chanceUsed:F3})");
+                sb.AppendLine($"  Ideal subject: {wasIdealSubject.ToStringYesNo()}");
+                sb.Append($"  Fever progress: {parent.ageTicks}/{durationTicks} ticks");
+                return sb.ToString();
+            }
         }
 
         private void RollOutcome()
@@ -106,11 +131,14 @@ namespace WitcherBase
 
             rolled = true;
             float chance = Props.surviveChance;
-            if (Props.idealSurviveChance >= 0f && IsIdealSubject(pawn))
+            wasIdealSubject = Props.idealSurviveChance >= 0f && IsIdealSubject(pawn);
+            if (wasIdealSubject)
             {
                 chance = Props.idealSurviveChance;
             }
-            willSurvive = Rand.Value < chance;
+            chanceUsed = chance;
+            rolledValue = Rand.Value;
+            willSurvive = rolledValue < chance;
             durationTicks = Props.feverDurationTicks.RandomInRange;
         }
 
