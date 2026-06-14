@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <GeneDef>
+    <defName>Witcher_WeakAard</defName>
+    <label>weak aard</label>
+    <description>Carriers can cast the Aard sign, pushing back a single nearby foe with a telekinetic burst.</description>
+    <iconPath>UI/Abilities/Waterskip</iconPath>
+    <displayCategory>Ability</displayCategory>
+    <displayOrderInCategory>10</displayOrderInCategory>
+    <abilities>
+      <li>Witcher_WeakAard</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>Witcher_WeakAard</AbilityDef>
+    </descriptionHyperlinks>
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>0</biostatMet>
+  </GeneDef>
+
+  <GeneDef>
+    <defName>Witcher_StrongAard</defName>
+    <label>strong aard</label>
+    <description>Carriers can cast a powerful Aard sign that knocks back and stuns all nearby foes.</description>
+    <iconPath>UI/Abilities/SkipChaosMass</iconPath>
+    <displayCategory>Ability</displayCategory>
+    <displayOrderInCategory>11</displayOrderInCategory>
+    <abilities>
+      <li>Witcher_StrongAard</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>Witcher_StrongAard</AbilityDef>
+    </descriptionHyperlinks>
+    <biostatCpx>2</biostatCpx>
+    <biostatMet>0</biostatMet>
+  </GeneDef>
+
+  <GeneDef>
+    <defName>Witcher_Igni</defName>
+    <label>igni</label>
+    <description>Carriers can cast the Igni sign, projecting a cone of witcher fire.</description>
+    <iconPath>UI/Abilities/FireSpew</iconPath>
+    <displayCategory>Ability</displayCategory>
+    <displayOrderInCategory>20</displayOrderInCategory>
+    <abilities>
+      <li>Witcher_Igni</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>Witcher_Igni</AbilityDef>
+    </descriptionHyperlinks>
+    <biostatCpx>2</biostatCpx>
+    <biostatMet>0</biostatMet>
+  </GeneDef>
+
+  <GeneDef>
+    <defName>Witcher_Quen</defName>
+    <label>quen</label>
+    <description>Carriers can cast the Quen sign, wrapping themselves in a protective field that absorbs damage.</description>
+    <iconPath>UI/Abilities/BulletShield</iconPath>
+    <displayCategory>Ability</displayCategory>
+    <displayOrderInCategory>30</displayOrderInCategory>
+    <abilities>
+      <li>Witcher_Quen</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>Witcher_Quen</AbilityDef>
+    </descriptionHyperlinks>
+    <biostatCpx>2</biostatCpx>
+    <biostatMet>0</biostatMet>
+  </GeneDef>
+
+  <GeneDef>
+    <defName>Witcher_Axii</defName>
+    <label>axii</label>
+    <description>Carriers can cast the Axii sign to influence minds: calming mental breaks, easing prisoner resistance, pacifying maddened beasts, and taming wild animals.</description>
+    <iconPath>UI/Abilities/WordOfSerenity</iconPath>
+    <displayCategory>Ability</displayCategory>
+    <displayOrderInCategory>40</displayOrderInCategory>
+    <abilities>
+      <li>Witcher_AxiiSerenity</li>
+      <li>Witcher_AxiiTrust</li>
+      <li>Witcher_AxiiCalmBeast</li>
+      <li>Witcher_AxiiTame</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>Witcher_AxiiSerenity</AbilityDef>
+      <AbilityDef>Witcher_AxiiTrust</AbilityDef>
+      <AbilityDef>Witcher_AxiiCalmBeast</AbilityDef>
+      <AbilityDef>Witcher_AxiiTame</AbilityDef>
+    </descriptionHyperlinks>
+    <biostatCpx>3</biostatCpx>
+    <biostatMet>0</biostatMet>
+  </GeneDef>
+
+  <GeneDef>
+    <defName>Witcher_Yrden</defName>
+    <label>yrden</label>
+    <description>Carriers can cast the Yrden sign, laying a magical snare that slows and weakens foes.</description>
+    <iconPath>UI/Abilities/BlindingPulse</iconPath>
+    <displayCategory>Ability</displayCategory>
+    <displayOrderInCategory>50</displayOrderInCategory>
+    <abilities>
+      <li>Witcher_Yrden</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>Witcher_Yrden</AbilityDef>
+    </descriptionHyperlinks>
+    <biostatCpx>2</biostatCpx>
+    <biostatMet>0</biostatMet>
+  </GeneDef>
+
+</Defs>

@@ -21,6 +21,7 @@
       <li>AptitudeStrong_Shooting</li>
       <li>Witcher_CatEyes</li>
       <li>Skin_SheerWhite</li>
+      <li>Witcher_WeakAard</li>
     </genes>
   </XenotypeDef>
 
@@ -51,6 +52,10 @@
       <li>AptitudePoor_Social</li>
       <li>ArchiteMetabolism</li>
       <li>Witcher_ContractGene</li>
+      <li>Witcher_WeakAard</li>
+      <li>Witcher_StrongAard</li>
+      <li>Witcher_Igni</li>
+      <li>Witcher_Quen</li>
     </genes>
   </XenotypeDef>
 
@@ -83,6 +88,13 @@
       <li>ToxResist_Total</li>
       <li>StrongStomach</li>
       <li>MeleeDamage_Strong</li>
+      <li>Witcher_ContractGene</li>
+      <li>Witcher_WeakAard</li>
+      <li>Witcher_StrongAard</li>
+      <li>Witcher_Igni</li>
+      <li>Witcher_Quen</li>
+      <li>Witcher_Axii</li>
+      <li>Witcher_Yrden</li>
     </genes>
   </XenotypeDef>
 
@@ -118,6 +130,13 @@
       <li>Hair_SnowWhite</li>
       <li>Ageless</li>
       <li>DiseaseFree</li>
+      <li>Witcher_ContractGene</li>
+      <li>Witcher_WeakAard</li>
+      <li>Witcher_StrongAard</li>
+      <li>Witcher_Igni</li>
+      <li>Witcher_Quen</li>
+      <li>Witcher_Axii</li>
+      <li>Witcher_Yrden</li>
     </genes>
   </XenotypeDef>
 

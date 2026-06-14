@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_WitcherYrdenGlow</defName>
+    <thingClass>MoteAttached</thingClass>
+    <graphicData>
+      <texPath>Things/Mote/WitcherYrdenGlow</texPath>
+      <shaderType>Transparent</shaderType>
+      <color>(180, 90, 240, 90)</color>
+      <drawSize>(1.0, 1.0)</drawSize>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <solidTime>999999</solidTime>
+      <fadeInTime>0.1</fadeInTime>
+      <fadeOutTime>0.25</fadeOutTime>
+    </mote>
+  </ThingDef>
+
+</Defs>

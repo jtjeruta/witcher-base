@@ -48,13 +48,36 @@ Gating reads `pawn.genes.Xenotype`:
 
 ## Xenotype gene sets
 
-**WitcherInitiate:** `Immunity_Strong`, `Robust`, `WoundHealing_Fast`, `DarkVision`, `Sterile`, `MoveSpeed_Quick`, `Beauty_Ugly`, `PsychicAbility_Dull`, `AptitudeStrong_Melee`, `AptitudeStrong_Shooting`, `Witcher_CatEyes`, `Skin_SheerWhite`.
+**WitcherInitiate:** `Immunity_Strong`, `Robust`, `WoundHealing_Fast`, `DarkVision`, `Sterile`, `MoveSpeed_Quick`, `Beauty_Ugly`, `PsychicAbility_Dull`, `AptitudeStrong_Melee`, `AptitudeStrong_Shooting`, `Witcher_CatEyes`, `Skin_SheerWhite`, `Witcher_WeakAard`.
 
-**Witcher:** initiate upgrades resolved (`PsychicAbility_Deaf`, `Beauty_VeryUgly`) plus `LowSleep`, `Pain_Reduced`, `Aggression_DeadCalm`, `Learning_Fast`, `AptitudePoor_Social`, `ArchiteMetabolism`, `Witcher_ContractGene`.
+**Witcher:** initiate upgrades resolved (`PsychicAbility_Deaf`, `Beauty_VeryUgly`) plus `LowSleep`, `Pain_Reduced`, `Aggression_DeadCalm`, `Learning_Fast`, `AptitudePoor_Social`, `ArchiteMetabolism`, `Witcher_ContractGene`, `Witcher_WeakAard`, `Witcher_StrongAard`, `Witcher_Igni`, `Witcher_Quen`.
 
-**WitcherMaster:** witcher set minus `Witcher_ContractGene`, with `AptitudeRemarkable_Melee`/`AptitudeRemarkable_Shooting` instead of strong; plus `ToxResist_Total`, `StrongStomach`, `MeleeDamage_Strong`.
+**WitcherMaster:** witcher sign set retained (both Aard tiers, Igni, Quen), with `AptitudeRemarkable_Melee`/`AptitudeRemarkable_Shooting` instead of strong; plus `ToxResist_Total`, `StrongStomach`, `MeleeDamage_Strong`, `Witcher_Axii`, `Witcher_Yrden`.
 
 **WitcherMutated:** master set with `MoveSpeed_VeryQuick`, `WoundHealing_SuperFast`, `Immunity_SuperStrong`; plus `Hair_SnowWhite`, `Ageless`, `DiseaseFree`.
+
+## Witcher signs
+
+Signs are gene-granted `AbilityDef`s (see `Defs/AbilityDefs/Witcher_SignAbilities.xml` and `Defs/GeneDefs/Witcher_SignGenes.xml`). They appear on the pawn Abilities gizmo row when drafted.
+
+| Gene | Abilities | Custom C# |
+|------|-----------|-----------|
+| `Witcher_WeakAard` | `Witcher_WeakAard` | `CompAbilityEffect_Knockback` |
+| `Witcher_StrongAard` | `Witcher_StrongAard` | `CompAbilityEffect_Knockback` (aimed cone) |
+| `Witcher_Igni` | `Witcher_Igni` | vanilla `CompProperties_AbilityFireSpew` |
+| `Witcher_Quen` | `Witcher_Quen` | `HediffComp_QuenShield` + `CompProperties_AbilityGiveHediff` |
+| `Witcher_Axii` | Serenity, Trust, CalmBeast, Tame | `CompAbilityEffect_StopMentalBreak`; vanilla prisoner/manhunter comps; `CompAbilityEffect_TameAnimal` |
+| `Witcher_Yrden` | `Witcher_Yrden` | vanilla AoE `CompProperties_AbilityGiveHediff` → `Witcher_YrdenDebuff` + `HediffComp_AttachedGlow` |
+
+Cooldowns stand in for lore "rest" periods (Weak Aard ~2s, Strong Aard ~1 min, etc.). Weak Aard and Strong Aard coexist on Witcher, Master, and Mutated xenotypes — Weak Aard is not replaced at Dreams.
+
+Strong Aard is an **aimed cone**: the player targets a cell, and `CompAbilityEffect_Knockback.CollectConeVictims` selects pawns within `radius` whose angle from the caster→target direction is inside `coneAngle`. While aiming, `DrawEffectPreview` outlines the wedge with `GenDraw.DrawFieldEdges` (falls back to `GenDraw.DrawRadiusRing` if the cone cannot be resolved). Knockback pushes pawns through cells checked with `GenGrid.Walkable` (terrain/buildings only) rather than `Standable`, and calls `pather.StopDead()` + `Notify_Teleported` so moving foes don't immediately walk back. Axii: Tame guaranteed-tames a wild non-player animal via `Pawn.SetFaction(Faction.OfPlayer, caster)` after resetting any manhunter state.
+
+**Yrden debuff (`Witcher_YrdenDebuff`):** `MoveSpeed` ×0.3, `AimingDelayFactor` ×1.6, `ShootingAccuracyPawn` −3, `MeleeHitChance` −2, `Consciousness` −0.15. `HediffComp_AttachedGlow` re-spawns `Mote_WitcherYrdenGlow` (`Defs/ThingDefs_Motes/Witcher_Motes.xml`) every 20 ticks so snared pawns visibly glow. The mote uses a shipped custom texture `Textures/Things/Mote/WitcherYrdenGlow.png` (vanilla mote textures are packed in asset bundles and cannot be referenced by texPath, which renders as a magenta "X").
+
+**Phase 2 (not implemented):** persistent Yrden ground field, passive trade-price influence, sign sound effects.
+
+**Sign sounds (deferred):** sign abilities ship silent. Do not use `PsycastCastLoop` (or any `<sustain>True</sustain>` SoundDef) for `warmupStartSound`/`soundCast` — those expect one-shot sounds and the loop variant throws "Tried to play subSound ... as a one-shot sound". When adding audio, use one-shot SoundDefs (e.g. Biotech `FireSpew_Warmup`/`FireSpew_Resolve`, or Royalty psycast one-shots like `Psycast_Skip_Exit` if Royalty becomes a dependency).
 
 ## Trial of Mountains quest flow
 
@@ -74,14 +97,15 @@ Gating reads `pawn.genes.Xenotype`:
 About/                 Mod metadata (About.xml)
 Assemblies/            Compiled Witcher.dll
 Defs/
-  GeneDefs/            Custom witcher genes (Witcher_CatEyes, Witcher_ContractGene)
+  GeneDefs/            Custom witcher genes (eyes, contract, signs)
+  AbilityDefs/         Witcher sign abilities
   XenotypeDefs/        Four witcher xenotypes
-  HediffDefs/          Trial fevers
+  HediffDefs/          Trial fevers and sign hediffs
   QuestScriptDefs/     Trial of Mountains quest
   RecipeDefs/          Trial operations
   ResearchProjectDefs/ Trial research
 Source/
-  Witcher/             Recipe workers, hediff comps, xenotype helper, contract gene
+  Witcher/             Recipe workers, hediff comps, xenotype helper, contract gene, sign comps
   Witcher/Quest/       Mountains quest nodes and watcher
   build.sh             Offline build script
 LoadFolders.xml        Version loading rules

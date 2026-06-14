@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <HediffDef>
+    <defName>Witcher_QuenShield</defName>
+    <label>quen</label>
+    <description>A witcher sign that surrounds the body with a protective field, absorbing incoming harm until it breaks.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+    <stages>
+      <li>
+        <statFactors>
+          <IncomingDamageFactor>0.15</IncomingDamageFactor>
+        </statFactors>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>4000</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+      <li Class="WitcherBase.HediffCompProperties_QuenShield">
+        <maxEnergy>50</maxEnergy>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>Witcher_YrdenDebuff</defName>
+    <label>yrden trap</label>
+    <description>Magical snare that cripples movement, ruins aim, and dulls consciousness. A purple witcher glow marks the victim.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <stages>
+      <li>
+        <statFactors>
+          <MoveSpeed>0.3</MoveSpeed>
+          <AimingDelayFactor>1.6</AimingDelayFactor>
+        </statFactors>
+        <statOffsets>
+          <ShootingAccuracyPawn>-3</ShootingAccuracyPawn>
+          <MeleeHitChance>-2</MeleeHitChance>
+        </statOffsets>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.15</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+      <li Class="WitcherBase.HediffCompProperties_AttachedGlow">
+        <moteDef>Mote_WitcherYrdenGlow</moteDef>
+        <emitInterval>20</emitInterval>
+        <scale>1.2</scale>
+        <solidTimeOverride>25</solidTimeOverride>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>Witcher_AxiiDaze</defName>
+    <label>axii daze</label>
+    <description>Briefly dazed after a witcher's Axii sign breaks a mental break.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>true</isBad>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.15</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+    </comps>
+  </HediffDef>
+
+</Defs>

@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <AbilityCategoryDef>
+    <defName>WitcherSigns</defName>
+    <displayOrder>1100</displayOrder>
+  </AbilityCategoryDef>
+
+  <!-- Weak Aard: single-target knockback (Grasses / Initiate) -->
+  <AbilityDef>
+    <defName>Witcher_WeakAard</defName>
+    <label>aard</label>
+    <description>Release a telekinetic burst that hurls one nearby foe several cells away, dealing minor blunt damage. May briefly stun the target.</description>
+    <iconPath>UI/Abilities/Waterskip</iconPath>
+    <category>WitcherSigns</category>
+    <displayOrder>100</displayOrder>
+    <cooldownTicksRange>120</cooldownTicksRange>
+    <aiCanUse>true</aiCanUse>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
+    <!-- Sound effects deferred; see DEVELOPMENT.md (Phase 2). -->
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>1.9</range>
+      <warmupTime>0.25</warmupTime>
+      <targetParams>
+        <canTargetLocations>false</canTargetLocations>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="WitcherBase.CompProperties_AbilityKnockback">
+        <radius>1.9</radius>
+        <damageAmount>10</damageAmount>
+        <armorPenetration>0.2</armorPenetration>
+        <pushDistance>3</pushDistance>
+        <stunTicks>90</stunTicks>
+        <stunChance>0.4</stunChance>
+        <targetHostilesOnly>true</targetHostilesOnly>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <!-- Strong Aard: directional cone knockback (Dreams+) -->
+  <AbilityDef>
+    <defName>Witcher_StrongAard</defName>
+    <label>aard</label>
+    <description>Unleash a devastating telekinetic wave in a cone, knocking back every foe caught in it, dealing moderate blunt damage and stunning each target hit.</description>
+    <iconPath>UI/Abilities/SkipChaosMass</iconPath>
+    <category>WitcherSigns</category>
+    <displayOrder>101</displayOrder>
+    <cooldownTicksRange>3600</cooldownTicksRange>
+    <aiCanUse>true</aiCanUse>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>6.9</range>
+      <warmupTime>0.5</warmupTime>
+      <requireLineOfSight>false</requireLineOfSight>
+      <drawAimPie>true</drawAimPie>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetSelf>false</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="WitcherBase.CompProperties_AbilityKnockback">
+        <cone>true</cone>
+        <coneAngle>90</coneAngle>
+        <radius>6.9</radius>
+        <damageAmount>25</damageAmount>
+        <armorPenetration>0.35</armorPenetration>
+        <pushDistance>3</pushDistance>
+        <stunTicks>180</stunTicks>
+        <alwaysStun>true</alwaysStun>
+        <targetHostilesOnly>false</targetHostilesOnly>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <!-- Igni: flame cone (Dreams+) -->
+  <AbilityDef>
+    <defName>Witcher_Igni</defName>
+    <label>igni</label>
+    <description>Project a short cone of witcher fire that ignites foes and scorches the ground.</description>
+    <iconPath>UI/Abilities/FireSpew</iconPath>
+    <category>WitcherSigns</category>
+    <displayOrder>200</displayOrder>
+    <cooldownTicksRange>2400</cooldownTicksRange>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsIncendiary>true</ai_IsIncendiary>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
+    <!-- Sound effects deferred; see DEVELOPMENT.md (Phase 2). -->
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>5.9</range>
+      <warmupTime>0.5</warmupTime>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="CompProperties_AbilityFireSpew">
+        <range>5.9</range>
+        <lineWidthEnd>2</lineWidthEnd>
+        <filthDef>Filth_FlammableBile</filthDef>
+        <effecterDef>Fire_Spew</effecterDef>
+        <canHitFilledCells>true</canHitFilledCells>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <!-- Quen: personal shield (Dreams+) -->
+  <AbilityDef>
+    <defName>Witcher_Quen</defName>
+    <label>quen</label>
+    <description>Surround yourself with a protective witcher sign that absorbs incoming damage until it shatters.</description>
+    <iconPath>UI/Abilities/BulletShield</iconPath>
+    <category>WitcherSigns</category>
+    <displayOrder>300</displayOrder>
+    <cooldownTicksRange>6000</cooldownTicksRange>
+    <targetRequired>false</targetRequired>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <statBases>
+      <Ability_Duration>4000</Ability_Duration>
+    </statBases>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>0.35</warmupTime>
+      <requireLineOfSight>false</requireLineOfSight>
+      <drawAimPie>false</drawAimPie>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="CompProperties_AbilityGiveHediff">
+        <compClass>CompAbilityEffect_GiveHediff</compClass>
+        <hediffDef>Witcher_QuenShield</hediffDef>
+        <applyToSelf>true</applyToSelf>
+        <onlyApplyToSelf>true</onlyApplyToSelf>
+        <replaceExisting>true</replaceExisting>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <!-- Axii: calm mental break (Mountains+) -->
+  <AbilityDef ParentName="AbilityTouchBase">
+    <defName>Witcher_AxiiSerenity</defName>
+    <label>axii: serenity</label>
+    <description>Use the Axii sign to break a colonist's mental break, leaving them briefly dazed.</description>
+    <iconPath>UI/Abilities/WordOfSerenity</iconPath>
+    <category>WitcherSigns</category>
+    <displayOrder>400</displayOrder>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbilityTouch</verbClass>
+      <drawAimPie>false</drawAimPie>
+      <range>-1</range>
+      <warmupTime>1.5</warmupTime>
+      <targetParams>
+        <canTargetAnimals>false</canTargetAnimals>
+        <canTargetSelf>false</canTargetSelf>
+        <canTargetBuildings>false</canTargetBuildings>
+        <canTargetMechs>false</canTargetMechs>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="WitcherBase.CompProperties_AbilityStopMentalBreak">
+        <dazeHediff>Witcher_AxiiDaze</dazeHediff>
+        <dazeDurationTicks>180</dazeDurationTicks>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <!-- Axii: reduce prisoner resistance (Mountains+) -->
+  <AbilityDef ParentName="AbilityTouchBase">
+    <defName>Witcher_AxiiTrust</defName>
+    <label>axii: trust</label>
+    <description>Use the Axii sign to weaken a prisoner's resistance to recruitment.</description>
+    <iconPath>UI/Abilities/WordOfTrust</iconPath>
+    <category>WitcherSigns</category>
+    <displayOrder>401</displayOrder>
+    <cooldownTicksRange>3000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbilityTouch</verbClass>
+      <drawAimPie>false</drawAimPie>
+      <range>-1</range>
+      <warmupTime>2</warmupTime>
+      <targetParams>
+        <onlyTargetPrisonersOfColony>true</onlyTargetPrisonersOfColony>
+        <neverTargetIncapacitated>true</neverTargetIncapacitated>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="CompProperties_AbilityOffsetPrisonerResistance">
+        <offset>-12</offset>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <!-- Axii: calm manhunters (Mountains+) -->
+  <AbilityDef ParentName="AbilityTouchBase">
+    <defName>Witcher_AxiiCalmBeast</defName>
+    <label>axii: calm beast</label>
+    <description>Use the Axii sign to calm a maddened or manhunting animal.</description>
+    <iconPath>UI/Abilities/AnimalCalm</iconPath>
+    <category>WitcherSigns</category>
+    <displayOrder>402</displayOrder>
+    <cooldownTicksRange>1800</cooldownTicksRange>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbilityTouch</verbClass>
+      <drawAimPie>false</drawAimPie>
+      <range>-1</range>
+      <warmupTime>1.5</warmupTime>
+      <targetParams>
+        <canTargetHumans>false</canTargetHumans>
+        <canTargetMechs>false</canTargetMechs>
+        <canTargetAnimals>true</canTargetAnimals>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="CompProperties_StopManhunter">
+        <successMessage>{INITIATOR_labelShort} calmed {RECIPIENT_labelShort} with Axii.</successMessage>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <!-- Axii: tame a wild animal (Mountains+) -->
+  <AbilityDef ParentName="AbilityTouchBase">
+    <defName>Witcher_AxiiTame</defName>
+    <label>axii: tame</label>
+    <description>Use the Axii sign to instantly bend a wild animal to your will, taming it for the colony.</description>
+    <iconPath>UI/Abilities/AnimalCalm</iconPath>
+    <category>WitcherSigns</category>
+    <displayOrder>403</displayOrder>
+    <cooldownTicksRange>15000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbilityTouch</verbClass>
+      <drawAimPie>false</drawAimPie>
+      <range>-1</range>
+      <warmupTime>2</warmupTime>
+      <targetParams>
+        <canTargetHumans>false</canTargetHumans>
+        <canTargetMechs>false</canTargetMechs>
+        <canTargetAnimals>true</canTargetAnimals>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="WitcherBase.CompProperties_AbilityTameAnimal">
+        <maxWildness>1</maxWildness>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <!-- Yrden: AoE debuff trap (Mountains+) -->
+  <AbilityDef>
+    <defName>Witcher_Yrden</defName>
+    <label>yrden</label>
+    <description>Place a witcher snare that heavily slows movement, ruins accuracy, and suppresses every foe caught in its radius. Snared foes glow with witcher magic.</description>
+    <iconPath>UI/Abilities/BlindingPulse</iconPath>
+    <category>WitcherSigns</category>
+    <displayOrder>500</displayOrder>
+    <cooldownTicksRange>4200</cooldownTicksRange>
+    <aiCanUse>true</aiCanUse>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
+    <statBases>
+      <Ability_Duration>1200</Ability_Duration>
+      <Ability_EffectRadius>4.9</Ability_EffectRadius>
+    </statBases>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>9.9</range>
+      <warmupTime>0.5</warmupTime>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetSelf>true</canTargetSelf>
+        <canTargetAnimals>true</canTargetAnimals>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="CompProperties_AbilityGiveHediff">
+        <compClass>CompAbilityEffect_GiveHediff</compClass>
+        <hediffDef>Witcher_YrdenDebuff</hediffDef>
+        <onlyBrain>true</onlyBrain>
+        <goodwillImpact>-15</goodwillImpact>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+      </li>
+    </comps>
+  </AbilityDef>
+
+</Defs>
