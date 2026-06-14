@@ -42,8 +42,8 @@ namespace WitcherBase
 
             yield return new Command_Action
             {
-                defaultLabel = "Begin Trial of Mountains",
-                defaultDesc = "Send this witcher against a great beast. Slay it to complete the final trial.",
+                defaultLabel = "Take witcher contract",
+                defaultDesc = "Accept a contract to hunt a beast sighted on a nearby tile. Travel there and slay it to complete the Trial of Mountains.",
                 icon = ContentFinder<Texture2D>.Get("UI/Icons/Genes/Gene_StrongMeleeDamage", true),
                 action = BeginTrial
             };
@@ -75,8 +75,8 @@ namespace WitcherBase
             }
 
             Find.LetterStack.ReceiveLetter(
-                "Trial of Mountains begun",
-                $"{pawn.LabelShort}'s Trial of Mountains has begun. A beast lair has appeared on a nearby tile. Send {pawn.LabelShort} there to slay the beasts and complete the trial.",
+                "Witcher contract accepted",
+                $"{pawn.LabelShort} has taken a witcher contract. A beast lair has appeared on a nearby tile. Send {pawn.LabelShort} there to hunt it down.",
                 LetterDefOf.PositiveEvent,
                 LookTargets.Invalid,
                 null,

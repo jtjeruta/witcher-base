@@ -34,7 +34,8 @@ namespace WitcherBase
             grantGenes = new List<GeneDef>
             {
                 DefDatabase<GeneDef>.GetNamed("ToxResist_Total"),
-                DefDatabase<GeneDef>.GetNamed("StrongStomach")
+                DefDatabase<GeneDef>.GetNamed("StrongStomach"),
+                DefDatabase<GeneDef>.GetNamed("MeleeDamage_Strong")
             };
 
             geneUpgrades = new List<GeneUpgradeEntry>

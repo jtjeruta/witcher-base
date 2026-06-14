@@ -12,10 +12,10 @@
 Research the trials to transform colonists into witchers:
 - Trial of Grasses: a brutal initiation. Most who attempt it do not survive. Survivors become witcher initiates with hardened bodies and night sight.
 - Trial of Dreams: a follow-up trial for initiates. Survivors become fully trained witchers with sharper minds and steadier nerves.
-- Trial of Mountains: the final trial. Send a witcher to slay a great beast and become a master witcher.
+- Trial of Mountains: the final trial. Take a witcher contract to hunt a beast on a nearby tile and become a master witcher.
 - Additional Mutagens: a perilous upgrade for existing witchers that pushes their gifts to the extreme.
 
-Grasses, Dreams, and Mutagens are performed from the Health tab. Mountains is begun from a witcher's health tab once researched.
+Grasses, Dreams, and Mutagens are performed from the Health tab. Mountains contracts are taken from a witcher's health tab once researched.
 
 Requires Biotech.</description>
   <modDependencies>

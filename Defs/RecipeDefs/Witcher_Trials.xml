@@ -24,7 +24,7 @@
   <RecipeDef ParentName="Witcher_TrialBase">
     <defName>Witcher_ConductTrialOfGrasses</defName>
     <label>conduct trial of grasses</label>
-    <description>Administer the trial of grasses. The mutagens will induce a painful fever lasting one or two days. Most subjects do not survive, but those who endure are reborn with witcher gifts.</description>
+    <description>Administer the trial of grasses. The mutagens will induce a painful fever lasting one or two days. About three in ten survive; those who endure are reborn with witcher gifts.</description>
     <workerClass>WitcherBase.Recipe_TrialOfGrasses</workerClass>
     <jobString>Conducting trial of grasses.</jobString>
     <workAmount>2000</workAmount>
@@ -72,7 +72,7 @@
   <RecipeDef ParentName="Witcher_TrialBase">
     <defName>Witcher_ConductTrialOfDreams</defName>
     <label>conduct trial of dreams</label>
-    <description>Administer the trial of dreams to a witcher initiate. About seven in ten survive. Survivors gain pain resistance, emotional dullness, and the witcher's long life.</description>
+    <description>Administer the trial of dreams to a witcher initiate. About seven in ten survive. Survivors gain pain resistance, emotional dullness, and a rewired nervous system.</description>
     <workerClass>WitcherBase.Recipe_TrialOfDreams</workerClass>
     <jobString>Conducting trial of dreams.</jobString>
     <workAmount>2000</workAmount>
@@ -111,7 +111,7 @@
   <RecipeDef ParentName="Witcher_TrialBase">
     <defName>Witcher_ConductAdditionalMutagens</defName>
     <label>administer additional mutagens</label>
-    <description>Administer an additional dose of mutagens to a fully trained witcher. The recipient's existing gifts will be pushed to their extreme tier. Painful but rarely fatal.</description>
+    <description>Administer an additional dose of mutagens to a fully trained witcher. About one in ten survive. Those who endure have their existing gifts pushed to their extreme tier.</description>
     <workerClass>WitcherBase.Recipe_AdditionalMutagens</workerClass>
     <jobString>Administering additional mutagens.</jobString>
     <workAmount>1500</workAmount>

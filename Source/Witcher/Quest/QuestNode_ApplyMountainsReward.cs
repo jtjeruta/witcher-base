@@ -64,7 +64,7 @@ namespace WitcherBase
             MountainsTrialRewards.Apply(pawn);
             Find.LetterStack.ReceiveLetter(
                 $"Master witcher: {pawn.LabelShort}",
-                $"{pawn.LabelShort} has slain the great beast and completed the Trial of Mountains.",
+                $"{pawn.LabelShort} has fulfilled the contract and slain the beast. The Trial of Mountains is complete.",
                 LetterDefOf.PositiveEvent,
                 pawn);
             Find.SignalManager.SendSignal(new Signal(successSignal));

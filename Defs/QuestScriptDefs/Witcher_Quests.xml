@@ -9,12 +9,12 @@
     <isRootSpecial>true</isRootSpecial>
     <questNameRules>
       <rulesStrings>
-        <li>questName->Trial of Mountains: [trialPawn_nameDef]</li>
+        <li>questName->Witcher contract: [trialPawn_nameDef]</li>
       </rulesStrings>
     </questNameRules>
     <questDescriptionRules>
       <rulesStrings>
-        <li>questDescription->[trialPawn_nameDef] must survive the Trial of Mountains. A beast lair has been sighted on a nearby tile. Send [trialPawn_nameDef] there and slay the beasts to complete the trial.</li>
+        <li>questDescription->A beast has been sighted on a nearby tile. [trialPawn_nameDef] has taken the contract — travel there, slay the beasts, and claim the reward.</li>
       </rulesStrings>
     </questDescriptionRules>
     <root Class="QuestNode_Sequence">
@@ -58,8 +58,8 @@
           <node Class="QuestNode_Sequence">
             <nodes>
               <li Class="QuestNode_Letter">
-                <label>Trial expired: [trialPawn_nameDef]</label>
-                <text>The beasts have moved on. [trialPawn_nameDef]'s Trial of Mountains has ended.</text>
+                <label>Contract expired: [trialPawn_nameDef]</label>
+                <text>The beasts have moved on. [trialPawn_nameDef]'s witcher contract has ended.</text>
               </li>
               <li Class="QuestNode_End">
                 <outcome>Fail</outcome>
@@ -91,8 +91,8 @@
           <node Class="QuestNode_Sequence">
             <nodes>
               <li Class="QuestNode_Letter">
-                <label>Trial failed: [trialPawn_nameDef]</label>
-                <text>[trialPawn_nameDef] did not survive the Trial of Mountains.</text>
+                <label>Contract failed: [trialPawn_nameDef]</label>
+                <text>[trialPawn_nameDef] did not survive the witcher contract.</text>
               </li>
               <li Class="QuestNode_End">
                 <outcome>Fail</outcome>
@@ -106,8 +106,8 @@
           <node Class="QuestNode_Sequence">
             <nodes>
               <li Class="QuestNode_Letter">
-                <label>Trial failed: [trialPawn_nameDef]</label>
-                <text>The beast lair was abandoned before [trialPawn_nameDef] completed the Trial of Mountains.</text>
+                <label>Contract failed: [trialPawn_nameDef]</label>
+                <text>The beast lair was abandoned before [trialPawn_nameDef] could fulfil the contract.</text>
               </li>
               <li Class="QuestNode_End">
                 <outcome>Fail</outcome>

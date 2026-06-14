@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <GeneDef ParentName="GeneEyeColor">
+    <defName>Witcher_CatEyes</defName>
+    <label>witcher eyes</label>
+    <labelShortAdj>cat-eyed</labelShortAdj>
+    <description>Carriers of this gene have narrow amber-yellow eyes, a hallmark of the witcher mutagens.</description>
+    <iconPath>UI/Icons/Genes/Witcher_CatEyes</iconPath>
+    <displayOrderInCategory>2</displayOrderInCategory>
+    <renderNodeProperties>
+      <li Class="PawnRenderNodeProperties_Eye">
+        <texPath>Things/Pawn/Humanlike/HeadAttachments/WitcherEyes/Male/WitcherEyes_Male</texPath>
+        <texPathFemale>Things/Pawn/Humanlike/HeadAttachments/WitcherEyes/Female/WitcherEyes_Female</texPathFemale>
+        <anchorTag>RightEye</anchorTag>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <parentTagDef>Head</parentTagDef>
+        <drawSize>0.2</drawSize>
+        <side>Right</side>
+        <drawData>
+          <defaultData>
+            <layer>54</layer>
+            <offset>(0, 0, -0.25)</offset>
+          </defaultData>
+        </drawData>
+      </li>
+      <li Class="PawnRenderNodeProperties_Eye">
+        <texPath>Things/Pawn/Humanlike/HeadAttachments/WitcherEyes/Male/WitcherEyes_Male</texPath>
+        <texPathFemale>Things/Pawn/Humanlike/HeadAttachments/WitcherEyes/Female/WitcherEyes_Female</texPathFemale>
+        <anchorTag>LeftEye</anchorTag>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <parentTagDef>Head</parentTagDef>
+        <drawSize>0.2</drawSize>
+        <side>Left</side>
+        <drawData>
+          <defaultData>
+            <layer>54</layer>
+            <offset>(0, 0, -0.25)</offset>
+            <flip>true</flip>
+          </defaultData>
+          <dataWest>
+            <flip>false</flip>
+          </dataWest>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </GeneDef>
+
+</Defs>

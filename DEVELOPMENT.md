@@ -44,22 +44,22 @@ Mountains and Mutagens both branch off Dreams and can be done in either order.
 
 Applied in `TrialRewards.Apply` (fever trials on hediff removal; Mountains via `MountainsTrialRewards` on quest success).
 
-**Grasses — grants:** `Immunity_Strong`, `Robust`, `WoundHealing_Fast`, `DarkVision`, `Sterile`, `MoveSpeed_Quick`, `Beauty_Ugly`, `PsychicAbility_Dull`.
+**Grasses — grants:** `Immunity_Strong`, `Robust`, `WoundHealing_Fast`, `DarkVision`, `Sterile`, `MoveSpeed_Quick`, `Beauty_Ugly`, `PsychicAbility_Dull`, `AptitudeStrong_Melee`, `AptitudeStrong_Shooting`, `Witcher_CatEyes`, `Skin_SheerWhite`.
 
-**Dreams — grants:** `LowSleep`, `Pain_Reduced`, `Aggression_DeadCalm`, `Learning_Fast`, `AptitudePoor_Social`, `Ageless`, `DiseaseFree`, `ArchiteMetabolism`, `MeleeDamage_Strong`, `AptitudeStrong_Melee`, `AptitudeStrong_Shooting`.
+**Dreams — grants:** `LowSleep`, `Pain_Reduced`, `Aggression_DeadCalm`, `Learning_Fast`, `AptitudePoor_Social`, `ArchiteMetabolism`.
 
 **Dreams — upgrades:** `PsychicAbility_Dull` → `PsychicAbility_Deaf`, `Beauty_Ugly` → `Beauty_VeryUgly`.
 
-**Additional Mutagens — grants:** `Hair_SnowWhite`. **upgrades:** `MoveSpeed_Quick` → `MoveSpeed_VeryQuick`, `WoundHealing_Fast` → `WoundHealing_SuperFast`, `Immunity_Strong` → `Immunity_SuperStrong`. Applies parallel marker `Witcher_Mutated`.
+**Additional Mutagens — grants:** `Hair_SnowWhite`, `Ageless`, `DiseaseFree`. **upgrades:** `MoveSpeed_Quick` → `MoveSpeed_VeryQuick`, `WoundHealing_Fast` → `WoundHealing_SuperFast`, `Immunity_Strong` → `Immunity_SuperStrong`. Applies parallel marker `Witcher_Mutated`.
 
-**Mountains — grants:** `ToxResist_Total`, `StrongStomach`.
+**Mountains — grants:** `ToxResist_Total`, `StrongStomach`, `MeleeDamage_Strong`.
 
 **Mountains — upgrades:** `AptitudeStrong_Melee` → `AptitudeRemarkable_Melee`, `AptitudeStrong_Shooting` → `AptitudeRemarkable_Shooting`. Swaps `Witcher_FullyTrained` → `Witcher_Master`.
 
 ## Trial of Mountains quest flow
 
-1. Player selects a witcher (`Witcher_FullyTrained`) and clicks **Begin Trial of Mountains** (gizmo from `HediffComp_MountainsTrigger`).
-2. `QuestUtility.GenerateQuestAndMakeAvailable(Witcher_TrialOfMountainsQuest, slate)` with `trialPawn`, `map`, and fixed site threat `points` in the slate.
+1. Player selects a witcher (`Witcher_FullyTrained`) and clicks **Take witcher contract** (gizmo from `HediffComp_MountainsTrigger`).
+2. `QuestUtility.GenerateQuestAndMakeAvailable(Witcher_TrialOfMountainsQuest, slate)` with `trialPawn`, `map`, and fixed site threat `points` in the slate. A quest-linked letter confirms the contract.
 3. The quest generates a nearby world-map site using RimWorld's vanilla `Manhunters` site part.
 4. The player sends a caravan to the site. RimWorld generates the site map and fires `site.AllEnemiesDefeated` when the hostile animals are dead.
 5. `QuestPart_WitcherMountainsReward` listens for `site.AllEnemiesDefeated`, applies `MountainsTrialRewards`, and the quest ends successfully. If the site expires or is abandoned before completion, the quest fails.
@@ -74,6 +74,7 @@ Applied in `TrialRewards.Apply` (fever trials on hediff removal; Mountains via `
 About/                 Mod metadata (About.xml)
 Assemblies/            Compiled Witcher.dll
 Defs/
+  GeneDefs/            Custom witcher genes (Witcher_CatEyes)
   HediffDefs/          Trial fevers + rank/enhancement markers
   QuestScriptDefs/     Trial of Mountains quest
   RecipeDefs/          Trial operations
@@ -102,5 +103,5 @@ The repo is symlinked into RimWorld's `Mods/` folder (`Mods/WitcherBase`), so XM
 - C# namespace is `WitcherBase`; XML `Class=`/`workerClass=` references must use the `WitcherBase.` prefix.
 - Use `System.Math` rather than `UnityEngine.Mathf` to avoid the `netstandard` reference error under the game's Mono build.
 - `QuestPart` in the target RimWorld build does not expose overridable tick/kill hooks; mountains trial watching uses `MapComponent_WitcherTrials` instead.
-- Combat aptitude ramps: Grasses (none) → Dreams (strong) → Mountains (great).
+- Combat aptitude ramps: Grasses (strong) → Mountains (great + strong melee damage).
 - Changing `packageId` or the mod folder name breaks existing saves that referenced the old identity.

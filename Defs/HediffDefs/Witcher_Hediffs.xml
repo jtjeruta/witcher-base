@@ -38,6 +38,10 @@
           <li>MoveSpeed_Quick</li>
           <li>Beauty_Ugly</li>
           <li>PsychicAbility_Dull</li>
+          <li>AptitudeStrong_Melee</li>
+          <li>AptitudeStrong_Shooting</li>
+          <li>Witcher_CatEyes</li>
+          <li>Skin_SheerWhite</li>
         </grantGenes>
         <survivalLetterLabel>Witcher initiate: {PAWN_nameDef}</survivalLetterLabel>
         <survivalLetterText>{PAWN_nameDef} has survived the Trial of Grasses. The mutagens have taken hold: {PAWN_possessive} body is now harder, faster to heal, and seen by night.</survivalLetterText>
@@ -132,12 +136,7 @@
           <li>Aggression_DeadCalm</li>
           <li>Learning_Fast</li>
           <li>AptitudePoor_Social</li>
-          <li>Ageless</li>
-          <li>DiseaseFree</li>
           <li>ArchiteMetabolism</li>
-          <li>MeleeDamage_Strong</li>
-          <li>AptitudeStrong_Melee</li>
-          <li>AptitudeStrong_Shooting</li>
         </grantGenes>
         <upgradeGenes>true</upgradeGenes>
         <geneUpgrades>
@@ -221,19 +220,21 @@
 
   <!--
     Mutagens fever.
-    ~95% survival; on cure, upgrades existing tier genes via the comp.
+    ~10% survival; on cure, upgrades existing tier genes via the comp.
   -->
   <HediffDef ParentName="Witcher_TrialFeverBase">
     <defName>Witcher_MutagensFever</defName>
     <label>mutagen reaction</label>
     <labelNoun>a mutagen reaction</labelNoun>
-    <description>An additional dose of mutagens, pushing the witcher's existing gifts to their extreme. A short fever, painful but rarely fatal.</description>
+    <description>An additional dose of mutagens, pushing the witcher's existing gifts to their extreme. A short fever, painful and usually fatal.</description>
     <comps>
       <li Class="WitcherBase.HediffCompProperties_TrialOutcome">
         <surviveChance>0.10</surviveChance>
         <markerHediff>Witcher_Mutated</markerHediff>
         <grantGenes>
           <li>Hair_SnowWhite</li>
+          <li>Ageless</li>
+          <li>DiseaseFree</li>
         </grantGenes>
         <upgradeGenes>true</upgradeGenes>
         <geneUpgrades>
