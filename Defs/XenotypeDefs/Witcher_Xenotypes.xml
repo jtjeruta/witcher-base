@@ -6,7 +6,7 @@
     <label>witcher initiate</label>
     <description>A survivor of the Trial of Grasses. The first generation of witcher mutagens has taken hold: a hardened body, amber eyes, and pale skin.</description>
     <descriptionShort>Survived the Trial of Grasses. Carries the first generation of witcher mutagens.</descriptionShort>
-    <iconPath>UI/Icons/Genes/Witcher_CatEyes</iconPath>
+    <iconPath>UI/Icons/Xenotypes/Witcher</iconPath>
     <inheritable>false</inheritable>
     <genes>
       <li>Immunity_Strong</li>
@@ -29,7 +29,7 @@
     <label>witcher</label>
     <description>A fully trained witcher who has survived the Trial of Grasses and the Trial of Dreams. Body and mind have been remade by the mutagens.</description>
     <descriptionShort>Fully trained witcher. Survived the Trial of Grasses and the Trial of Dreams.</descriptionShort>
-    <iconPath>UI/Icons/Genes/Witcher_CatEyes</iconPath>
+    <iconPath>UI/Icons/Xenotypes/Witcher</iconPath>
     <inheritable>false</inheritable>
     <genes>
       <li>Immunity_Strong</li>
@@ -59,7 +59,7 @@
     <label>master witcher</label>
     <description>A master witcher who has fulfilled the Trial of Mountains by slaying a great beast. Their gifts have reached the height of conventional witcher training.</description>
     <descriptionShort>Master witcher. Has completed the Trial of Mountains.</descriptionShort>
-    <iconPath>UI/Icons/Genes/Witcher_CatEyes</iconPath>
+    <iconPath>UI/Icons/Xenotypes/Witcher</iconPath>
     <inheritable>false</inheritable>
     <genes>
       <li>Immunity_Strong</li>
@@ -91,7 +91,7 @@
     <label>mutated witcher</label>
     <description>A witcher whose mutagens have been pushed beyond their normal limits. White-haired, ageless, and nearly superhuman — at a terrible cost.</description>
     <descriptionShort>Mutated witcher. Additional mutagens have pushed their gifts to the extreme.</descriptionShort>
-    <iconPath>UI/Icons/Genes/Witcher_CatEyes</iconPath>
+    <iconPath>UI/Icons/Xenotypes/Witcher</iconPath>
     <inheritable>false</inheritable>
     <genes>
       <li>Immunity_SuperStrong</li>
