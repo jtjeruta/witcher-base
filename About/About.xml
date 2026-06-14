@@ -9,14 +9,13 @@
   </supportedVersions>
   <description>The foundation mod for a modular Witcher content suite. Adds the Witcher trials to RimWorld Biotech.
 
-Research three trials to transform colonists into witchers:
-- Trial of Grasses: a brutal initiation. Anyone can attempt it, but boys aged 8-12 have the best odds (about 30% survive; others rarely do). Survivors gain disease resistance, robustness, fast healing, dark vision, sterility, faster movement, and ugly features.
-- Trial of Dreams: a follow-up trial for witcher initiates. About 70% survive. Survivors gain reduced sleep, pain resistance, dead calm, fast learning, dulled senses, low social impact, and slow aging.
-- Additional Mutagens: a perilous upgrade (about 10% survive) that pushes a witcher's existing gifts to their extreme tier.
+Research the trials to transform colonists into witchers:
+- Trial of Grasses: a brutal initiation. Most who attempt it do not survive. Survivors become witcher initiates with hardened bodies and night sight.
+- Trial of Dreams: a follow-up trial for initiates. Survivors become fully trained witchers with sharper minds and steadier nerves.
+- Trial of Mountains: the final trial. Send a witcher to slay a great beast and become a master witcher.
+- Additional Mutagens: a perilous upgrade for existing witchers that pushes their gifts to the extreme.
 
-All trials are performed from the Health tab and consume herbal ingredients. Each trial induces a painful fever lasting one to two days; the outcome is sealed once the trial begins, and those who fail do not survive.
-
-The Trial of Mountains research is included as a placeholder for a future quest-based final trial.
+Grasses, Dreams, and Mutagens are performed from the Health tab. Mountains is begun from a witcher's health tab once researched.
 
 Requires Biotech.</description>
   <modDependencies>

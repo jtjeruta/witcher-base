@@ -14,9 +14,15 @@ namespace WitcherBase
             if (pawn.genes == null) return new AcceptanceReport("Pawn cannot carry genes.");
 
             // Must be a fully trained witcher (survived the trial of dreams).
-            if (!pawn.health.hediffSet.HasHediff(WitcherDefOf.Witcher_FullyTrained))
+            if (!pawn.health.hediffSet.HasHediff(WitcherDefOf.Witcher_FullyTrained)
+                && !pawn.health.hediffSet.HasHediff(WitcherDefOf.Witcher_Master))
             {
                 return new AcceptanceReport("Must be a full witcher (trial of dreams not completed).");
+            }
+
+            if (pawn.health.hediffSet.HasHediff(WitcherDefOf.Witcher_Mutated))
+            {
+                return new AcceptanceReport("Already mutated.");
             }
 
             if (pawn.health.hediffSet.HasHediff(WitcherDefOf.Witcher_MutagensFever))

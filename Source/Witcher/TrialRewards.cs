@@ -4,30 +4,44 @@ using Verse;
 
 namespace WitcherBase
 {
-    // Applies the surviving-the-trial rewards: gene grants, gene upgrades, and the marker hediff.
+    // Applies trial rewards: gene grants, gene upgrades, and marker hediffs.
     public static class TrialRewards
     {
         public static void Apply(Pawn pawn, HediffCompProperties_TrialOutcome props)
         {
             if (pawn == null || props == null) return;
+
+            Apply(pawn, new TrialRewardConfig
+            {
+                grantGenes = props.grantGenes,
+                geneUpgrades = props.geneUpgrades,
+                upgradeGenes = props.upgradeGenes,
+                markerHediff = props.markerHediff,
+                removeMarkerHediff = props.removeMarkerHediff
+            });
+        }
+
+        public static void Apply(Pawn pawn, TrialRewardConfig config)
+        {
+            if (pawn == null || config == null) return;
             if (pawn.genes == null)
             {
                 Log.Warning($"[Witcher] Pawn {pawn.LabelShort} has no gene tracker; trial rewards skipped.");
                 return;
             }
 
-            if (props.upgradeGenes && props.geneUpgrades != null)
+            if (config.upgradeGenes && config.geneUpgrades != null)
             {
-                foreach (var entry in props.geneUpgrades)
+                foreach (var entry in config.geneUpgrades)
                 {
                     if (entry?.from == null || entry.to == null) continue;
                     UpgradeGene(pawn, entry.from, entry.to);
                 }
             }
 
-            if (props.grantGenes != null)
+            if (config.grantGenes != null)
             {
-                foreach (var gene in props.grantGenes)
+                foreach (var gene in config.grantGenes)
                 {
                     if (gene == null) continue;
                     if (pawn.genes.HasActiveGene(gene)) continue;
@@ -35,18 +49,18 @@ namespace WitcherBase
                 }
             }
 
-            if (props.removeMarkerHediff != null)
+            if (config.removeMarkerHediff != null)
             {
-                var oldMarker = pawn.health.hediffSet.GetFirstHediffOfDef(props.removeMarkerHediff);
+                var oldMarker = pawn.health.hediffSet.GetFirstHediffOfDef(config.removeMarkerHediff);
                 if (oldMarker != null)
                 {
                     pawn.health.RemoveHediff(oldMarker);
                 }
             }
 
-            if (props.markerHediff != null && !pawn.health.hediffSet.HasHediff(props.markerHediff))
+            if (config.markerHediff != null && !pawn.health.hediffSet.HasHediff(config.markerHediff))
             {
-                pawn.health.AddHediff(props.markerHediff, null, null, null);
+                pawn.health.AddHediff(config.markerHediff, null, null, null);
             }
         }
 

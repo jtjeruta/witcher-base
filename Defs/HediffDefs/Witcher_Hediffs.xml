@@ -38,8 +38,6 @@
           <li>MoveSpeed_Quick</li>
           <li>Beauty_Ugly</li>
           <li>PsychicAbility_Dull</li>
-          <li>AptitudeStrong_Melee</li>
-          <li>AptitudeStrong_Shooting</li>
         </grantGenes>
         <survivalLetterLabel>Witcher initiate: {PAWN_nameDef}</survivalLetterLabel>
         <survivalLetterText>{PAWN_nameDef} has survived the Trial of Grasses. The mutagens have taken hold: {PAWN_possessive} body is now harder, faster to heal, and seen by night.</survivalLetterText>
@@ -138,6 +136,8 @@
           <li>DiseaseFree</li>
           <li>ArchiteMetabolism</li>
           <li>MeleeDamage_Strong</li>
+          <li>AptitudeStrong_Melee</li>
+          <li>AptitudeStrong_Shooting</li>
         </grantGenes>
         <upgradeGenes>true</upgradeGenes>
         <geneUpgrades>
@@ -148,14 +148,6 @@
           <li>
             <from>Beauty_Ugly</from>
             <to>Beauty_VeryUgly</to>
-          </li>
-          <li>
-            <from>AptitudeStrong_Melee</from>
-            <to>AptitudeRemarkable_Melee</to>
-          </li>
-          <li>
-            <from>AptitudeStrong_Shooting</from>
-            <to>AptitudeRemarkable_Shooting</to>
           </li>
         </geneUpgrades>
         <survivalLetterLabel>Witcher complete: {PAWN_nameDef}</survivalLetterLabel>
@@ -239,6 +231,10 @@
     <comps>
       <li Class="WitcherBase.HediffCompProperties_TrialOutcome">
         <surviveChance>0.10</surviveChance>
+        <markerHediff>Witcher_Mutated</markerHediff>
+        <grantGenes>
+          <li>Hair_SnowWhite</li>
+        </grantGenes>
         <upgradeGenes>true</upgradeGenes>
         <geneUpgrades>
           <li>
@@ -267,15 +263,15 @@
         <capMods>
           <li>
             <capacity>Consciousness</capacity>
-            <offset>-0.15</offset>
+            <setMax>0.40</setMax>
           </li>
           <li>
             <capacity>Manipulation</capacity>
-            <offset>-0.20</offset>
+            <offset>-0.30</offset>
           </li>
           <li>
             <capacity>Moving</capacity>
-            <offset>-0.20</offset>
+            <offset>-0.50</offset>
           </li>
         </capMods>
       </li>
@@ -286,15 +282,15 @@
         <capMods>
           <li>
             <capacity>Consciousness</capacity>
-            <offset>-0.25</offset>
+            <setMax>0.25</setMax>
           </li>
           <li>
             <capacity>Manipulation</capacity>
-            <offset>-0.30</offset>
+            <offset>-0.45</offset>
           </li>
           <li>
             <capacity>Moving</capacity>
-            <offset>-0.30</offset>
+            <offset>-0.60</offset>
           </li>
         </capMods>
       </li>
@@ -306,15 +302,15 @@
         <capMods>
           <li>
             <capacity>Consciousness</capacity>
-            <setMax>0.2</setMax>
+            <setMax>0.1</setMax>
           </li>
           <li>
             <capacity>Manipulation</capacity>
-            <offset>-0.40</offset>
+            <offset>-0.60</offset>
           </li>
           <li>
             <capacity>Moving</capacity>
-            <offset>-0.40</offset>
+            <offset>-0.60</offset>
           </li>
         </capMods>
       </li>
@@ -349,6 +345,49 @@
     <defName>Witcher_FullyTrained</defName>
     <label>witcher</label>
     <description>This person has survived the Trial of Grasses and the Trial of Dreams. They are a fully trained witcher.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.6, 0.4, 0.1)</defaultLabelColor>
+    <isBad>false</isBad>
+    <maxSeverity>1.0</maxSeverity>
+    <initialSeverity>1.0</initialSeverity>
+    <comps>
+      <li Class="WitcherBase.HediffCompProperties_MountainsTrigger" />
+    </comps>
+    <stages>
+      <li>
+        <becomeVisible>true</becomeVisible>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!--
+    Marker hediff: applied to pawns who have completed the Trial of Mountains.
+    Replaces the fully trained marker.
+  -->
+  <HediffDef>
+    <defName>Witcher_Master</defName>
+    <label>master witcher</label>
+    <description>This person has survived the Trial of Mountains and proven themselves against a great beast. They are a master witcher.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.6, 0.4, 0.1)</defaultLabelColor>
+    <isBad>false</isBad>
+    <maxSeverity>1.0</maxSeverity>
+    <initialSeverity>1.0</initialSeverity>
+    <stages>
+      <li>
+        <becomeVisible>true</becomeVisible>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!--
+    Parallel marker hediff: applied when additional mutagens are tolerated.
+    Does not replace rank markers; a pawn may be witcher + mutated.
+  -->
+  <HediffDef>
+    <defName>Witcher_Mutated</defName>
+    <label>mutated</label>
+    <description>This witcher's mutagens have been pushed beyond their normal limits.</description>
     <hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.6, 0.4, 0.1)</defaultLabelColor>
     <isBad>false</isBad>

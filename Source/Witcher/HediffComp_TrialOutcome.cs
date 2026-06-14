@@ -133,6 +133,20 @@ namespace WitcherBase
                 defaultDesc = "Immediately resolves this trial using the already-rolled outcome.",
                 action = FinishTrialNow
             };
+
+            yield return new Command_Action
+            {
+                defaultLabel = "DEV: Re-roll trial chances",
+                defaultDesc = "Rolls the survival outcome again using the same survival chance.",
+                action = ReRollOutcome
+            };
+        }
+
+        private void ReRollOutcome()
+        {
+            if (outcomeApplied) return;
+            rolled = false;
+            RollOutcome();
         }
 
         private void RollOutcome()

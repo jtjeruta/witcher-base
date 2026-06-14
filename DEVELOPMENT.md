@@ -8,6 +8,8 @@ The trials are research-gated surgery recipes (Health tab) that apply a "fever" 
 
 This means tending, medicine, and pawn health have **no** effect on the result. The visible fever is theater.
 
+The Trial of Mountains is the exception: a player-initiated quest where success/failure depends on whether the trial pawn survives until the spawned beast(s) are dead.
+
 ## Survival rolls
 
 Rolled in `HediffComp_TrialOutcome.RollOutcome()`:
@@ -16,71 +18,80 @@ Rolled in `HediffComp_TrialOutcome.RollOutcome()`:
 |-------|-----------------|----------------------|---------------|
 | Grasses | 0.05 | 0.30 | Male, biological age 8–12 |
 | Dreams | 0.70 | — | n/a (initiates only) |
-| Additional Mutagens | 0.10 | — | n/a (initiates only) |
+| Additional Mutagens | 0.10 | — | n/a (full witchers only) |
 
-- "Ideal subject" logic lives in `HediffComp_TrialOutcome.IsIdealSubject` (`IdealMinAge = 8`, `IdealMaxAge = 12`, `Gender.Male`).
-- `idealSurviveChance` only applies when `>= 0`; Dreams/Mutagens leave it unset so all subjects use the flat `surviveChance`.
-- Fever duration is `feverDurationTicks.RandomInRange` (default 1–2 days). Severity = `progress * peak`, where `peak` is `survivorPeakSeverity` for survivors and `1f` for the doomed.
+## Marker hediffs
+
+Two axes: **rank** (one at a time) and **enhancement** (parallel).
+
+| Hediff | Label | Applied by |
+|--------|-------|------------|
+| `Witcher_Initiate` | witcher initiate | Grasses survival |
+| `Witcher_FullyTrained` | witcher | Dreams survival (removes Initiate) |
+| `Witcher_Master` | master witcher | Mountains quest success (removes FullyTrained) |
+| `Witcher_Mutated` | mutated | Additional Mutagens survival (parallel, does not replace rank) |
+
+Mountains and Mutagens both branch off Dreams and can be done in either order.
 
 ## Eligibility gating
 
-- **Trial of Grasses** (`Recipe_TrialOfGrasses`): any humanlike pawn that is not already an initiate and not currently undergoing a trial.
-- **Trial of Dreams** (`Recipe_TrialOfDreams`): carries `Witcher_Initiate`, not yet `Witcher_FullyTrained`, not currently undergoing.
-- **Additional Mutagens** (`Recipe_AdditionalMutagens`): carries `Witcher_FullyTrained` (i.e. survived Dreams), not at peak, not currently undergoing.
-
-Two invisible marker hediffs drive the gating:
-- `Witcher_Initiate` (label "witcher initiate") — applied on surviving Grasses.
-- `Witcher_FullyTrained` (label "witcher") — applied on surviving Dreams; Dreams also removes `Witcher_Initiate` via the comp's `removeMarkerHediff`, so a pawn shows only one marker at a time.
+- **Grasses**: any humanlike pawn, not already initiate, not currently undergoing.
+- **Dreams**: has `Witcher_Initiate`, not `Witcher_FullyTrained`, not currently undergoing.
+- **Additional Mutagens**: has `Witcher_FullyTrained` or `Witcher_Master`, not `Witcher_Mutated`, not at peak (`MoveSpeed_VeryQuick`), not currently undergoing.
+- **Mountains**: gizmo on `Witcher_FullyTrained` when `Witcher_TrialOfMountains` research is finished; blocked if already `Witcher_Master` or a mountains trial is in progress.
 
 ## Rewards
 
-Applied in `TrialRewards.Apply` on `CompPostPostRemoved` (only when `willSurvive`).
+Applied in `TrialRewards.Apply` (fever trials on hediff removal; Mountains via `MountainsTrialRewards` on quest success).
 
-**Grasses — grants genes:** `Immunity_Strong`, `Robust`, `WoundHealing_Fast`, `DarkVision`, `Sterile`, `MoveSpeed_Quick`, `Beauty_Ugly`, `PsychicAbility_Dull`, `AptitudeStrong_Melee`, `AptitudeStrong_Shooting`.
+**Grasses — grants:** `Immunity_Strong`, `Robust`, `WoundHealing_Fast`, `DarkVision`, `Sterile`, `MoveSpeed_Quick`, `Beauty_Ugly`, `PsychicAbility_Dull`.
 
-**Dreams — grants genes:** `LowSleep`, `Pain_Reduced`, `Aggression_DeadCalm`, `Learning_Fast`, `AptitudePoor_Social`, `Ageless`, `DiseaseFree`, `ArchiteMetabolism`, `MeleeDamage_Strong`.
+**Dreams — grants:** `LowSleep`, `Pain_Reduced`, `Aggression_DeadCalm`, `Learning_Fast`, `AptitudePoor_Social`, `Ageless`, `DiseaseFree`, `ArchiteMetabolism`, `MeleeDamage_Strong`, `AptitudeStrong_Melee`, `AptitudeStrong_Shooting`.
 
-**Dreams — upgrades existing genes** (`upgradeGenes` true):
-- `PsychicAbility_Dull` → `PsychicAbility_Deaf`
-- `Beauty_Ugly` → `Beauty_VeryUgly`
-- `AptitudeStrong_Melee` → `AptitudeRemarkable_Melee`
-- `AptitudeStrong_Shooting` → `AptitudeRemarkable_Shooting`
+**Dreams — upgrades:** `PsychicAbility_Dull` → `PsychicAbility_Deaf`, `Beauty_Ugly` → `Beauty_VeryUgly`.
 
-**Additional Mutagens — upgrades existing genes:**
-- `MoveSpeed_Quick` → `MoveSpeed_VeryQuick`
-- `WoundHealing_Fast` → `WoundHealing_SuperFast`
-- `Immunity_Strong` → `Immunity_SuperStrong`
+**Additional Mutagens — grants:** `Hair_SnowWhite`. **upgrades:** `MoveSpeed_Quick` → `MoveSpeed_VeryQuick`, `WoundHealing_Fast` → `WoundHealing_SuperFast`, `Immunity_Strong` → `Immunity_SuperStrong`. Applies parallel marker `Witcher_Mutated`.
 
-All trial genes are vanilla Biotech defs (no custom genes ship with the mod). The "strong/great melee/shooting" and "poor social" genes are template-generated aptitude genes (`AptitudeStrong_*`, `AptitudeRemarkable_*`, `AptitudePoor_*`). All granted genes are added as xenogenes; upgrades remove the lower-tier gene before adding the higher tier. Letters are sent via `LetterStack` using `{PAWN_...}` templates resolved with `template.Formatted(pawn.Named("PAWN"))`.
+**Mountains — grants:** `ToxResist_Total`, `StrongStomach`.
+
+**Mountains — upgrades:** `AptitudeStrong_Melee` → `AptitudeRemarkable_Melee`, `AptitudeStrong_Shooting` → `AptitudeRemarkable_Shooting`. Swaps `Witcher_FullyTrained` → `Witcher_Master`.
+
+## Trial of Mountains quest flow
+
+1. Player selects a witcher (`Witcher_FullyTrained`) and clicks **Begin Trial of Mountains** (gizmo from `HediffComp_MountainsTrigger`).
+2. `QuestUtility.GenerateQuestAndMakeAvailable(Witcher_TrialOfMountainsQuest, slate)` with `trialPawn`, `map`, and fixed site threat `points` in the slate.
+3. The quest generates a nearby world-map site using RimWorld's vanilla `Manhunters` site part.
+4. The player sends a caravan to the site. RimWorld generates the site map and fires `site.AllEnemiesDefeated` when the hostile animals are dead.
+5. `QuestPart_WitcherMountainsReward` listens for `site.AllEnemiesDefeated`, applies `MountainsTrialRewards`, and the quest ends successfully. If the site expires or is abandoned before completion, the quest fails.
+
+**Beast pool (v1):** vanilla `Manhunters` site generation. This is intentionally using RimWorld's built-in travel-site behavior first; a custom curated beast-lair `SitePartDef`/`GenStepDef` can replace it later.
+
+**Simplifications:** any colonist may help kill the beasts; solo participation is not enforced.
 
 ## Repository layout
 
 ```
 About/                 Mod metadata (About.xml)
-Assemblies/            Compiled Witcher.dll (assembly name stays "Witcher")
+Assemblies/            Compiled Witcher.dll
 Defs/
-  GeneDefs/            (empty — all genes are vanilla Biotech defs)
-  HediffDefs/          Trial fevers + Witcher_Initiate / Witcher_FullyTrained markers
+  HediffDefs/          Trial fevers + rank/enhancement markers
+  QuestScriptDefs/     Trial of Mountains quest
   RecipeDefs/          Trial operations
   ResearchProjectDefs/ Trial research
 Source/
-  Witcher/             Recipe workers, hediff comp, gene rewards (namespace WitcherBase)
-  Witcher.csproj       Project file
-  build.sh             Offline build script (invokes Roslyn csc directly)
+  Witcher/             Recipe workers, hediff comps, rewards, quest nodes
+  Witcher/Quest/       Mountains quest spawn, watcher, rewards
+  build.sh             Offline build script
 LoadFolders.xml        Version loading rules
 ```
 
 ## Building
-
-Builds offline without NuGet by invoking the game's own Mono DLLs via Roslyn:
 
 ```bash
 ./Source/build.sh
 ```
 
 Outputs `Assemblies/Witcher.dll`. Override paths with `RIMWORLD_MANAGED`, `DOTNET`, and `CSC_DLL` env vars if auto-detection fails.
-
-Note: `RootNamespace` in `Witcher.csproj` is informational only — `build.sh` calls `csc` directly with explicit `namespace WitcherBase` declarations in the source.
 
 ## Dev workflow
 
@@ -90,10 +101,6 @@ The repo is symlinked into RimWorld's `Mods/` folder (`Mods/WitcherBase`), so XM
 
 - C# namespace is `WitcherBase`; XML `Class=`/`workerClass=` references must use the `WitcherBase.` prefix.
 - Use `System.Math` rather than `UnityEngine.Mathf` to avoid the `netstandard` reference error under the game's Mono build.
-- All granted/upgraded genes must reference real def names. Aptitude/skill genes are template-generated as `Aptitude<Tier>_<Skill>` (e.g. `AptitudeStrong_Shooting`); if you add a custom gene later, its `displayCategory` must be a valid vanilla `GeneCategoryDef` (e.g. `Mood`), not an arbitrary string.
-- Changing `packageId` (now `witcher.base`) or the mod folder name breaks existing saves that referenced the old identity.
-
-## Roadmap
-
-- **Trial of Mountains**: planned as a quest-based final trial (research exists as a placeholder).
-- Future add-on mods in the suite ship as separate assemblies/namespaces, depending on this base.
+- `QuestPart` in the target RimWorld build does not expose overridable tick/kill hooks; mountains trial watching uses `MapComponent_WitcherTrials` instead.
+- Combat aptitude ramps: Grasses (none) → Dreams (strong) → Mountains (great).
+- Changing `packageId` or the mod folder name breaks existing saves that referenced the old identity.

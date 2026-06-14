@@ -19,8 +19,6 @@ Survivors gain:
 - Fast wound healing
 - Dark vision
 - Fast runner
-- Strong melee
-- Strong shooting
 - Psychically dull
 - Sterile
 - Unattractive
@@ -33,6 +31,8 @@ Survivors gain:
 - Pain resistance
 - Dead calm
 - Fast learner
+- Strong melee
+- Strong shooting
 - Strong melee damage
 - Poor social
 - Ageless
@@ -42,16 +42,26 @@ Survivors gain:
 And their existing gifts evolve:
 - Psychically dull → Psychically deaf
 - Unattractive → Very unattractive
-- Strong melee → Great melee
-- Strong shooting → Great shooting
+
+### Trial of Mountains
+The final trial. Once researched, a fully trained witcher can seek out a nearby beast lair. Travel there and slay the beasts to prove yourself.
+
+Survivors become **master witchers** and gain:
+- Tox immunity
+- Strong stomach
+- Great melee
+- Great shooting
+
+The lair is drawn from the wild at random — anything from a rampaging pack to something far worse.
 
 ### Additional Mutagens
-An experimental and exceptionally deadly procedure for existing witchers. Very few survive — but those who do have their existing gifts pushed to the extreme:
+An experimental and exceptionally deadly procedure for existing witchers. Very few survive — but those who do have their existing gifts pushed to the extreme and become **mutated**, their hair turning witcher-white:
+- Snow-white hair
 - Fast runner → Very fast runner
 - Fast wound healing → Superfast wound healing
 - Strong immunity → Super-strong immunity
 
-> A fourth trial, the **Trial of Mountains**, is planned for a future update.
+Mutagens can be taken before or after the Trial of Mountains.
 
 ## Compatibility
 
