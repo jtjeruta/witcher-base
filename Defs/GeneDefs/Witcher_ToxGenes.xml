@@ -14,7 +14,8 @@
     <defName>Witcher_ToxTolerance_I</defName>
     <label>witcher toxin tolerance</label>
     <labelShortAdj>toxin-tolerant</labelShortAdj>
-    <description>The first witcher mutagens harden the blood against poisons. Carriers gain 40% resistance to toxic buildup from all sources - venom, toxic fallout, pollution, and the violent toxicity of witcher potions. Strong, but far from immune.</description>
+    <description>The first witcher mutagens harden the blood against poisons. Carriers gain 40% resistance to toxic buildup from all sources - venom, toxic fallout, pollution, and the violent toxicity of witcher potions. Their quickened metabolism also flushes existing toxins away faster than a normal body. Strong, but far from immune.</description>
+    <geneClass>WitcherBase.Gene_WitcherToxMetabolism</geneClass>
     <iconPath>UI/Icons/Genes/Gene_PartialToxicityResistance</iconPath>
     <displayCategory>ResistanceAndWeakness</displayCategory>
     <displayOrderInCategory>5</displayOrderInCategory>
@@ -32,7 +33,8 @@
     <defName>Witcher_ToxTolerance_II</defName>
     <label>witcher toxin tolerance</label>
     <labelShortAdj>toxin-tolerant</labelShortAdj>
-    <description>Deeper mutation reworks the liver and kidneys to purge toxins faster. Carriers gain 60% resistance to toxic buildup from all sources. A witcher can drink several potions before the poison overwhelms them.</description>
+    <description>Deeper mutation reworks the liver and kidneys to purge toxins faster. Carriers gain 60% resistance to toxic buildup from all sources and clear lingering toxins from the bloodstream noticeably faster. A witcher can drink several potions before the poison overwhelms them.</description>
+    <geneClass>WitcherBase.Gene_WitcherToxMetabolism</geneClass>
     <iconPath>UI/Icons/Genes/Gene_PartialToxicityResistance</iconPath>
     <displayCategory>ResistanceAndWeakness</displayCategory>
     <displayOrderInCategory>6</displayOrderInCategory>
@@ -50,7 +52,8 @@
     <defName>Witcher_ToxTolerance_III</defName>
     <label>witcher toxin tolerance</label>
     <labelShortAdj>toxin-purging</labelShortAdj>
-    <description>A master witcher's biochemistry routes around nearly all known toxins. Carriers gain 75% resistance to toxic buildup from all sources and can sustain regular potion use - though chugging brews in quick succession is still lethal.</description>
+    <description>A master witcher's biochemistry routes around nearly all known toxins and metabolizes them rapidly. Carriers gain 75% resistance to toxic buildup from all sources and purge existing toxins quickly, letting them sustain regular potion use - though chugging brews in quick succession is still lethal.</description>
+    <geneClass>WitcherBase.Gene_WitcherToxMetabolism</geneClass>
     <iconPath>UI/Icons/Genes/Gene_TotalToxicityResistance</iconPath>
     <displayCategory>ResistanceAndWeakness</displayCategory>
     <displayOrderInCategory>7</displayOrderInCategory>
@@ -68,7 +71,8 @@
     <defName>Witcher_ToxTolerance_IV</defName>
     <label>witcher toxin tolerance</label>
     <labelShortAdj>toxin-purging</labelShortAdj>
-    <description>The additional mutagens push toxin filtration to the edge of what a body can survive. Carriers gain 85% resistance to toxic buildup from all sources. A mutated witcher can drink potions like water - but enough poison, fast enough, will still kill even them.</description>
+    <description>The additional mutagens push toxin filtration to the edge of what a body can survive. Carriers gain 85% resistance to toxic buildup from all sources and burn off lingering poison extremely fast. A mutated witcher can drink potions like water - but enough poison, fast enough, will still kill even them.</description>
+    <geneClass>WitcherBase.Gene_WitcherToxMetabolism</geneClass>
     <iconPath>UI/Icons/Genes/Gene_TotalToxicityResistance</iconPath>
     <displayCategory>ResistanceAndWeakness</displayCategory>
     <displayOrderInCategory>8</displayOrderInCategory>

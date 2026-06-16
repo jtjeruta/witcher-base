@@ -58,18 +58,22 @@ Gating reads `pawn.genes.Xenotype`:
 
 ### Toxicity progression (companion: Witcher Potions)
 
-Witcher toxin tolerance is a single graduated stat — `ToxicResistance` — granted by a custom gene tier per stage (`Witcher_ToxTolerance_I`..`_IV` in `Defs/GeneDefs/Witcher_ToxGenes.xml`, all sharing the `WitcherToxTolerance` exclusion tag). `ToxicResistance` covers toxic buildup from **all** sources (venom, fallout, pollution, tox gas, and the Witcher Potions companion mod, which scales `ToxicBuildup` by `(1 - ToxicResistance)`), so one dial serves both the potion mechanic and environmental flavor — no separate antitoxic-lungs gene needed.
+Witcher toxin handling models the two canonical witcher traits: **higher tolerance** (hold more toxicity safely) and **faster clearance** (metabolize it away quicker, like the draining Toxicity meter in the games).
 
-The tiers are intentionally capped **below 100%**: a fully tox-immune (`ToxResist_Total`) pawn would drink potions with zero risk, defeating the mechanic. Capping at 85% means even a mutated witcher can overdose by chugging brews in quick succession, while `ToxicBuildup`'s natural decay lets higher tiers sustain spaced-out potion use. A normal human (0% resistance) dies from a single undiluted dose.
+**Tolerance** is a single graduated stat — `ToxicResistance` — granted by a custom gene tier per stage (`Witcher_ToxTolerance_I`..`_IV` in `Defs/GeneDefs/Witcher_ToxGenes.xml`, all sharing the `WitcherToxTolerance` exclusion tag). `ToxicResistance` covers toxic buildup from **all** sources (venom, fallout, pollution, tox gas, and the Witcher Potions companion mod, which scales `ToxicBuildup` by `(1 - ToxicResistance)`), so one dial serves both the potion mechanic and environmental flavor — no separate antitoxic-lungs gene needed.
 
-| Stage | Gene | `ToxicResistance` | Potions before lethal `ToxicBuildup` cap (undiluted, no decay) |
-|-------|------|-------------------|----------------------------------------------------------------|
-| Initiate (Grasses) | `Witcher_ToxTolerance_I` | +0.40 | 2nd dose |
-| Witcher (Dreams) | `Witcher_ToxTolerance_II` | +0.60 | ~3rd dose |
-| Master (Mountains) | `Witcher_ToxTolerance_III` | +0.75 | ~4th dose |
-| Mutated (Mutagens) | `Witcher_ToxTolerance_IV` | +0.85 | ~7th dose |
+The tiers are intentionally capped **below 100%**: a fully tox-immune (`ToxResist_Total`) pawn would drink potions with zero risk, defeating the mechanic. Capping at 85% means even a mutated witcher can overdose by chugging brews in quick succession. A normal human (0% resistance) dies from a single undiluted dose.
 
-Gene icons reuse vanilla paths (`Gene_PartialToxicityResistance` / `Gene_TotalToxicityResistance`), which resolve from base resources.
+**Clearance** is the custom gene class `Gene_WitcherToxMetabolism` (`Source/Witcher/Gene_WitcherToxMetabolism.cs`), set as the `geneClass` on all four tiers. In `TickInterval(int delta)` it reduces any existing `ToxicBuildup` via `HealthUtility.AdjustSeverity`, on top of the universal vanilla decay (`-0.08/day` from `HediffComp_ImmunizableToxic`). The extra rate is derived from the gene's own `ToxicResistance` offset (`offset * 0.5`/day), so the one class auto-scales across tiers with no per-tier fields. (`Pawn_GeneTracker.GeneTrackerTickInterval` drives `Gene.TickInterval`, which is public in 1.6.)
+
+| Stage | Gene | `ToxicResistance` | Extra clearance/day | Total `ToxicBuildup` decay/day | Potions to lethal cap (undiluted, ignoring decay) |
+|-------|------|-------------------|---------------------|-------------------------------|---------------------------------------------------|
+| Initiate (Grasses) | `Witcher_ToxTolerance_I` | +0.40 | -0.20 | ~-0.28 | 2nd dose |
+| Witcher (Dreams) | `Witcher_ToxTolerance_II` | +0.60 | -0.30 | ~-0.38 | ~3rd dose |
+| Master (Mountains) | `Witcher_ToxTolerance_III` | +0.75 | -0.375 | ~-0.455 | ~4th dose |
+| Mutated (Mutagens) | `Witcher_ToxTolerance_IV` | +0.85 | -0.425 | ~-0.505 | ~7th dose |
+
+Tuning knob: `RecoveryPerResistancePerDay` (currently `0.5`) in `Gene_WitcherToxMetabolism`. Gene icons reuse vanilla paths (`Gene_PartialToxicityResistance` / `Gene_TotalToxicityResistance`), which resolve from base resources.
 
 ## Witcher signs
 
