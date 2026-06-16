@@ -48,13 +48,28 @@ Gating reads `pawn.genes.Xenotype`:
 
 ## Xenotype gene sets
 
-**WitcherInitiate:** `Immunity_Strong`, `Robust`, `WoundHealing_Fast`, `DarkVision`, `Sterile`, `MoveSpeed_Quick`, `Beauty_Ugly`, `PsychicAbility_Dull`, `AptitudeStrong_Melee`, `AptitudeStrong_Shooting`, `Witcher_CatEyes`, `Skin_SheerWhite`, `Witcher_WeakAard`.
+**WitcherInitiate:** `Immunity_Strong`, `Robust`, `WoundHealing_Fast`, `Witcher_ToxTolerance_I`, `DarkVision`, `Sterile`, `MoveSpeed_Quick`, `Beauty_Ugly`, `PsychicAbility_Dull`, `AptitudeStrong_Melee`, `AptitudeStrong_Shooting`, `Witcher_CatEyes`, `Skin_SheerWhite`, `Witcher_WeakAard`.
 
-**Witcher:** initiate upgrades resolved (`PsychicAbility_Deaf`, `Beauty_VeryUgly`) plus `LowSleep`, `Pain_Reduced`, `Aggression_DeadCalm`, `Learning_Fast`, `AptitudePoor_Social`, `ArchiteMetabolism`, `Witcher_ContractGene`, `Witcher_WeakAard`, `Witcher_StrongAard`, `Witcher_Igni`, `Witcher_Quen`.
+**Witcher:** initiate upgrades resolved (`PsychicAbility_Deaf`, `Beauty_VeryUgly`, tox tolerance upgraded to `Witcher_ToxTolerance_II`) plus `LowSleep`, `Pain_Reduced`, `Aggression_DeadCalm`, `Learning_Fast`, `AptitudePoor_Social`, `ArchiteMetabolism`, `Witcher_ContractGene`, `Witcher_WeakAard`, `Witcher_StrongAard`, `Witcher_Igni`, `Witcher_Quen`.
 
-**WitcherMaster:** witcher sign set retained (both Aard tiers, Igni, Quen), with `AptitudeRemarkable_Melee`/`AptitudeRemarkable_Shooting` instead of strong; plus `ToxResist_Total`, `StrongStomach`, `MeleeDamage_Strong`, `Witcher_Axii`, `Witcher_Yrden`.
+**WitcherMaster:** witcher sign set retained (both Aard tiers, Igni, Quen), with `AptitudeRemarkable_Melee`/`AptitudeRemarkable_Shooting` instead of strong; plus `Witcher_ToxTolerance_III`, `StrongStomach`, `MeleeDamage_Strong`, `Witcher_Axii`, `Witcher_Yrden`.
 
-**WitcherMutated:** master set with `MoveSpeed_VeryQuick`, `WoundHealing_SuperFast`, `Immunity_SuperStrong`; plus `Hair_SnowWhite`, `Ageless`, `DiseaseFree`.
+**WitcherMutated:** master set with `MoveSpeed_VeryQuick`, `WoundHealing_SuperFast`, `Immunity_SuperStrong`, tox tolerance upgraded to `Witcher_ToxTolerance_IV`; plus `Hair_SnowWhite`, `Ageless`, `DiseaseFree`.
+
+### Toxicity progression (companion: Witcher Potions)
+
+Witcher toxin tolerance is a single graduated stat — `ToxicResistance` — granted by a custom gene tier per stage (`Witcher_ToxTolerance_I`..`_IV` in `Defs/GeneDefs/Witcher_ToxGenes.xml`, all sharing the `WitcherToxTolerance` exclusion tag). `ToxicResistance` covers toxic buildup from **all** sources (venom, fallout, pollution, tox gas, and the Witcher Potions companion mod, which scales `ToxicBuildup` by `(1 - ToxicResistance)`), so one dial serves both the potion mechanic and environmental flavor — no separate antitoxic-lungs gene needed.
+
+The tiers are intentionally capped **below 100%**: a fully tox-immune (`ToxResist_Total`) pawn would drink potions with zero risk, defeating the mechanic. Capping at 85% means even a mutated witcher can overdose by chugging brews in quick succession, while `ToxicBuildup`'s natural decay lets higher tiers sustain spaced-out potion use. A normal human (0% resistance) dies from a single undiluted dose.
+
+| Stage | Gene | `ToxicResistance` | Potions before lethal `ToxicBuildup` cap (undiluted, no decay) |
+|-------|------|-------------------|----------------------------------------------------------------|
+| Initiate (Grasses) | `Witcher_ToxTolerance_I` | +0.40 | 2nd dose |
+| Witcher (Dreams) | `Witcher_ToxTolerance_II` | +0.60 | ~3rd dose |
+| Master (Mountains) | `Witcher_ToxTolerance_III` | +0.75 | ~4th dose |
+| Mutated (Mutagens) | `Witcher_ToxTolerance_IV` | +0.85 | ~7th dose |
+
+Gene icons reuse vanilla paths (`Gene_PartialToxicityResistance` / `Gene_TotalToxicityResistance`), which resolve from base resources.
 
 ## Witcher signs
 

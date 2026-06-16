@@ -12,6 +12,7 @@
       <li>Immunity_Strong</li>
       <li>Robust</li>
       <li>WoundHealing_Fast</li>
+      <li>Witcher_ToxTolerance_I</li>
       <li>DarkVision</li>
       <li>Sterile</li>
       <li>MoveSpeed_Quick</li>
@@ -36,6 +37,7 @@
       <li>Immunity_Strong</li>
       <li>Robust</li>
       <li>WoundHealing_Fast</li>
+      <li>Witcher_ToxTolerance_II</li>
       <li>DarkVision</li>
       <li>Sterile</li>
       <li>MoveSpeed_Quick</li>
@@ -85,7 +87,7 @@
       <li>Learning_Fast</li>
       <li>AptitudePoor_Social</li>
       <li>ArchiteMetabolism</li>
-      <li>ToxResist_Total</li>
+      <li>Witcher_ToxTolerance_III</li>
       <li>StrongStomach</li>
       <li>MeleeDamage_Strong</li>
       <li>Witcher_ContractGene</li>
@@ -124,7 +126,7 @@
       <li>Learning_Fast</li>
       <li>AptitudePoor_Social</li>
       <li>ArchiteMetabolism</li>
-      <li>ToxResist_Total</li>
+      <li>Witcher_ToxTolerance_IV</li>
       <li>StrongStomach</li>
       <li>MeleeDamage_Strong</li>
       <li>Hair_SnowWhite</li>
