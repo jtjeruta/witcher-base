@@ -1,5 +1,6 @@
 using RimWorld;
 using Verse;
+using Verse.AI;
 
 namespace WitcherBase
 {
@@ -15,7 +16,16 @@ namespace WitcherBase
                 return;
             }
 
-            pawn.mindState.mentalStateHandler.Reset();
+            MentalState mentalState = pawn.MentalState;
+            if (mentalState == null)
+            {
+                pawn.mindState.mentalStateHandler.Reset();
+                return;
+            }
+
+            ThoughtDef recoveryThought = mentalState.def?.moodRecoveryThought ?? ThoughtDefOf.Catharsis;
+            mentalState.RecoverFromState();
+            TryGrantRecoveryThought(pawn, recoveryThought);
             if (Props.dazeHediff != null)
             {
                 Hediff existing = pawn.health.hediffSet.GetFirstHediffOfDef(Props.dazeHediff);
@@ -43,6 +53,22 @@ namespace WitcherBase
         public override bool CanApplyOn(LocalTargetInfo target, LocalTargetInfo dest)
         {
             return target.Pawn?.RaceProps.Humanlike == true;
+        }
+
+        private static void TryGrantRecoveryThought(Pawn pawn, ThoughtDef recoveryThought)
+        {
+            if (recoveryThought == null || pawn.needs?.mood == null)
+            {
+                return;
+            }
+
+            MemoryThoughtHandler memories = pawn.needs.mood.thoughts.memories;
+            if (memories == null || memories.GetFirstMemoryOfDef(recoveryThought) != null)
+            {
+                return;
+            }
+
+            memories.TryGainMemory(recoveryThought, pawn);
         }
     }
 }
