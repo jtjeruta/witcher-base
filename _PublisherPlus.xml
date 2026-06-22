@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <Excluded>
+    <exclude>.git</exclude>
+    <exclude>Source</exclude>
+    <exclude>.DS_Store</exclude>
+    <exclude>DEVELOPMENT.md</exclude>
+    <exclude>WORKSHOP_UPLOAD.md</exclude>
+  </Excluded>
+</Configuration>
