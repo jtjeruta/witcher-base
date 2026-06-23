@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <MentalStateDef ParentName="BaseMentalState">
+    <defName>Witcher_AxiiBerserk</defName>
+    <label>axii berserk</label>
+    <stateClass>WitcherBase.MentalState_AxiiBerserk</stateClass>
+    <category>Aggro</category>
+    <nameColor>(0.55, 0.65, 0.95)</nameColor>
+    <blockRandomInteraction>true</blockRandomInteraction>
+    <blockNormalThoughts>true</blockNormalThoughts>
+    <minTicksBeforeRecovery>3600</minTicksBeforeRecovery>
+    <maxTicksBeforeRecovery>3600</maxTicksBeforeRecovery>
+    <recoveryMtbDays>999</recoveryMtbDays>
+    <beginLetterLabel>axii berserk</beginLetterLabel>
+    <beginLetter>{0} has been sent into a berserk rage by Axii and is attacking {0_possessive} former allies.</beginLetter>
+    <beginLetterDef>NeutralEvent</beginLetterDef>
+    <recoveryMessage>{0} has recovered from Axii berserk.</recoveryMessage>
+    <baseInspectLine>Mental state: Axii berserk</baseInspectLine>
+    <stateEffecter>Berserk</stateEffecter>
+    <recoverFromSleep>false</recoverFromSleep>
+    <allowBeatfire>true</allowBeatfire>
+  </MentalStateDef>
+
+</Defs>

@@ -72,7 +72,7 @@
   <GeneDef>
     <defName>Witcher_Axii</defName>
     <label>axii</label>
-    <description>Carriers can cast the Axii sign to influence minds: calming mental breaks, easing prisoner resistance, pacifying maddened beasts, and taming wild animals.</description>
+    <description>Carriers can cast the Axii sign to influence minds: calming mental breaks, easing prisoner resistance, pacifying maddened beasts, taming wild animals and wild people, and sending hostile humanlikes into a berserk rage against their own allies.</description>
     <iconPath>UI/Abilities/WordOfSerenity</iconPath>
     <displayCategory>Ability</displayCategory>
     <displayOrderInCategory>40</displayOrderInCategory>
@@ -81,12 +81,14 @@
       <li>Witcher_AxiiTrust</li>
       <li>Witcher_AxiiCalmBeast</li>
       <li>Witcher_AxiiTame</li>
+      <li>Witcher_AxiiBerserk</li>
     </abilities>
     <descriptionHyperlinks>
       <AbilityDef>Witcher_AxiiSerenity</AbilityDef>
       <AbilityDef>Witcher_AxiiTrust</AbilityDef>
       <AbilityDef>Witcher_AxiiCalmBeast</AbilityDef>
       <AbilityDef>Witcher_AxiiTame</AbilityDef>
+      <AbilityDef>Witcher_AxiiBerserk</AbilityDef>
     </descriptionHyperlinks>
     <biostatCpx>3</biostatCpx>
     <biostatMet>0</biostatMet>

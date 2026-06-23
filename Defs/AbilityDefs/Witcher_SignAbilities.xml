@@ -53,7 +53,7 @@
     <iconPath>UI/Abilities/SkipChaosMass</iconPath>
     <category>WitcherSigns</category>
     <displayOrder>101</displayOrder>
-    <cooldownTicksRange>3600</cooldownTicksRange>
+    <cooldownTicksRange>900</cooldownTicksRange>
     <aiCanUse>true</aiCanUse>
     <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
     <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
@@ -95,7 +95,7 @@
     <iconPath>UI/Abilities/FireSpew</iconPath>
     <category>WitcherSigns</category>
     <displayOrder>200</displayOrder>
-    <cooldownTicksRange>2400</cooldownTicksRange>
+    <cooldownTicksRange>750</cooldownTicksRange>
     <aiCanUse>true</aiCanUse>
     <ai_IsIncendiary>true</ai_IsIncendiary>
     <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
@@ -128,14 +128,14 @@
     <iconPath>UI/Abilities/BulletShield</iconPath>
     <category>WitcherSigns</category>
     <displayOrder>300</displayOrder>
-    <cooldownTicksRange>6000</cooldownTicksRange>
+    <cooldownTicksRange>1200</cooldownTicksRange>
     <targetRequired>false</targetRequired>
     <hostile>false</hostile>
     <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
     <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
     <statBases>
-      <Ability_Duration>4000</Ability_Duration>
+      <Ability_Duration>83</Ability_Duration>
     </statBases>
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
@@ -168,7 +168,7 @@
     <iconPath>UI/Abilities/WordOfSerenity</iconPath>
     <category>WitcherSigns</category>
     <displayOrder>400</displayOrder>
-    <cooldownTicksRange>1200</cooldownTicksRange>
+    <cooldownTicksRange>750</cooldownTicksRange>
     <hostile>false</hostile>
     <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
     <verbProperties>
@@ -202,7 +202,7 @@
     <iconPath>UI/Abilities/WordOfTrust</iconPath>
     <category>WitcherSigns</category>
     <displayOrder>401</displayOrder>
-    <cooldownTicksRange>3000</cooldownTicksRange>
+    <cooldownTicksRange>900</cooldownTicksRange>
     <hostile>false</hostile>
     <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
     <verbProperties>
@@ -234,7 +234,7 @@
     <iconPath>UI/Abilities/AnimalCalm</iconPath>
     <category>WitcherSigns</category>
     <displayOrder>402</displayOrder>
-    <cooldownTicksRange>1800</cooldownTicksRange>
+    <cooldownTicksRange>750</cooldownTicksRange>
     <hostile>false</hostile>
     <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
     <verbProperties>
@@ -259,15 +259,15 @@
     </comps>
   </AbilityDef>
 
-  <!-- Axii: tame a wild animal (Mountains+) -->
+  <!-- Axii: tame a wild animal or wild person (Mountains+) -->
   <AbilityDef ParentName="AbilityTouchBase">
     <defName>Witcher_AxiiTame</defName>
     <label>axii: tame</label>
-    <description>Use the Axii sign to instantly bend a wild animal to your will, taming it for the colony.</description>
+    <description>Use the Axii sign to instantly bend a wild animal or wild person to your will, bringing them into the colony.</description>
     <iconPath>UI/Abilities/AnimalCalm</iconPath>
     <category>WitcherSigns</category>
     <displayOrder>403</displayOrder>
-    <cooldownTicksRange>15000</cooldownTicksRange>
+    <cooldownTicksRange>1500</cooldownTicksRange>
     <hostile>false</hostile>
     <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
     <verbProperties>
@@ -276,7 +276,7 @@
       <range>-1</range>
       <warmupTime>2</warmupTime>
       <targetParams>
-        <canTargetHumans>false</canTargetHumans>
+        <canTargetHumans>true</canTargetHumans>
         <canTargetMechs>false</canTargetMechs>
         <canTargetAnimals>true</canTargetAnimals>
         <canTargetBuildings>false</canTargetBuildings>
@@ -292,20 +292,59 @@
     </comps>
   </AbilityDef>
 
+  <!-- Axii: send a hostile humanlike into berserk against their allies (Mountains+) -->
+  <AbilityDef>
+    <defName>Witcher_AxiiBerserk</defName>
+    <label>axii: berserk</label>
+    <description>Use the Axii sign at range to send a hostile human into a berserk rage. They attack your enemies but remain outside your control.</description>
+    <iconPath>UI/Abilities/WordOfTrust</iconPath>
+    <category>WitcherSigns</category>
+    <displayOrder>404</displayOrder>
+    <cooldownTicksRange>1200</cooldownTicksRange>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
+    <statBases>
+      <Ability_Duration>3600</Ability_Duration>
+    </statBases>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <drawAimPie>true</drawAimPie>
+      <range>9.9</range>
+      <warmupTime>1.5</warmupTime>
+      <requireLineOfSight>true</requireLineOfSight>
+      <targetParams>
+        <canTargetHumans>true</canTargetHumans>
+        <canTargetAnimals>false</canTargetAnimals>
+        <canTargetMechs>false</canTargetMechs>
+        <canTargetBuildings>false</canTargetBuildings>
+        <neverTargetIncapacitated>true</neverTargetIncapacitated>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="WitcherBase.CompProperties_AbilityAxiiBerserk">
+        <mentalStateDef>Witcher_AxiiBerserk</mentalStateDef>
+      </li>
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+      </li>
+    </comps>
+  </AbilityDef>
+
   <!-- Yrden: AoE debuff trap (Mountains+) -->
   <AbilityDef>
     <defName>Witcher_Yrden</defName>
     <label>yrden</label>
-    <description>Place a witcher snare that heavily slows movement, ruins accuracy, and suppresses every foe caught in its radius. Snared foes glow with witcher magic.</description>
+    <description>Place a witcher snare that cripples hostile movement, ruins accuracy, and suppresses every enemy caught in its radius. Snared foes are marked with a purple ring at their feet.</description>
     <iconPath>UI/Abilities/BlindingPulse</iconPath>
     <category>WitcherSigns</category>
     <displayOrder>500</displayOrder>
-    <cooldownTicksRange>4200</cooldownTicksRange>
+    <cooldownTicksRange>900</cooldownTicksRange>
     <aiCanUse>true</aiCanUse>
     <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
     <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
     <statBases>
-      <Ability_Duration>1200</Ability_Duration>
       <Ability_EffectRadius>4.9</Ability_EffectRadius>
     </statBases>
     <verbProperties>
@@ -314,16 +353,15 @@
       <warmupTime>0.5</warmupTime>
       <targetParams>
         <canTargetLocations>true</canTargetLocations>
-        <canTargetSelf>true</canTargetSelf>
+        <canTargetSelf>false</canTargetSelf>
         <canTargetAnimals>true</canTargetAnimals>
       </targetParams>
     </verbProperties>
     <comps>
-      <li Class="CompProperties_AbilityGiveHediff">
-        <compClass>CompAbilityEffect_GiveHediff</compClass>
+      <li Class="WitcherBase.CompProperties_AbilityYrden">
         <hediffDef>Witcher_YrdenDebuff</hediffDef>
         <onlyBrain>true</onlyBrain>
-        <goodwillImpact>-15</goodwillImpact>
+        <durationTicks>2400</durationTicks>
       </li>
       <li Class="CompProperties_AbilityFleckOnTarget">
         <fleckDef>PsycastPsychicEffect</fleckDef>

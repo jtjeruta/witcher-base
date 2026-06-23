@@ -16,7 +16,7 @@
     </stages>
     <comps>
       <li Class="HediffCompProperties_Disappears">
-        <disappearsAfterTicks>4000</disappearsAfterTicks>
+        <disappearsAfterTicks>5000</disappearsAfterTicks>
         <showRemainingTime>true</showRemainingTime>
       </li>
       <li Class="WitcherBase.HediffCompProperties_QuenShield">
@@ -28,13 +28,13 @@
   <HediffDef>
     <defName>Witcher_YrdenDebuff</defName>
     <label>yrden trap</label>
-    <description>Magical snare that cripples movement, ruins aim, and dulls consciousness. A purple witcher glow marks the victim.</description>
+    <description>Magical snare that cripples movement, ruins aim, and dulls consciousness. A purple ring marks snared foes at the feet.</description>
     <hediffClass>HediffWithComps</hediffClass>
     <isBad>true</isBad>
     <stages>
       <li>
         <statFactors>
-          <MoveSpeed>0.3</MoveSpeed>
+          <MoveSpeed>0.1</MoveSpeed>
           <AimingDelayFactor>1.6</AimingDelayFactor>
         </statFactors>
         <statOffsets>
@@ -51,13 +51,11 @@
     </stages>
     <comps>
       <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>2400</disappearsAfterTicks>
         <showRemainingTime>true</showRemainingTime>
       </li>
-      <li Class="WitcherBase.HediffCompProperties_AttachedGlow">
-        <moteDef>Mote_WitcherYrdenGlow</moteDef>
-        <emitInterval>20</emitInterval>
-        <scale>1.2</scale>
-        <solidTimeOverride>25</solidTimeOverride>
+      <li Class="WitcherBase.HediffCompProperties_YrdenMark">
+        <moteDef>Mote_WitcherYrdenRing</moteDef>
       </li>
     </comps>
   </HediffDef>

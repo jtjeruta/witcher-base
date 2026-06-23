@@ -10,41 +10,52 @@ namespace WitcherBase
         public override void Apply(LocalTargetInfo target, LocalTargetInfo dest)
         {
             Pawn caster = parent.pawn;
-            Pawn animal = target.Pawn;
-            if (!CanTameTarget(animal))
+            Pawn tameTarget = target.Pawn;
+            if (!CanTameTarget(tameTarget))
             {
                 return;
             }
 
-            // End any manhunter/maddened state first so the freshly-tamed animal is friendly.
-            if (animal.InMentalState)
+            if (tameTarget.InMentalState)
             {
-                animal.mindState.mentalStateHandler.Reset();
+                tameTarget.mindState.mentalStateHandler.Reset();
             }
 
-            animal.SetFaction(Faction.OfPlayer, caster);
-
-            Messages.Message(
-                caster.LabelShort + " tamed " + animal.LabelShort + " with Axii.",
-                animal,
-                MessageTypeDefOf.PositiveEvent);
+            if (WildManUtility.IsWildMan(tameTarget) || tameTarget.RaceProps.Animal)
+            {
+                InteractionWorker_RecruitAttempt.DoRecruit(caster, tameTarget, useAudiovisualEffects: true);
+            }
         }
 
-        private bool CanTameTarget(Pawn animal)
+        private bool CanTameTarget(Pawn tameTarget)
         {
-            if (animal == null || !animal.Spawned || animal.Dead)
+            if (tameTarget == null || !tameTarget.Spawned || tameTarget.Dead)
             {
                 return false;
             }
 
-            if (animal.RaceProps == null || !animal.RaceProps.Animal)
+            if (tameTarget.Faction == Faction.OfPlayer)
             {
                 return false;
             }
 
-            if (animal.Faction == Faction.OfPlayer)
+            if (WildManUtility.IsWildMan(tameTarget))
+            {
+                return true;
+            }
+
+            if (tameTarget.RaceProps == null || !tameTarget.RaceProps.Animal)
             {
                 return false;
+            }
+
+            if (Props.maxWildness < 1f)
+            {
+                float wildness = tameTarget.GetStatValue(StatDefOf.Wildness);
+                if (wildness > Props.maxWildness)
+                {
+                    return false;
+                }
             }
 
             return true;
@@ -57,12 +68,14 @@ namespace WitcherBase
 
         public override bool Valid(LocalTargetInfo target, bool throwMessages = false)
         {
-            Pawn animal = target.Pawn;
-            if (!CanTameTarget(animal))
+            if (!CanTameTarget(target.Pawn))
             {
                 if (throwMessages)
                 {
-                    Messages.Message("Axii can only tame wild animals.", MessageTypeDefOf.RejectInput, historical: false);
+                    Messages.Message(
+                        "Axii can only tame wild animals or wild people.",
+                        MessageTypeDefOf.RejectInput,
+                        historical: false);
                 }
 
                 return false;

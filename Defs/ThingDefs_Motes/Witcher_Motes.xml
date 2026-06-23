@@ -2,19 +2,19 @@
 <Defs>
 
   <ThingDef ParentName="MoteBase">
-    <defName>Mote_WitcherYrdenGlow</defName>
+    <defName>Mote_WitcherYrdenRing</defName>
     <thingClass>MoteAttached</thingClass>
     <graphicData>
-      <texPath>Things/Mote/WitcherYrdenGlow</texPath>
-      <shaderType>Transparent</shaderType>
-      <color>(180, 90, 240, 90)</color>
-      <drawSize>(1.0, 1.0)</drawSize>
+      <texPath>Things/Mote/FireGlow</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <color>(195, 95, 255, 175)</color>
+      <drawSize>0.9</drawSize>
     </graphicData>
-    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <altitudeLayer>MoteLow</altitudeLayer>
     <mote>
       <solidTime>999999</solidTime>
-      <fadeInTime>0.1</fadeInTime>
-      <fadeOutTime>0.25</fadeOutTime>
+      <fadeInTime>0.15</fadeInTime>
+      <fadeOutTime>0.2</fadeOutTime>
     </mote>
   </ThingDef>
 

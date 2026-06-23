@@ -33,8 +33,8 @@ Witchers unlock combat signs as draftable **Abilities** (gizmo buttons) tied to 
 | **Aard** (strong) | Trial of Dreams | Aim a cone (preview shown while targeting) to knock back and stun every foe caught in it |
 | **Igni** | Trial of Dreams | Short cone of fire |
 | **Quen** | Trial of Dreams | Personal damage-absorbing shield |
-| **Axii** | Trial of Mountains | Calm mental breaks, reduce prisoner resistance, calm maddened animals, tame a wild animal |
-| **Yrden** | Trial of Mountains | Ground snare that heavily slows movement, ruins accuracy, and marks snared foes with a purple glow |
+| **Axii** | Trial of Mountains | Calm mental breaks, reduce prisoner resistance, calm maddened animals, tame wild animals and wild people, send hostile humanlikes into berserk against their allies |
+| **Yrden** | Trial of Mountains | Ground snare that heavily slows hostiles, ruins accuracy, and marks them with a purple ring at their feet |
 
 Signs use cooldowns instead of psyfocus or hemogen costs.
 
