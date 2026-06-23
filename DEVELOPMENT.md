@@ -110,6 +110,36 @@ Strong Aard is an **aimed cone**: the player targets a cell, and `CompAbilityEff
 
 **Simplifications:** any colonist may help kill the beasts; solo participation is not enforced.
 
+## Caravan orphan recruitment
+
+Settlement action **Buy children** (caravan gizmo when visiting a friendly NPC base). Implemented via `WorldObjectComp_OrphanStock` on `Settlement` — same hook pattern as vanilla `TradeRequestComp.GetCaravanGizmos`, no Harmony patch.
+
+**Gating:** `Witcher_TrialOfGrasses` research finished; settlement faction non-hostile and not player-owned.
+
+**Stock / restock** (per settlement, saved on the world object):
+
+| Category | Detection | Stock / restock | Price mult |
+|----------|-----------|-----------------|------------|
+| Tribal | `techLevel <= Neolithic` | 2–4 / 45 days | 0.5× |
+| Outlander | Industrial | 1–2 / 60 days | 1.0× |
+| Advanced | Spacer+ | 0–1 / 90 days | 1.5× |
+
+Restock timer starts on first generation; buying does not reset it. When the timer expires, stock is fully replaced.
+
+**Quality tiers** (rolled on restock):
+
+| Tier | Price (before mult) | Notes |
+|------|---------------------|-------|
+| Unwanted | 1 silver | Bad traits, optional Nerves (−2), cut scar |
+| Standard | 200–450 silver | No forced extremes |
+| Premium | 600–1200 silver | FastLearner / Nimble / Tough / GreatMemory |
+
+**Pawn gen:** 80% male, age 8–12, `DevelopmentalStage.Child`, settlement faction culture, no witcher xenotypes. Purchased pawns join the caravan; silver is taken from caravan inventory. Final price floors at 1 silver (tribal unwanted no longer shows 0).
+
+**List UI:** childhood backstory title as the circumstance line (e.g. "fire-scarred child", "orphan of war"); premium tier appends " — family sale". Internal tier names are not shown. No restock countdown in the UI — empty stock shows "Nothing for sale." Dialog reserves space for the Close button and uses dynamic row heights so trait lists scroll cleanly.
+
+**Deferred:** event-based orphan collection, comms-console access, colony mood on purchase.
+
 ## Repository layout
 
 ```
@@ -123,8 +153,10 @@ Defs/
   QuestScriptDefs/     Trial of Mountains quest
   RecipeDefs/          Trial operations
   ResearchProjectDefs/ Trial research
+Patches/               Settlement orphan-stock comp injection (XML patches, not under Defs/)
 Source/
   Witcher/             Recipe workers, hediff comps, xenotype helper, contract gene, sign comps
+  Witcher/Caravan/     Settlement orphan stock, purchase dialog, pawn generation
   Witcher/Quest/       Mountains quest nodes and watcher
   build.sh             Offline build script
 LoadFolders.xml        Version loading rules

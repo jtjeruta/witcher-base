@@ -25,10 +25,12 @@ REFS=(
   "$MANAGED/mscorlib.dll"
   "$MANAGED/System.dll"
   "$MANAGED/System.Core.dll"
+  "$MANAGED/netstandard.dll"
   "$MANAGED/Assembly-CSharp.dll"
   "$MANAGED/Assembly-CSharp-firstpass.dll"
   "$MANAGED/UnityEngine.CoreModule.dll"
   "$MANAGED/UnityEngine.IMGUIModule.dll"
+  "$MANAGED/UnityEngine.TextRenderingModule.dll"
 )
 
 REF_ARGS=()

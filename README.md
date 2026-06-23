@@ -45,6 +45,8 @@ The first and most infamous initiation — a brutal ordeal that most who attempt
 
 **Survival rate:** about 3 in 10.
 
+Once you've researched the Trial of Grasses, send a caravan to a friendly settlement and use **Buy children** to recruit trial-age candidates (8–12 years old).
+
 ### Trial of Dreams
 A second trial, open only to witcher initiates. Far more forgiving than the first, it rewires the mind.
 

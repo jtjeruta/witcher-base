@@ -18,6 +18,7 @@ namespace WitcherBase
         public static XenotypeDef WitcherMutated;
 
         // Research and quest defs.
+        public static ResearchProjectDef Witcher_TrialOfGrasses;
         public static ResearchProjectDef Witcher_TrialOfMountains;
         public static QuestScriptDef Witcher_TrialOfMountainsQuest;
 
