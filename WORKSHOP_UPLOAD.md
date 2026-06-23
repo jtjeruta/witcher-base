@@ -33,25 +33,20 @@ Enable **Publisher Plus** in the mod list alongside the mod you are uploading.
 6. **Commit that file to git** — required for all future updates.
 7. Open the Workshop item in a browser → **Owner controls** → **Change visibility** → **Private**.
 
-Copy the numeric ID from `About/PublishedFileId.txt` (e.g. `1234567890`).
+Workshop IDs (already wired in `About.xml`):
+
+| Mod | ID | URL |
+|-----|-----|-----|
+| **Witcher Base** | `3749657575` | https://steamcommunity.com/sharedfiles/filedetails/?id=3749657575 |
+| **Witcher Potions** | `3749658050` | https://steamcommunity.com/sharedfiles/filedetails/?id=3749658050 |
+
+Potions declares a `steamWorkshopUrl` on its `witcher.base` dependency so RimWorld can link to Base from the mod manager.
 
 ---
 
 ## 2. Wire Potions → Base Workshop ID
 
-Edit `witcher-potions/About/About.xml` and add `steamWorkshopUrl` inside the existing `witcher.base` dependency:
-
-```xml
-<modDependencies>
-  <li>
-    <packageId>witcher.base</packageId>
-    <displayName>Witcher Base</displayName>
-    <steamWorkshopUrl>steam://url/CommunityFilePage/YOUR_BASE_ID_HERE</steamWorkshopUrl>
-  </li>
-</modDependencies>
-```
-
-Replace `YOUR_BASE_ID_HERE` with the number from Base's `PublishedFileId.txt`.
+Already done in `witcher-potions/About/About.xml` (`steamWorkshopUrl` → `3749657575`). Re-upload Potions after changing dependency URLs.
 
 ---
 
