@@ -44,17 +44,30 @@ Gating reads `pawn.genes.Xenotype`:
 - **Grasses**: any humanlike pawn with genes, not any witcher xenotype, not currently undergoing.
 - **Dreams**: xenotype == `WitcherInitiate`, not currently undergoing.
 - **Additional Mutagens**: xenotype == `WitcherMaster`, not currently undergoing.
-- **Mountains contract**: `Witcher_ContractGene` on the `Witcher` xenotype + research finished; gizmo from `Gene_WitcherContract.GetGizmos()`.
+- **Mountains contract**: `Witcher_ContractGene` on the **`Witcher` xenotype only** (not Master/Mutated) + research finished; gizmo from `Gene_WitcherContract.GetGizmos()`. Completing Mountains replaces xenotype with `WitcherMaster`, dropping the contract gene.
 
 ## Xenotype gene sets
 
-**WitcherInitiate:** `Immunity_Strong`, `Robust`, `WoundHealing_Fast`, `Witcher_ToxTolerance_I`, `DarkVision`, `Sterile`, `MoveSpeed_Quick`, `Beauty_Ugly`, `PsychicAbility_Dull`, `AptitudeStrong_Melee`, `AptitudeStrong_Shooting`, `Witcher_CatEyes`, `Skin_SheerWhite`, `Witcher_WeakAard`.
+All four xenotypes share **`Witcher_Immunity`**, **`Witcher_Stoicism`**, and **`Witcher_Reflexes`** (see below). Per-stage genes follow.
 
-**Witcher:** initiate upgrades resolved (`PsychicAbility_Deaf`, `Beauty_VeryUgly`, tox tolerance upgraded to `Witcher_ToxTolerance_II`) plus `LowSleep`, `Pain_Reduced`, `Aggression_DeadCalm`, `Learning_Fast`, `AptitudePoor_Social`, `ArchiteMetabolism`, `Witcher_ContractGene`, `Witcher_WeakAard`, `Witcher_StrongAard`, `Witcher_Igni`, `Witcher_Quen`.
+**WitcherInitiate:** `Witcher_Immunity`, `Witcher_Stoicism`, `Witcher_Reflexes`, `Robust`, `WoundHealing_Fast`, `Witcher_ToxTolerance_I`, `DarkVision`, `Sterile`, `MoveSpeed_Quick`, `Beauty_Ugly`, `PsychicAbility_Dull`, `AptitudeStrong_Melee`, `AptitudeStrong_Shooting`, `Witcher_CatEyes`, `Skin_SheerWhite`, `Witcher_WeakAard`.
 
-**WitcherMaster:** witcher sign set retained (both Aard tiers, Igni, Quen), with `AptitudeRemarkable_Melee`/`AptitudeRemarkable_Shooting` instead of strong; plus `Witcher_ToxTolerance_III`, `StrongStomach`, `MeleeDamage_Strong`, `Witcher_Axii`, `Witcher_Yrden`.
+**Witcher:** initiate upgrades resolved (`PsychicAbility_Deaf`, `Beauty_VeryUgly`, tox tolerance upgraded to `Witcher_ToxTolerance_II`) plus `LowSleep`, `Pain_Reduced`, `Aggression_DeadCalm`, `Learning_Fast`, `AptitudePoor_Social`, `ArchiteMetabolism`, **`Witcher_ContractGene`**, `Witcher_WeakAard`, `Witcher_StrongAard`, `Witcher_Igni`, `Witcher_Quen`.
 
-**WitcherMutated:** master set with `MoveSpeed_VeryQuick`, `WoundHealing_SuperFast`, `Immunity_SuperStrong`, tox tolerance upgraded to `Witcher_ToxTolerance_IV`; plus `Hair_SnowWhite`, `Ageless`, `DiseaseFree`.
+**WitcherMaster:** witcher sign set retained (both Aard tiers, Igni, Quen), with `AptitudeRemarkable_Melee`/`AptitudeRemarkable_Shooting` instead of strong; plus `Witcher_ToxTolerance_III`, `StrongStomach`, `MeleeDamage_Strong`, `Witcher_Axii`, `Witcher_Yrden`. No contract gene.
+
+**WitcherMutated:** master set with `MoveSpeed_VeryQuick`, `WoundHealing_SuperFast`, tox tolerance upgraded to `Witcher_ToxTolerance_IV`; plus `Hair_SnowWhite`, `Ageless`, `DiseaseFree`. No contract gene.
+
+### Custom witcher genes (`Defs/GeneDefs/Witcher_Genes.xml`)
+
+| Gene | Stat | Value | Notes |
+|------|------|-------|-------|
+| `Witcher_Immunity` | `ImmunityGainSpeed` factor | ×3.0 | Replaces vanilla `Immunity_SuperStrong` (×1.5). `exclusionTags`: `Immunity`. |
+| `Witcher_Stoicism` | `MentalBreakThreshold` offset | −0.34 | Base 35% → **1%** floor (vanilla stat minimum). Mood-based comfort breaks effectively never trigger; does not use `blocksMentalBreaks` (that would block pain/forced breaks too). |
+| `Witcher_Reflexes` | `MeleeDodgeChance` offset | +0.18 | +18 percentage points; subject to vanilla 80% cap. |
+| `Witcher_ContractGene` | — | — | Mountains contract gizmo; **`Witcher` xenotype only**. |
+
+`Aggression_DeadCalm` (Witcher+) still governs non-violent break *type*; stoicism governs break *threshold* on all stages.
 
 ### Toxicity progression (companion: Witcher Potions)
 
@@ -146,13 +159,13 @@ Restock timer starts on first generation; buying does not reset it. When the tim
 About/                 Mod metadata (About.xml)
 Assemblies/            Compiled Witcher.dll
 Defs/
-  GeneDefs/            Custom witcher genes (eyes, contract, signs)
+  GeneDefs/            Custom witcher genes (eyes, immunity, stoicism, reflexes, contract, signs)
   AbilityDefs/         Witcher sign abilities
   XenotypeDefs/        Four witcher xenotypes
   HediffDefs/          Trial fevers and sign hediffs
   QuestScriptDefs/     Trial of Mountains quest
   RecipeDefs/          Trial operations
-  ResearchProjectDefs/ Trial research
+  ResearchProjectDefs/ Trial research + Witcher research tab
 Patches/               Settlement orphan-stock comp injection (XML patches, not under Defs/)
 Source/
   Witcher/             Recipe workers, hediff comps, xenotype helper, contract gene, sign comps
@@ -182,5 +195,6 @@ The repo is symlinked into RimWorld's `Mods/` folder (`Mods/WitcherBase`), so XM
 - `QuestPart` in the target RimWorld build does not expose overridable tick/kill hooks; mountains trial watching uses `MapComponent_WitcherTrials` for registration (legacy; site signals handle completion).
 - Combat aptitude ramps: Grasses (strong) → Mountains (great + strong melee damage).
 - Additional Mutagens is linear: requires `WitcherMaster`, not parallel with Mountains.
+- All witcher research (trials + companion Potions alchemy) uses the **`Witcher` research tab** (`ResearchTabDef` in `Witcher_ResearchTab.xml`; Potions references the same tab via `loadAfter` witcher.base).
 - Changing `packageId` or the mod folder name breaks existing saves that referenced the old identity.
 - Marker hediffs were removed in the xenotype conversion; in-progress saves with old markers need re-testing.

@@ -6,7 +6,7 @@ Turn your colonists into witchers. This is the foundation mod of a modular Witch
 
 ## What it does
 
-Research the witcher trials, then perform them on colonists as operations from the **Health** tab. Each trial costs herbal ingredients and throws the pawn into a brutal fever that lasts a day or two. Survivors come out changed — their xenotype is replaced with the next stage of witcher training. Those who don't survive... don't.
+Research the witcher trials on the dedicated **witcher** research tab, then perform them on colonists as operations from the **Health** tab. Each trial costs herbal ingredients and throws the pawn into a brutal fever that lasts a day or two. Survivors come out changed — their xenotype is replaced with the next stage of witcher training. Those who don't survive... don't.
 
 You can also pick any witcher xenotype when creating starting colonists. Witchers **never spawn randomly** in the world.
 

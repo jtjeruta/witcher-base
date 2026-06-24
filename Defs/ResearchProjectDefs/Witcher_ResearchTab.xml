@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ResearchTabDef>
+    <defName>Witcher</defName>
+    <label>witcher</label>
+    <generalTitle>witcher trials</generalTitle>
+    <generalDescription>Research the alchemical trials and traditions that create witchers.</generalDescription>
+  </ResearchTabDef>
+
+</Defs>

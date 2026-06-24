@@ -9,6 +9,7 @@
 Once researched, this trial becomes available as an operation in the Health tab.</description>
     <techLevel>Medieval</techLevel>
     <baseCost>500</baseCost>
+    <tab>Witcher</tab>
     <researchViewX>0.00</researchViewX>
     <researchViewY>0.00</researchViewY>
   </ResearchProjectDef>
@@ -19,6 +20,7 @@ Once researched, this trial becomes available as an operation in the Health tab.
     <description>A second trial reserved for those who survived the grasses. Subjects drink psychite tea laced with smokeleaf and are guided through nightmare visions while their nervous system is rewired. About seven in ten survive. Survivors gain pain resistance, emotional flatness, and sharpened reflexes.</description>
     <techLevel>Medieval</techLevel>
     <baseCost>1000</baseCost>
+    <tab>Witcher</tab>
     <prerequisites>
       <li>Witcher_TrialOfGrasses</li>
     </prerequisites>
@@ -32,6 +34,7 @@ Once researched, this trial becomes available as an operation in the Health tab.
     <description>An experimental second dose of mutagens, administered to a master witcher. The brew pushes existing gifts to their extreme tier and may grant agelessness — but only about one in ten survive. Those who endure become faster, tougher, and harder to kill than any witcher before them.</description>
     <techLevel>Medieval</techLevel>
     <baseCost>500</baseCost>
+    <tab>Witcher</tab>
     <prerequisites>
       <li>Witcher_TrialOfMountains</li>
     </prerequisites>
@@ -45,6 +48,7 @@ Once researched, this trial becomes available as an operation in the Health tab.
     <description>The final trial. A fully trained witcher may take monster-slaying contracts — beasts sighted on nearby tiles that must be hunted down and killed. Fulfil enough contracts to prove mastery and become a master witcher.</description>
     <techLevel>Medieval</techLevel>
     <baseCost>1500</baseCost>
+    <tab>Witcher</tab>
     <prerequisites>
       <li>Witcher_TrialOfDreams</li>
     </prerequisites>

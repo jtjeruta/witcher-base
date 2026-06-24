@@ -9,7 +9,9 @@
     <iconPath>UI/Icons/Xenotypes/Witcher</iconPath>
     <inheritable>false</inheritable>
     <genes>
-      <li>Immunity_Strong</li>
+      <li>Witcher_Immunity</li>
+      <li>Witcher_Stoicism</li>
+      <li>Witcher_Reflexes</li>
       <li>Robust</li>
       <li>WoundHealing_Fast</li>
       <li>Witcher_ToxTolerance_I</li>
@@ -34,7 +36,9 @@
     <iconPath>UI/Icons/Xenotypes/Witcher</iconPath>
     <inheritable>false</inheritable>
     <genes>
-      <li>Immunity_Strong</li>
+      <li>Witcher_Immunity</li>
+      <li>Witcher_Stoicism</li>
+      <li>Witcher_Reflexes</li>
       <li>Robust</li>
       <li>WoundHealing_Fast</li>
       <li>Witcher_ToxTolerance_II</li>
@@ -69,7 +73,9 @@
     <iconPath>UI/Icons/Xenotypes/Witcher</iconPath>
     <inheritable>false</inheritable>
     <genes>
-      <li>Immunity_Strong</li>
+      <li>Witcher_Immunity</li>
+      <li>Witcher_Stoicism</li>
+      <li>Witcher_Reflexes</li>
       <li>Robust</li>
       <li>WoundHealing_Fast</li>
       <li>DarkVision</li>
@@ -90,7 +96,6 @@
       <li>Witcher_ToxTolerance_III</li>
       <li>StrongStomach</li>
       <li>MeleeDamage_Strong</li>
-      <li>Witcher_ContractGene</li>
       <li>Witcher_WeakAard</li>
       <li>Witcher_StrongAard</li>
       <li>Witcher_Igni</li>
@@ -108,7 +113,9 @@
     <iconPath>UI/Icons/Xenotypes/Witcher</iconPath>
     <inheritable>false</inheritable>
     <genes>
-      <li>Immunity_SuperStrong</li>
+      <li>Witcher_Immunity</li>
+      <li>Witcher_Stoicism</li>
+      <li>Witcher_Reflexes</li>
       <li>Robust</li>
       <li>WoundHealing_SuperFast</li>
       <li>DarkVision</li>
@@ -132,7 +139,6 @@
       <li>Hair_SnowWhite</li>
       <li>Ageless</li>
       <li>DiseaseFree</li>
-      <li>Witcher_ContractGene</li>
       <li>Witcher_WeakAard</li>
       <li>Witcher_StrongAard</li>
       <li>Witcher_Igni</li>

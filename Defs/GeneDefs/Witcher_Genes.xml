@@ -47,6 +47,54 @@
   </GeneDef>
 
   <GeneDef>
+    <defName>Witcher_Immunity</defName>
+    <label>witcher immunity</label>
+    <labelShortAdj>witcher-immune</labelShortAdj>
+    <description>Carriers of this gene gain immunity to diseases far faster than normal — the mutagens have rewired their immune response to fight off infection at triple the usual rate.</description>
+    <iconPath>UI/Icons/Genes/Gene_SuperStrongImmunity</iconPath>
+    <displayCategory>ResistanceAndWeakness</displayCategory>
+    <displayOrderInCategory>10</displayOrderInCategory>
+    <statFactors>
+      <ImmunityGainSpeed>3</ImmunityGainSpeed>
+    </statFactors>
+    <exclusionTags>
+      <li>Immunity</li>
+    </exclusionTags>
+    <biostatCpx>2</biostatCpx>
+    <biostatMet>-2</biostatMet>
+  </GeneDef>
+
+  <GeneDef>
+    <defName>Witcher_Stoicism</defName>
+    <label>witcher stoicism</label>
+    <labelShortAdj>stoic</labelShortAdj>
+    <description>Carriers of this gene have a mental break threshold so low that ordinary discomfort never pushes them over the edge. Only catastrophic mood collapse can break their composure — a necessity for those who hunt monsters in the mud.</description>
+    <iconPath>UI/Icons/Genes/Gene_DeadCalm</iconPath>
+    <displayCategory>ResistanceAndWeakness</displayCategory>
+    <displayOrderInCategory>11</displayOrderInCategory>
+    <statOffsets>
+      <MentalBreakThreshold>-0.34</MentalBreakThreshold>
+    </statOffsets>
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>-1</biostatMet>
+  </GeneDef>
+
+  <GeneDef>
+    <defName>Witcher_Reflexes</defName>
+    <label>witcher reflexes</label>
+    <labelShortAdj>cat-quick</labelShortAdj>
+    <description>Carriers of this gene have unnaturally fast reflexes honed by years of monster combat. They dodge melee attacks more readily than ordinary humans.</description>
+    <iconPath>UI/Icons/Genes/Gene_QuickMovespeed</iconPath>
+    <displayCategory>Movement</displayCategory>
+    <displayOrderInCategory>10</displayOrderInCategory>
+    <statOffsets>
+      <MeleeDodgeChance>0.18</MeleeDodgeChance>
+    </statOffsets>
+    <biostatCpx>1</biostatCpx>
+    <biostatMet>-1</biostatMet>
+  </GeneDef>
+
+  <GeneDef>
     <defName>Witcher_ContractGene</defName>
     <label>witcher training</label>
     <labelShortAdj>trained</labelShortAdj>
