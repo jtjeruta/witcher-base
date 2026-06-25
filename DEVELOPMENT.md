@@ -42,9 +42,9 @@ All four xenotypes have `inheritable=false`, no `factionlessGenerationWeight`, a
 Gating reads `pawn.genes.Xenotype`:
 
 - **Grasses**: any humanlike pawn with genes, not any witcher xenotype, not currently undergoing.
-- **Dreams**: xenotype == `WitcherInitiate`, not currently undergoing.
+- **Dreams**: xenotype == `WitcherInitiate`, not currently undergoing. Vanilla Health operations omit the recipe when psychite tea (a drug ingredient) is not on-map; stock tea + smokeleaf for it to appear.
 - **Additional Mutagens**: xenotype == `WitcherMaster`, not currently undergoing.
-- **Mountains contract**: `Witcher_ContractGene` on the **`Witcher` xenotype only** (not Master/Mutated) + research finished; gizmo from `Gene_WitcherContract.GetGizmos()`. Completing Mountains replaces xenotype with `WitcherMaster`, dropping the contract gene.
+- **Mountains contract**: `Witcher_ContractGene` on the **`Witcher` xenotype only** (not Master/Mutated) + research finished; gizmo from `Gene_WitcherContract.GetGizmos()` (xenotype guard). Completing Mountains replaces xenotype with `WitcherMaster`, dropping the contract gene. `GameComponent_WitcherContractCleanup` strips stale contract genes from Master/Mutated pawns on load and periodically.
 
 ## Xenotype gene sets
 

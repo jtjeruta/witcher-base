@@ -17,6 +17,9 @@ namespace WitcherBase
         public static XenotypeDef WitcherMaster;
         public static XenotypeDef WitcherMutated;
 
+        // Custom genes.
+        public static GeneDef Witcher_ContractGene;
+
         // Research and quest defs.
         public static ResearchProjectDef Witcher_TrialOfGrasses;
         public static ResearchProjectDef Witcher_TrialOfMountains;

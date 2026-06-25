@@ -25,6 +25,11 @@ namespace WitcherBase
                 yield break;
             }
 
+            if (holder.genes?.Xenotype != WitcherDefOf.Witcher)
+            {
+                yield break;
+            }
+
             if (WitcherDefOf.Witcher_TrialOfMountains == null || !WitcherDefOf.Witcher_TrialOfMountains.IsFinished)
             {
                 yield break;
