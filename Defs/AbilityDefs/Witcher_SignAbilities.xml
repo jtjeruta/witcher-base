@@ -22,7 +22,7 @@
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
       <range>1.9</range>
-      <warmupTime>0.25</warmupTime>
+      <warmupTime>0.2</warmupTime>
       <targetParams>
         <canTargetLocations>false</canTargetLocations>
         <canTargetSelf>false</canTargetSelf>
@@ -60,7 +60,7 @@
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
       <range>6.9</range>
-      <warmupTime>0.5</warmupTime>
+      <warmupTime>0.2</warmupTime>
       <requireLineOfSight>false</requireLineOfSight>
       <drawAimPie>true</drawAimPie>
       <targetParams>
@@ -79,7 +79,7 @@
         <pushDistance>3</pushDistance>
         <stunTicks>180</stunTicks>
         <alwaysStun>true</alwaysStun>
-        <targetHostilesOnly>false</targetHostilesOnly>
+        <targetHostilesOnly>true</targetHostilesOnly>
       </li>
       <li Class="CompProperties_AbilityFleckOnTarget">
         <fleckDef>PsycastPsychicEffect</fleckDef>
@@ -104,7 +104,7 @@
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
       <range>5.9</range>
-      <warmupTime>0.5</warmupTime>
+      <warmupTime>0.2</warmupTime>
       <targetParams>
         <canTargetLocations>true</canTargetLocations>
       </targetParams>
@@ -112,7 +112,7 @@
     <comps>
       <li Class="CompProperties_AbilityFireSpew">
         <range>5.9</range>
-        <lineWidthEnd>2</lineWidthEnd>
+        <lineWidthEnd>4</lineWidthEnd>
         <filthDef>Filth_FlammableBile</filthDef>
         <effecterDef>Fire_Spew</effecterDef>
         <canHitFilledCells>true</canHitFilledCells>
@@ -139,7 +139,7 @@
     </statBases>
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
-      <warmupTime>0.35</warmupTime>
+      <warmupTime>0.2</warmupTime>
       <requireLineOfSight>false</requireLineOfSight>
       <drawAimPie>false</drawAimPie>
       <targetParams>
@@ -312,7 +312,7 @@
       <verbClass>Verb_CastAbility</verbClass>
       <drawAimPie>true</drawAimPie>
       <range>9.9</range>
-      <warmupTime>1.5</warmupTime>
+      <warmupTime>0.2</warmupTime>
       <requireLineOfSight>true</requireLineOfSight>
       <targetParams>
         <canTargetHumans>true</canTargetHumans>
@@ -350,7 +350,7 @@
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
       <range>9.9</range>
-      <warmupTime>0.5</warmupTime>
+      <warmupTime>0.2</warmupTime>
       <targetParams>
         <canTargetLocations>true</canTargetLocations>
         <canTargetSelf>false</canTargetSelf>

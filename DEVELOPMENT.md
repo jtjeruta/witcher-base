@@ -103,6 +103,12 @@ Signs are gene-granted `AbilityDef`s (see `Defs/AbilityDefs/Witcher_SignAbilitie
 
 Cooldowns use in-game time (2500 ticks = 1 hour). Tuned for **2–3 casts per ~45–60 in-game minute fight**: 750 ticks (~18m) for lighter signs, 900 (~22m) for AoE/control, 1200 (~29m) for Quen/Berserk, 1500 (~36m) for Tame. Weak Aard stays at 120 (~3m). Quen shield lasts 2 in-game hours (`Ability_Duration` 83 seconds → 5000 ticks via vanilla `GiveHediff`; `disappearsAfterTicks` fallback 5000). Weak Aard and Strong Aard coexist on Witcher, Master, and Mutated xenotypes — Weak Aard is not replaced at Dreams.
 
+**Combat sign warmup (`verbProperties.warmupTime`):** Weak Aard, Strong Aard, Igni, Quen, Yrden, and Axii Berserk all use **0.2s**. Axii touch abilities (serenity, trust, calm beast, tame) stay at 1.5–2s.
+
+**Strong Aard:** `targetHostilesOnly` true — cone knockback never hits colonists or allies.
+
+**Igni:** `lineWidthEnd` **4** on `CompProperties_AbilityFireSpew` (vanilla Fire Spew uses 3).
+
 Strong Aard is an **aimed cone**: the player targets a cell, and `CompAbilityEffect_Knockback.CollectConeVictims` selects pawns within `radius` whose angle from the caster→target direction is inside `coneAngle`. While aiming, `DrawEffectPreview` outlines the wedge with `GenDraw.DrawFieldEdges` (falls back to `GenDraw.DrawRadiusRing` if the cone cannot be resolved). Knockback pushes pawns through cells checked with `GenGrid.Walkable` (terrain/buildings only) rather than `Standable`, and calls `pather.StopDead()` + `Notify_Teleported` so moving foes don't immediately walk back. Axii: Tame uses `InteractionWorker_RecruitAttempt.DoRecruit` for wild animals and wild men (`WildManUtility.IsWildMan`). Berserk forces `Witcher_AxiiBerserk` mental state (`MentalState_AxiiBerserk` extends berserk but only targets pawns/factions hostile to the player); duration from `Ability_Duration`.
 
 **Yrden debuff (`Witcher_YrdenDebuff`):** `MoveSpeed` ×0.1 (walk speed only — do not debuff `Moving` capacity or pawns go down), `AimingDelayFactor` ×1.6, `ShootingAccuracyPawn` −3, `MeleeHitChance` −2, `Consciousness` −0.15. Duration: `CompProperties_AbilityYrden.durationTicks` (default 2400 → ~40 seconds in the health tooltip; keep under 2500 ticks so RimWorld displays seconds, not hours). Set `ticksToDisappear` after `AddHediff`; force severity 1 on apply.
