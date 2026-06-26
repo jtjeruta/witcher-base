@@ -10,7 +10,7 @@ namespace WitcherBase
 
         private int ticksUntilCleanup;
 
-        public GameComponent_WitcherContractCleanup()
+        public GameComponent_WitcherContractCleanup(Game game)
         {
         }
 
