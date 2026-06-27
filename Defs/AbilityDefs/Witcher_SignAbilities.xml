@@ -250,7 +250,7 @@
       </targetParams>
     </verbProperties>
     <comps>
-      <li Class="CompProperties_StopManhunter">
+      <li Class="WitcherBase.CompProperties_StopManhunterContractAware">
         <successMessage>{INITIATOR_labelShort} calmed {RECIPIENT_labelShort} with Axii.</successMessage>
       </li>
       <li Class="CompProperties_AbilityFleckOnTarget">

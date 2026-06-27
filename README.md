@@ -6,7 +6,7 @@ Turn your colonists into witchers. This is the foundation mod of a modular Witch
 
 ## What it does
 
-Research the witcher trials on the dedicated **witcher** research tab, then perform them on colonists as operations from the **Health** tab. Each trial costs herbal ingredients and throws the pawn into a brutal fever that lasts a day or two. Survivors come out changed — their xenotype is replaced with the next stage of witcher training. Those who don't survive... don't.
+Research **witcher traditions** first on the dedicated **witcher** research tab — that unlocks settlement interactions like **Buy children** and monster contracts from the companion **Witcher Monster Quests** mod. Then research the trials and perform them on colonists as operations from the **Health** tab. Each trial costs herbal ingredients and throws the pawn into a brutal fever that lasts a day or two. Survivors come out changed — their xenotype is replaced with the next stage of witcher training. Those who don't survive... don't.
 
 You can also pick any witcher xenotype when creating starting colonists. Witchers **never spawn randomly** in the world.
 
@@ -45,7 +45,7 @@ The first and most infamous initiation — a brutal ordeal that most who attempt
 
 **Survival rate:** about 3 in 10.
 
-Once you've researched the Trial of Grasses, send a caravan to a friendly settlement and use **Buy children** to recruit trial-age candidates (8–12 years old).
+Once you've researched **witcher traditions**, send a caravan to a friendly settlement and use **Buy children** to recruit trial-age candidates (8–12 years old). You still need the **Trial of Grasses** research before you can conduct the operation itself.
 
 ### Trial of Dreams
 A second trial, open only to witcher initiates. Far more forgiving than the first, it rewires the mind.

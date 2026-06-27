@@ -138,7 +138,7 @@ namespace WitcherBase
                 return false;
             }
 
-            if (WitcherDefOf.Witcher_TrialOfGrasses == null || !WitcherDefOf.Witcher_TrialOfGrasses.IsFinished)
+            if (!WitcherResearchUtility.IsTraditionsResearched)
             {
                 return false;
             }

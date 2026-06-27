@@ -34,6 +34,11 @@ namespace WitcherBase
                 return false;
             }
 
+            if (WitcherMonstersInterop.IsContractBeast(tameTarget))
+            {
+                return false;
+            }
+
             if (tameTarget.Faction == Faction.OfPlayer)
             {
                 return false;

@@ -5,7 +5,7 @@
     <defName>Witcher</defName>
     <label>witcher</label>
     <generalTitle>witcher trials</generalTitle>
-    <generalDescription>Research the alchemical trials and traditions that create witchers.</generalDescription>
+    <generalDescription>Research witcher traditions, alchemical trials, and the crafts that support monster hunting.</generalDescription>
   </ResearchTabDef>
 
 </Defs>

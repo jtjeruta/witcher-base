@@ -2,6 +2,17 @@
 <Defs>
 
   <ResearchProjectDef>
+    <defName>Witcher_Traditions</defName>
+    <label>witcher traditions</label>
+    <description>Study the scattered records of the witcher schools — how they hunt monsters, bargain under the Law of Surprise, and why their alchemy kills ordinary men. Unlocks witcher-specific caravan interactions and monster contracts from neighboring settlements.</description>
+    <techLevel>Medieval</techLevel>
+    <baseCost>300</baseCost>
+    <tab>Witcher</tab>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>0.00</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
     <defName>Witcher_TrialOfGrasses</defName>
     <label>trial of grasses</label>
     <description>The first and most brutal of the witcher trials. Subjects are dosed with an alchemical brew of healroot, psychoid, and hops. The mutagens that survive the immune response remake the body: dense connective tissue, accelerated healing, sharper night vision. Only about three in ten endure the fever.
@@ -10,7 +21,10 @@ Once researched, this trial becomes available as an operation in the Health tab.
     <techLevel>Medieval</techLevel>
     <baseCost>500</baseCost>
     <tab>Witcher</tab>
-    <researchViewX>0.00</researchViewX>
+    <prerequisites>
+      <li>Witcher_Traditions</li>
+    </prerequisites>
+    <researchViewX>1.20</researchViewX>
     <researchViewY>0.00</researchViewY>
   </ResearchProjectDef>
 
@@ -24,7 +38,7 @@ Once researched, this trial becomes available as an operation in the Health tab.
     <prerequisites>
       <li>Witcher_TrialOfGrasses</li>
     </prerequisites>
-    <researchViewX>1.20</researchViewX>
+    <researchViewX>2.40</researchViewX>
     <researchViewY>0.00</researchViewY>
   </ResearchProjectDef>
 
@@ -38,7 +52,7 @@ Once researched, this trial becomes available as an operation in the Health tab.
     <prerequisites>
       <li>Witcher_TrialOfMountains</li>
     </prerequisites>
-    <researchViewX>3.60</researchViewX>
+    <researchViewX>4.80</researchViewX>
     <researchViewY>0.00</researchViewY>
   </ResearchProjectDef>
 
@@ -52,7 +66,7 @@ Once researched, this trial becomes available as an operation in the Health tab.
     <prerequisites>
       <li>Witcher_TrialOfDreams</li>
     </prerequisites>
-    <researchViewX>2.40</researchViewX>
+    <researchViewX>3.60</researchViewX>
     <researchViewY>0.00</researchViewY>
   </ResearchProjectDef>
 

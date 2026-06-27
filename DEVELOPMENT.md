@@ -133,7 +133,7 @@ Strong Aard is an **aimed cone**: the player targets a cell, and `CompAbilityEff
 
 Settlement action **Buy children** (caravan gizmo when visiting a friendly NPC base). Implemented via `WorldObjectComp_OrphanStock` on `Settlement` — same hook pattern as vanilla `TradeRequestComp.GetCaravanGizmos`, no Harmony patch.
 
-**Gating:** `Witcher_TrialOfGrasses` research finished; settlement faction non-hostile and not player-owned.
+**Gating:** `Witcher_Traditions` research finished; settlement faction non-hostile and not player-owned.
 
 **Stock / restock** (per settlement, saved on the world object):
 
@@ -201,6 +201,8 @@ The repo is symlinked into RimWorld's `Mods/` folder (`Mods/WitcherBase`), so XM
 - `QuestPart` in the target RimWorld build does not expose overridable tick/kill hooks; mountains trial watching uses `MapComponent_WitcherTrials` for registration (legacy; site signals handle completion).
 - Combat aptitude ramps: Grasses (strong) → Mountains (great + strong melee damage).
 - Additional Mutagens is linear: requires `WitcherMaster`, not parallel with Mountains.
-- All witcher research (trials + companion Potions alchemy) uses the **`Witcher` research tab** (`ResearchTabDef` in `Witcher_ResearchTab.xml`; Potions references the same tab via `loadAfter` witcher.base).
+- All witcher research uses the **`Witcher` research tab** (`ResearchTabDef` in `Witcher_ResearchTab.xml`; Potions references the same tab via `loadAfter` witcher.base).
+- **`Witcher_Traditions`** is the entry node — prerequisite for trials, settlement **Buy children**, monster contracts (Witcher Monster Quests), and potion alchemy (companion mod; also requires vanilla **Drug production**).
+- **`WitcherMonstersInterop`** — soft coupling to Witcher Monster Quests via `WitcherMonsters_ContractBeast` hediff def name; blocks Axii tame/calm on contract beasts when that mod is loaded
 - Changing `packageId` or the mod folder name breaks existing saves that referenced the old identity.
 - Marker hediffs were removed in the xenotype conversion; in-progress saves with old markers need re-testing.
