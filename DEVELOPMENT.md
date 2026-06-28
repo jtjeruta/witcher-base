@@ -52,7 +52,7 @@ All four xenotypes share **`Witcher_Immunity`**, **`Witcher_Stoicism`**, and **`
 
 **WitcherInitiate:** `Witcher_Immunity`, `Witcher_Stoicism`, `Witcher_Reflexes`, `Robust`, `WoundHealing_Fast`, `Witcher_ToxTolerance_I`, `DarkVision`, `Sterile`, `MoveSpeed_Quick`, `Beauty_Ugly`, `PsychicAbility_Dull`, `AptitudeStrong_Melee`, `AptitudeStrong_Shooting`, `Witcher_CatEyes`, `Skin_SheerWhite`, `Witcher_WeakAard`.
 
-**Witcher:** initiate upgrades resolved (`PsychicAbility_Deaf`, `Beauty_VeryUgly`, tox tolerance upgraded to `Witcher_ToxTolerance_II`) plus `LowSleep`, `Pain_Reduced`, `Aggression_DeadCalm`, `Learning_Fast`, `AptitudePoor_Social`, `ArchiteMetabolism`, **`Witcher_ContractGene`**, `Witcher_WeakAard`, `Witcher_StrongAard`, `Witcher_Igni`, `Witcher_Quen`.
+**Witcher:** initiate upgrades resolved (`PsychicAbility_Deaf`, `Beauty_VeryUgly`, tox tolerance upgraded to `Witcher_ToxTolerance_II`) plus `LowSleep`, `Pain_Reduced`, `Aggression_DeadCalm`, `Learning_Fast`, `AptitudePoor_Social`, `ArchiteMetabolism`, **`Witcher_ContractGene`**, `Witcher_WeakAard`, `Witcher_StrongAard`, `Witcher_Acrobatics`, `Witcher_Igni`, `Witcher_Quen`.
 
 **WitcherMaster:** witcher sign set retained (both Aard tiers, Igni, Quen), with `AptitudeRemarkable_Melee`/`AptitudeRemarkable_Shooting` instead of strong; plus `Witcher_ToxTolerance_III`, `StrongStomach`, `MeleeDamage_Strong`, `Witcher_Axii`, `Witcher_Yrden`. No contract gene.
 
@@ -96,6 +96,7 @@ Signs are gene-granted `AbilityDef`s (see `Defs/AbilityDefs/Witcher_SignAbilitie
 |------|-----------|-----------|
 | `Witcher_WeakAard` | `Witcher_WeakAard` | `CompAbilityEffect_Knockback` |
 | `Witcher_StrongAard` | `Witcher_StrongAard` | `CompAbilityEffect_Knockback` (aimed cone) |
+| `Witcher_Acrobatics` | `Witcher_Jump`, `Witcher_JumpSlash` | `Verb_CastAbilityJump`; jump slash landing via `ICompAbilityEffectOnJumpCompleted` (`CompAbilityEffect_WitcherJumpSlash`) |
 | `Witcher_Igni` | `Witcher_Igni` | vanilla `CompProperties_AbilityFireSpew` |
 | `Witcher_Quen` | `Witcher_Quen` | `HediffComp_QuenShield` + `CompProperties_AbilityGiveHediff` |
 | `Witcher_Axii` | Serenity, Trust, CalmBeast, Tame, Berserk | `CompAbilityEffect_StopMentalBreak`; vanilla prisoner/manhunter comps; `CompAbilityEffect_TameAnimal`; `CompAbilityEffect_AxiiBerserk` |
@@ -103,7 +104,9 @@ Signs are gene-granted `AbilityDef`s (see `Defs/AbilityDefs/Witcher_SignAbilitie
 
 Cooldowns use in-game time (2500 ticks = 1 hour). Tuned for **2–3 casts per ~45–60 in-game minute fight**: 750 ticks (~18m) for lighter signs, 900 (~22m) for AoE/control, 1200 (~29m) for Quen/Berserk, 1500 (~36m) for Tame. Weak Aard stays at 120 (~3m). Quen shield lasts 2 in-game hours (`Ability_Duration` 83 seconds → 5000 ticks via vanilla `GiveHediff`; `disappearsAfterTicks` fallback 5000). Weak Aard and Strong Aard coexist on Witcher, Master, and Mutated xenotypes — Weak Aard is not replaced at Dreams.
 
-**Combat sign warmup (`verbProperties.warmupTime`):** Weak Aard, Strong Aard, Igni, Quen, Yrden, and Axii Berserk all use **0.2s**. Axii touch abilities (serenity, trust, calm beast, tame) stay at 1.5–2s.
+**Combat sign warmup (`verbProperties.warmupTime`):** Weak Aard, Strong Aard, Igni, Quen, Yrden, Axii Berserk, Jump, and Jump slash all use **0** (instant). Axii touch abilities (serenity, trust, calm beast, tame) stay at 1.5–2s.
+
+**Witcher jump:** `Witcher_Jump` and `Witcher_JumpSlash` use `Verb_CastAbilityJump` with `range` **8.9** (~9 cells — shorter than Biotech longjump's 19.9). Jump slash implements `ICompAbilityEffectOnJumpCompleted` to deal cut damage in a 1.5-cell radius on landing (no devour/consume).
 
 **Strong Aard:** `targetHostilesOnly` true — cone knockback never hits colonists or allies.
 

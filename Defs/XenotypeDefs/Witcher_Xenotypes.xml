@@ -60,6 +60,7 @@
       <li>Witcher_ContractGene</li>
       <li>Witcher_WeakAard</li>
       <li>Witcher_StrongAard</li>
+      <li>Witcher_Acrobatics</li>
       <li>Witcher_Igni</li>
       <li>Witcher_Quen</li>
     </genes>
@@ -98,6 +99,7 @@
       <li>MeleeDamage_Strong</li>
       <li>Witcher_WeakAard</li>
       <li>Witcher_StrongAard</li>
+      <li>Witcher_Acrobatics</li>
       <li>Witcher_Igni</li>
       <li>Witcher_Quen</li>
       <li>Witcher_Axii</li>
@@ -141,6 +143,7 @@
       <li>DiseaseFree</li>
       <li>Witcher_WeakAard</li>
       <li>Witcher_StrongAard</li>
+      <li>Witcher_Acrobatics</li>
       <li>Witcher_Igni</li>
       <li>Witcher_Quen</li>
       <li>Witcher_Axii</li>

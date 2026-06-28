@@ -36,6 +36,25 @@
   </GeneDef>
 
   <GeneDef>
+    <defName>Witcher_Acrobatics</defName>
+    <label>witcher acrobatics</label>
+    <description>Carriers can leap short distances in combat and jump onto foes to slash on landing.</description>
+    <iconPath>UI/Abilities/Longjump</iconPath>
+    <displayCategory>Ability</displayCategory>
+    <displayOrderInCategory>12</displayOrderInCategory>
+    <abilities>
+      <li>Witcher_Jump</li>
+      <li>Witcher_JumpSlash</li>
+    </abilities>
+    <descriptionHyperlinks>
+      <AbilityDef>Witcher_Jump</AbilityDef>
+      <AbilityDef>Witcher_JumpSlash</AbilityDef>
+    </descriptionHyperlinks>
+    <biostatCpx>2</biostatCpx>
+    <biostatMet>0</biostatMet>
+  </GeneDef>
+
+  <GeneDef>
     <defName>Witcher_Igni</defName>
     <label>igni</label>
     <description>Carriers can cast the Igni sign, projecting a cone of witcher fire.</description>

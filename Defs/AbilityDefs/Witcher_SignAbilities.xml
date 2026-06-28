@@ -22,7 +22,7 @@
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
       <range>1.9</range>
-      <warmupTime>0.2</warmupTime>
+      <warmupTime>0</warmupTime>
       <targetParams>
         <canTargetLocations>false</canTargetLocations>
         <canTargetSelf>false</canTargetSelf>
@@ -60,7 +60,7 @@
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
       <range>6.9</range>
-      <warmupTime>0.2</warmupTime>
+      <warmupTime>0</warmupTime>
       <requireLineOfSight>false</requireLineOfSight>
       <drawAimPie>true</drawAimPie>
       <targetParams>
@@ -87,6 +87,74 @@
     </comps>
   </AbilityDef>
 
+  <!-- Witcher jump: short leap (Dreams+) -->
+  <AbilityDef>
+    <defName>Witcher_Jump</defName>
+    <label>witcher jump</label>
+    <description>Leap a short distance to reposition in melee. Not the supernatural hops of a longjump geneline — just witcher reflexes and mutagen-hardened legs, with a reach of about nine cells.</description>
+    <iconPath>UI/Abilities/Longjump</iconPath>
+    <category>WitcherSigns</category>
+    <displayOrder>102</displayOrder>
+    <cooldownTicksRange>180</cooldownTicksRange>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <aiCanUse>true</aiCanUse>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
+    <jobDef>CastJump</jobDef>
+    <verbProperties>
+      <verbClass>Verb_CastAbilityJump</verbClass>
+      <label>jump</label>
+      <violent>false</violent>
+      <warmupTime>0</warmupTime>
+      <range>8.9</range>
+      <requireLineOfSight>true</requireLineOfSight>
+      <soundCast>Longjump_Jump</soundCast>
+      <soundLanding>Longjump_Land</soundLanding>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>false</canTargetPawns>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+  </AbilityDef>
+
+  <!-- Jump slash: leap onto a foe and cut on landing (Dreams+) -->
+  <AbilityDef>
+    <defName>Witcher_JumpSlash</defName>
+    <label>jump slash</label>
+    <description>Leap onto a nearby foe and slash as you land, cutting every enemy in the landing area.</description>
+    <iconPath>UI/Abilities/Longjump</iconPath>
+    <category>WitcherSigns</category>
+    <displayOrder>103</displayOrder>
+    <cooldownTicksRange>900</cooldownTicksRange>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsOffensive>true</ai_IsOffensive>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>true</disableGizmoWhileUndrafted>
+    <jobDef>CastJump</jobDef>
+    <verbProperties>
+      <verbClass>Verb_CastAbilityJump</verbClass>
+      <label>jump slash</label>
+      <warmupTime>0</warmupTime>
+      <range>8.9</range>
+      <requireLineOfSight>true</requireLineOfSight>
+      <soundCast>Longjump_Jump</soundCast>
+      <soundLanding>Longjump_Land</soundLanding>
+      <targetParams>
+        <canTargetLocations>false</canTargetLocations>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="WitcherBase.CompProperties_AbilityWitcherJumpSlash" />
+      <li Class="CompProperties_AbilityFleckOnTarget">
+        <fleckDef>PsycastPsychicEffect</fleckDef>
+      </li>
+    </comps>
+  </AbilityDef>
+
   <!-- Igni: flame cone (Dreams+) -->
   <AbilityDef>
     <defName>Witcher_Igni</defName>
@@ -104,7 +172,7 @@
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
       <range>5.9</range>
-      <warmupTime>0.2</warmupTime>
+      <warmupTime>0</warmupTime>
       <targetParams>
         <canTargetLocations>true</canTargetLocations>
       </targetParams>
@@ -139,7 +207,7 @@
     </statBases>
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
-      <warmupTime>0.2</warmupTime>
+      <warmupTime>0</warmupTime>
       <requireLineOfSight>false</requireLineOfSight>
       <drawAimPie>false</drawAimPie>
       <targetParams>
@@ -312,7 +380,7 @@
       <verbClass>Verb_CastAbility</verbClass>
       <drawAimPie>true</drawAimPie>
       <range>9.9</range>
-      <warmupTime>0.2</warmupTime>
+      <warmupTime>0</warmupTime>
       <requireLineOfSight>true</requireLineOfSight>
       <targetParams>
         <canTargetHumans>true</canTargetHumans>
@@ -350,7 +418,7 @@
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
       <range>9.9</range>
-      <warmupTime>0.2</warmupTime>
+      <warmupTime>0</warmupTime>
       <targetParams>
         <canTargetLocations>true</canTargetLocations>
         <canTargetSelf>false</canTargetSelf>

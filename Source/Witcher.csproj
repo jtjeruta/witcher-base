@@ -38,4 +38,10 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Inspect/**" />
+    <Compile Remove="ProbeConsumeLeap/**" />
+    <Compile Remove="obj/**" />
+  </ItemGroup>
+
 </Project>

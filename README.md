@@ -31,6 +31,7 @@ Witchers unlock combat signs as draftable **Abilities** (gizmo buttons) tied to 
 |------|------------|--------|
 | **Aard** (weak) | Trial of Grasses (kept on all later stages) | Hurl one nearby foe several cells away; may stun |
 | **Aard** (strong) | Trial of Dreams | Aim a cone (preview shown while targeting) to knock back and stun every foe caught in it |
+| **Jump / Jump slash** | Trial of Dreams | Short combat leap (about 9 cells) or leap onto a foe and cut nearby enemies on landing |
 | **Igni** | Trial of Dreams | Short cone of fire |
 | **Quen** | Trial of Dreams | Personal damage-absorbing shield |
 | **Axii** | Trial of Mountains | Calm mental breaks, reduce prisoner resistance, calm maddened animals, tame wild animals and wild people, send hostile humanlikes into berserk against their allies |
