@@ -17,7 +17,13 @@
     <label>trial of grasses</label>
     <description>The first and most brutal of the witcher trials. Subjects are dosed with an alchemical brew of healroot, psychoid, and hops. The mutagens that survive the immune response remake the body: dense connective tissue, accelerated healing, sharper night vision. Only about three in ten endure the fever.
 
-Once researched, this trial becomes available as an operation in the Health tab.</description>
+Requirements: 10 herbal medicine, 30 psychoid leaves, 5 hops. Once researched, conduct from a child's Health tab → Operations → Add bill.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>Witcher_ConductTrialOfGrasses</RecipeDef>
+      <ThingDef>MedicineHerbal</ThingDef>
+      <ThingDef>PsychoidLeaves</ThingDef>
+      <ThingDef>RawHops</ThingDef>
+    </descriptionHyperlinks>
     <techLevel>Medieval</techLevel>
     <baseCost>500</baseCost>
     <tab>Witcher</tab>
@@ -31,7 +37,14 @@ Once researched, this trial becomes available as an operation in the Health tab.
   <ResearchProjectDef>
     <defName>Witcher_TrialOfDreams</defName>
     <label>trial of dreams</label>
-    <description>A second trial reserved for those who survived the grasses. Subjects drink psychite tea laced with smokeleaf and are guided through nightmare visions while their nervous system is rewired. About seven in ten survive. Survivors gain pain resistance, emotional flatness, and sharpened reflexes.</description>
+    <description>A second trial reserved for those who survived the grasses. Subjects drink psychite tea laced with smokeleaf and are guided through nightmare visions while their nervous system is rewired. About seven in ten survive. Survivors gain pain resistance, emotional flatness, and sharpened reflexes.
+
+Requirements: 10 psychite tea, 5 smokeleaf leaves. Once researched, conduct from a witcher initiate's Health tab → Operations → Add bill.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>Witcher_ConductTrialOfDreams</RecipeDef>
+      <ThingDef>PsychiteTea</ThingDef>
+      <ThingDef>SmokeleafLeaves</ThingDef>
+    </descriptionHyperlinks>
     <techLevel>Medieval</techLevel>
     <baseCost>1000</baseCost>
     <tab>Witcher</tab>
@@ -45,7 +58,14 @@ Once researched, this trial becomes available as an operation in the Health tab.
   <ResearchProjectDef>
     <defName>Witcher_AdditionalMutagens</defName>
     <label>additional mutagens</label>
-    <description>An experimental second dose of mutagens, administered to a master witcher. The brew pushes existing gifts to their extreme tier and may grant agelessness — but only about one in ten survive. Those who endure become faster, tougher, and harder to kill than any witcher before them.</description>
+    <description>An experimental second dose of mutagens, administered to a master witcher. The brew pushes existing gifts to their extreme tier and may grant agelessness — but only about one in ten survive. Those who endure become faster, tougher, and harder to kill than any witcher before them.
+
+Requirements: 4 herbal medicine, 5 psychoid leaves. Once researched, conduct from a master witcher's Health tab → Operations → Add bill.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>Witcher_ConductAdditionalMutagens</RecipeDef>
+      <ThingDef>MedicineHerbal</ThingDef>
+      <ThingDef>PsychoidLeaves</ThingDef>
+    </descriptionHyperlinks>
     <techLevel>Medieval</techLevel>
     <baseCost>500</baseCost>
     <tab>Witcher</tab>

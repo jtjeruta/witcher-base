@@ -42,9 +42,15 @@ All four xenotypes have `inheritable=false`, no `factionlessGenerationWeight`, a
 Gating reads `pawn.genes.Xenotype`:
 
 - **Grasses**: any humanlike pawn with genes, not any witcher xenotype, not currently undergoing.
-- **Dreams**: xenotype == `WitcherInitiate`, not currently undergoing. Vanilla Health operations omit the recipe when psychite tea (a drug ingredient) is not on-map; stock tea + smokeleaf for it to appear.
+- **Dreams**: xenotype == `WitcherInitiate`, not currently undergoing.
 - **Additional Mutagens**: xenotype == `WitcherMaster`, not currently undergoing.
 - **Mountains contract**: `Witcher_ContractGene` on the **`Witcher` xenotype only** (not Master/Mutated) + research finished; gizmo from `Gene_WitcherContract.GetGizmos()` (xenotype guard). Completing Mountains replaces xenotype with `WitcherMaster`, dropping the contract gene. `GameComponent_WitcherContractCleanup` strips stale contract genes from Master/Mutated pawns on load and periodically.
+
+### Health tab visibility
+
+Trial `RecipeDef`s parent `Witcher_TrialBase`, which sets `dontShowIfAnyIngredientMissing=false` (unlike default `SurgeryFlesh`). Missing **non-drug** reagents (herbal medicine, hops, herbs) still list the operation greyed with `(Missing …)` in Add bill.
+
+Vanilla still **hides** the bill entirely when any missing ingredient has `IsDrug` (psychite tea, smokeleaf, beer, witcher potions). Players find full counts on the trial **research project** `description` and `descriptionHyperlinks` to the trial `RecipeDef` and reagent `ThingDef`s. Witcher Potions overwrites research text/hyperlinks when loaded.
 
 ## Xenotype gene sets
 

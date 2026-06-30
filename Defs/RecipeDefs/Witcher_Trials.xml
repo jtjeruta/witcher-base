@@ -3,6 +3,7 @@
 
   <!-- Shared abstract base for all witcher trial operations. -->
   <RecipeDef Abstract="True" Name="Witcher_TrialBase" ParentName="SurgeryFlesh">
+    <dontShowIfAnyIngredientMissing>false</dontShowIfAnyIngredientMissing>
     <jobString>Conducting witcher trial.</jobString>
     <hideBodyPartNames>true</hideBodyPartNames>
     <targetsBodyPart>false</targetsBodyPart>
