@@ -17,6 +17,10 @@ namespace WitcherBase
         public static XenotypeDef WitcherMaster;
         public static XenotypeDef WitcherMutated;
 
+        // Neutral backstories applied on trial survival (no work disables).
+        public static BackstoryDef WitcherTrialChildhood;
+        public static BackstoryDef WitcherTrialAdulthood;
+
         // Custom genes.
         public static GeneDef Witcher_ContractGene;
 

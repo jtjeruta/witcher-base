@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <BackstoryDef>
+    <defName>WitcherTrialChildhood</defName>
+    <title>trial survivor</title>
+    <titleShort>survivor</titleShort>
+    <description>[PAWN_nameDef] survived the Trial of Grasses. Whatever [PAWN_pronoun] was before, the mutagens have begun to remake [PAWN_objective].</description>
+    <slot>Childhood</slot>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>WitcherTrialAdulthood</defName>
+    <title>mutagen subject</title>
+    <titleShort>subject</titleShort>
+    <description>[PAWN_nameDef] was reshaped by witcher mutagens. [PAWN_possessive] old limits no longer apply.</description>
+    <slot>Adulthood</slot>
+    <shuffleable>false</shuffleable>
+    <bodyTypeMale>Male</bodyTypeMale>
+    <bodyTypeFemale>Female</bodyTypeFemale>
+  </BackstoryDef>
+
+</Defs>

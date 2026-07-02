@@ -8,7 +8,7 @@ The trials are research-gated surgery recipes (Health tab) that apply a "fever" 
 
 This means tending, medicine, and pawn health have **no** effect on the result. The visible fever is theater.
 
-On survival, the pawn's **xenotype is replaced** via `pawn.genes.SetXenotype(...)` (`WitcherXenotypes.SetStage`). Each stage carries a fixed cumulative gene set defined in `Defs/XenotypeDefs/Witcher_Xenotypes.xml`. Genes are overridden, not incrementally granted or upgraded.
+On survival, the pawn's **xenotype is replaced** via `pawn.genes.SetXenotype(...)` (`WitcherXenotypes.SetStage`). Each stage carries a fixed cumulative gene set defined in `Defs/XenotypeDefs/Witcher_Xenotypes.xml`. Genes are overridden, not incrementally granted or upgraded. All pre-trial **story traits** are removed at the same time — mutagens remake personality, so orphan baggage (e.g. SlowLearner, Nerves) cannot persist. Pre-trial **work incapabilities** are cleared too: childhood/adulthood backstories are swapped to neutral `WitcherTrialChildhood` / `WitcherTrialAdulthood` defs (no `workDisables`), and work/skill disable caches are refreshed via notify calls.
 
 The Trial of Mountains is the exception: a player-initiated quest where success/failure depends on combat at a nearby site.
 
@@ -148,9 +148,9 @@ Settlement action **Buy children** (caravan gizmo when visiting a friendly NPC b
 
 | Category | Detection | Stock / restock | Price mult |
 |----------|-----------|-----------------|------------|
-| Tribal | `techLevel <= Neolithic` | 2–4 / 45 days | 0.5× |
-| Outlander | Industrial | 1–2 / 60 days | 1.0× |
-| Advanced | Spacer+ | 0–1 / 90 days | 1.5× |
+| Tribal | `techLevel <= Neolithic` | 2–4 / 30 days | 0.5× |
+| Outlander | Industrial | 1–2 / 30 days | 1.0× |
+| Advanced | Spacer+ | 0–1 / 30 days | 1.5× |
 
 Restock timer starts on first generation; buying does not reset it. When the timer expires, stock is fully replaced.
 

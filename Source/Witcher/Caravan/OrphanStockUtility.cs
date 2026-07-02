@@ -56,17 +56,11 @@ namespace WitcherBase
             }
         }
 
+        public const int RestockDays = 30;
+
         public static int GetRestockDays(OrphanSettlementCategory category)
         {
-            switch (category)
-            {
-                case OrphanSettlementCategory.Tribal:
-                    return 45;
-                case OrphanSettlementCategory.Advanced:
-                    return 90;
-                default:
-                    return 60;
-            }
+            return RestockDays;
         }
 
         public static float GetPriceMultiplier(OrphanSettlementCategory category)

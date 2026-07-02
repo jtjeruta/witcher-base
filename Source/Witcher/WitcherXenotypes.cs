@@ -1,3 +1,4 @@
+using System.Linq;
 using RimWorld;
 using Verse;
 
@@ -19,7 +20,44 @@ namespace WitcherBase
             }
 
             pawn.genes.SetXenotype(xenotype);
+            StripAllStoryTraits(pawn);
+            ClearAllWorkIncapabilities(pawn);
             pawn.Drawer?.renderer?.SetAllGraphicsDirty();
+        }
+
+        private static void StripAllStoryTraits(Pawn pawn)
+        {
+            if (pawn?.story?.traits == null)
+            {
+                return;
+            }
+
+            foreach (Trait trait in pawn.story.traits.allTraits.ToList())
+            {
+                pawn.story.traits.RemoveTrait(trait);
+            }
+        }
+
+        private static void ClearAllWorkIncapabilities(Pawn pawn)
+        {
+            if (pawn?.story == null)
+            {
+                return;
+            }
+
+            if (WitcherDefOf.WitcherTrialChildhood != null)
+            {
+                pawn.story.Childhood = WitcherDefOf.WitcherTrialChildhood;
+            }
+
+            if (pawn.story.Adulthood != null && WitcherDefOf.WitcherTrialAdulthood != null)
+            {
+                pawn.story.Adulthood = WitcherDefOf.WitcherTrialAdulthood;
+            }
+
+            pawn.skills?.Notify_SkillDisablesChanged();
+            pawn.workSettings?.Notify_DisabledWorkTypesChanged();
+            pawn.Notify_DisabledWorkTypesChanged();
         }
 
         public static bool IsAnyWitcher(Pawn pawn)
